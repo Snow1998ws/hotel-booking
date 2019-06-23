@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <!--Official Plugins-->
+        <!--Generate equals and hash code-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/hotel_booking?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false"
+                        userId="root"
+                        password="">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.example.demo" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/mybatis">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="hotel_booking" tableName="user" domainObjectName="User">
+            <property name="constructorBased" value="true"/>
+            <generatedKey column="id" sqlStatement="select uuid_short()" identity="true"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
