@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>jQuery在线生成网址二维码带logo图片可保存图片二维码特效插件</title>
+    <meta name="keywords" content="jQuery,在线生成,网址二维码,带logo图片,保存图片,二维码,特效插件" />
+    <meta name="description" content="jQuery在线生成网址二维码带logo图片可保存图片二维码特效插件下载。可自定义二维码中间logo图片及二维码图片大小，支持直接另存为图片，非常简单易用的一款二维码图片生成插件。" /> 
+    <meta name="author" content="js代码(www.jsdaima.com)" />
+    <meta name="copyright" content="js代码(www.jsdaima.com)" />
+	<link rel="stylesheet" type="text/css" href="css/qrcode/qrcode.css">
+</head>
+<body onLoad="createQrcode()"> <!--默认载人方法-->
+
+    <div id='qrcode' style='margin-left: 45%; margin-top: 10%'></div>
+	
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/qrcode/qrcode.js"></script>
+    <script type="text/javascript" src="js/qrcode/utf.js"></script>
+    <script type="text/javascript" src="js/qrcode/jquery.qrcode.js" ></script>
+    <script type="text/javascript">
+        function makeCode(url) {
+            $("#qrcode").qrcode({
+                render: "canvas",
+                text: url,
+                width : "260",               //二维码的宽度
+                height : "260",              //二维码的高度
+                background : "#ffffff",       //二维码的后景色
+                foreground : "#000000",        //二维码的前景色
+                src: 'img/qrcode/logo.png'             //二维码中间的图片
+            });
+        }
+        function createQrcode () {
+            var url = 'HTTPS://QR.ALIPAY.COM/FKX02471VWUBQCUNFJ3AFA?t=1561082817322';//$('#url').val();
+            makeCode(url);
+        }
+    </script>
+	
+</body>
+</html>

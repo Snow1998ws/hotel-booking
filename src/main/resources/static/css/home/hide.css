@@ -1,0 +1,23 @@
+.log{
+    position: fixed;
+    left: -100vw;
+    top: 0;
+    background-color: rgba(255, 255, 255,0.7);
+    background-image: url(../../img/login/loginBg.jpg);
+    background-blend-mode: lighten;
+    z-index: 92;
+}
+
+.cancel{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-image:  url(../../img/icon/cancel.png);
+    background-size: contain;
+    transition: all 0.3s;
+}
+
+.cancel:hover{
+    width: 40px;
+    height: 40px;
+}

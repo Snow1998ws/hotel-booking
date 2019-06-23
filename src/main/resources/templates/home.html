@@ -1,0 +1,182 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 共有 -->
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="css/public_effect/common.css">
+    <!--本页-->
+    <link rel='stylesheet' href='css/home/style.css'>
+    <link rel="stylesheet" href="css/home/hide.css">
+    <script type="text/javascript" src="js/page_home/hide.js"></script>
+    <script type="text/javascript" src="js/page_home/intro.js"></script>
+    <!-- 标题 -->
+    <link rel="stylesheet" href="css/title/style.css">
+    <!--导航栏-->
+    <link rel='stylesheet' href='css/navigation/all.min.css'>
+    <link rel="stylesheet" href="css/navigation/style.css">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/navigation/navigation.js"></script>
+    <!-- 登录注册 -->
+    <link rel="stylesheet" type="text/css" href="css/login/style.css" />
+    <script src="js/login/main.js"></script>
+</head>
+<body>
+    <!-- 标题 -->
+    <div class="title" style="position: absolute; top: 0; left: 0; z-index: 3;">
+        <div class="Titem1">
+            <div>酒店辅助订购系统</div>
+        </div>
+        <div class="Titem2">
+            <a href="javascript:;">登录/注册</a>
+        </div>
+    </div>
+    
+    <!-- 广告图 -->
+    <div class="intro part">
+        <div class="mid right icon triangle" style="transform:rotate(180deg);"></div>
+        <div class="mid left icon triangle"></div>
+        <div class="intro_pic"></div>
+        <div class="intro_pic"></div>
+        <div class="intro_pic"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--左侧导航（流外）-->
+    <div class="page">
+        <div class="navbar">
+            <div class="user">
+                <div class="user_pic"></div>
+                <div class="user_name">用户</div>
+            </div>
+            <div class="bar">
+                <div class="options">
+                    <ul>
+                        <a><li class="active">个人信息</li></a>
+                        <a><li>当前订单</li></a>
+                        <a><li>历史订单</li></a>
+                    </ul>
+                </div>
+                <div class="settings">
+                    <ul>
+                        <li class="acc-settings"><i class="fas fa-cog"></i> 账号设置</li>
+                        <li><i class="fas fa-sign-out-alt"></i> 退出</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="hidebar"></div>
+    </div><!--左侧导航结束-->
+
+
+    <!-- 注册(流外) -->
+    <div class="part log">
+        <div class="cancel icon"></div>
+        <div class="demo">
+            <nav class="main_nav">
+                <ul class="optionUl">
+                    <li><a class="cd-signin" href="#0">登录</a></li>
+                    <li><a class="cd-signup" href="#0">注册</a></li>
+                </ul>
+                <a class="cd-forget" href="#">忘记密码</a>
+            </nav>
+        </div>
+        <div class="cd-user-modal"> 
+            <div class="cd-user-modal-container">
+                <ul class="cd-switcher">
+                    <li><a href="#0">用户登录</a></li>
+                    <li><a href="#0">注册新用户</a></li>
+                </ul>
+    
+                <div id="cd-login"> <!-- 登录表单 -->
+                    <form class="cd-form">
+                        <p class="fieldset">
+                            <label class="image-replace cd-username" for="signin-username">用户名</label>
+                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
+                        </p>
+    
+                        <p class="fieldset">
+                            <label class="image-replace cd-password" for="signin-password">密码</label>
+                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
+                            <p class="check-back hidden">用户名或者密码不正确</p>
+                        </p>
+    
+                        <p class="fieldset">
+                            <input type="checkbox" id="remember-me" checked>
+                            <label for="remember-me">记住登录状态</label>
+                        </p>
+    
+                        <p class="fieldset">
+                            <input class="full-width2" type="submit" value="登 录">
+                        </p>
+                    </form>
+                </div>
+    
+                <div id="cd-signup"> <!-- 注册表单 -->
+                    <form class="cd-form">
+                        <p class="fieldset">
+                            <label class="image-replace cd-username" for="signup-username">用户名</label>
+                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <p class="check-back hidden">用户名格式不规范</p>
+                        </p>
+    
+                        <p class="fieldset">
+                            <label class="image-replace cd-password" for="signup-password1">密码</label>
+                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <p class="check-back hidden">密码格式不规范</p>
+                        </p>
+    
+                        <p class="fieldset">
+                            <label class="image-replace cd-password" for="signup-password2">再次确认密码</label>
+                            <input class="full-width has-padding has-border" id="signup-password2" type="password" maxlength="15" placeholder="再次输入密码"/>
+                            <p class="check-back hidden">两次密码不一样</p>
+                        </p>
+    
+                        <p class="fieldset">
+                            <label class="image-replace cd-email" for="signup-email">邮箱</label>
+                            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail"/>
+                            <p class="check-back hidden">邮箱格式错误</p>
+                        </p>
+    
+                        <p class="fieldset">
+                            <input type="checkbox" id="accept-terms">
+                            <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+                        </p>
+    
+                        <p class="fieldset">
+                            <input class="full-width2" type="submit" value="注册新用户">
+                        </p>
+                    </form>
+                </div>
+                <a href="#0" class="cd-close-form">关闭</a>
+            </div>
+        </div> 
+    </div>
+
+
+
+
+
+</body>
+</html>
