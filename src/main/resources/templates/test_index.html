@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<title>jQuery产品案例图文介绍选项卡式上下滚动切换特效插件</title>
+		<meta name="keywords" content="jQuery,产品案例,图文介绍,选项卡式,上下,滚动切换,特效插件" />
+		<meta name="description" content="jQuery产品案例图文介绍选项卡式上下滚动切换特效插件代码下载。" /> 
+		<meta name="author" content="js代码(www.jsdaima.com)" />
+		<meta name="copyright" content="js代码(www.jsdaima.com)" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js" ></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index/index.css" />
+		
+	</head>
+
+	<body style="background-color: #202020;">
+		<div id="sitecontent" class="ff_sitecontent">
+			<div id="indexPage" class="ff_indexPage">
+				<!--switch tab start-->
+				<div class="mlist team_tabs module ff_noSlider">
+					<div class="bgmask"></div>
+					<div class="module_container container">
+						<div class="container_header">
+							<p class="title">解决方案</p>
+							<p class="subtitle">SOLUTION</p>
+						</div>
+						<div class="container_content">
+							<div class="content_wrapper row">
+								<div class="tab_constent">
+									<div class="content_list clearfix owl-carousel owl-theme owl-loaded">
+										<div class="owl-stage-outer">
+											<div class="main-page">
+												<div class="right col-md-11">
+													<div class="content row">
+														 
+														<div class="con-ggh">
+															<div class="ptpic-dl fl col-md-6 row"><img alt="" src="img/index/1531121655602.jpg"></div>
+															<div class="zcinfo fr col-md-6 row">
+																<div class="b-intro">
+																	<p class="dp ellipsis">解决案例介绍二</span>
+																		<p class="subdes ellipsis">为餐饮行业提供一站式解决方案，凭借到店、预约、点餐等功能，以及积分系统搭建、可视化后台数据管理等强大的技术支持。拓展店铺营销的新渠道。</p>
+																</div>
+																<div class="bline">
+																	<p class="subtitle">为餐饮行业提供一站式解决方案，凭借到店、预约、点餐等功能，以及积分系统搭建、可视化后台数据管理等强大的技术支持。拓展店铺营销的新渠道。</p>
+																	<a href="https://www.jsdaima.com/"><div class="details">MORE</div></a>
+																</div>
+																<ul class="clearfix">
+																	<li>
+																		<div class="list-pic"><img alt="" src="img/index/1531121655602.jpg"></div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+
+														<!-- 模板格式 -->
+														<div class="con-ggh">
+															<!-- 大图 -->
+															<div class="ptpic-dl fl col-md-6 row"><img alt="" src="img/index/1531121694273.jpg"></div>
+															<div class="zcinfo fr col-md-6 row">
+																<div class="b-intro">
+																	<!-- 标题 -->
+																	<p class="dp ellipsis">解决案例介绍六</span>
+																		<!-- 大字简介 -->
+																		<p class="subdes ellipsis">为餐饮行业提供一站式解决方案，凭借到店、预约、点餐等功能，以及积分系统搭建、可视化后台数据管理等强大的技术支持。拓展店铺营销的新渠道。</p>
+																</div>
+																<div class="bline">
+																	<!-- 小字简介 -->
+																	<p class="subtitle">为餐饮行业提供一站式解决方案，凭借到店、预约、点餐等功能，以及积分系统搭建、可视化后台数据管理等强大的技术支持。拓展店铺营销的新渠道。</p>
+																	<!-- 链接 -->
+																	<a href="https://www.jsdaima.com/"><div class="details">MORE</div></a>
+																</div>
+																<ul class="clearfix">
+																	<li>
+																		<!-- 小图 -->
+																		<div class="list-pic"><img alt="" src="img/index/1531121694273.jpg"></div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<!-- 模板格式 -->
+
+													</div>
+												</div>
+												<div class="left col-md-1 nav_col">
+													<div class="hd">
+														<a class="udbtn uPrev prev" href="javascript:;">上一个</a>
+														<a class="udbtn dNext next" href="javascript:;">下一个</a>
+													</div>
+													<div class="nav-item row nav_num">
+														<div class="nav_item_list">
+															<div class="active"><span></span></div>
+															<!-- 数量和介绍模板数匹配 -->
+															<div class=""><span></span></div>
+
+														</div>
+													</div>
+												</div>
+												<div class="clear"></div>
+											</div>
+											<script type="text/javascript">
+												jQuery(".nav_col").slide({titCell:".nav_col a",mainCell:".nav_item_list",autoPage:true,effect:"top",vis:5,scroll:5,pnLoop:false});
+											</script>
+											<script type="text/javascript">
+												$(".main-page .nav-item .nav_item_list div").mouseenter(function() {
+													var $this = $(this);
+													var index = $this.index();
+												}).mouseleave(function() {
+													var $this = $(this);
+													var index = $this.index();
+												}).click(function() {
+													var $this = $(this);
+													var index = $this.index();
+													var l = -(index * 510);
+													$(".main-page .nav-item .nav_item_list div").removeClass("active");
+													$(".main-page .nav-item .nav_item_list div").eq(index).addClass("active");
+													$(".main-page .content .con-ggh:eq(0)").stop().animate({
+														"margin-top": l
+													}, 510);
+												});
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--switch tab end-->
+			</div>
+		</div>
+	</body>
+
+</html>

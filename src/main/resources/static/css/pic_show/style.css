@@ -1,0 +1,26 @@
+.previewShowWindow{
+    position:absolute;
+    border:1px solid #dadade;
+    background:#95959d;
+    padding:5px;display:none;
+    color:#fff;
+    text-align:center;
+    z-index:999;
+}
+
+#pi{
+    max-width: 800px;
+}
+
+.pic_bar{
+    display: flex;
+}
+
+.preview{
+    width: 132px;
+    height: 132px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    margin-right: 15px;
+}

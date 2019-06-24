@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>点击按钮弹出层可切换登录与注册表单js效果</title>
+<meta name="keywords" content="点击按钮,弹出层,可切换,登录与注册,表单,js效果" />
+<meta name="description" content="点击按钮弹出层可切换登录与注册表单js效果。非常简单实用的一款弹出层注册登录表单js插件，点击表单外即可关闭弹出层。" /> 
+<meta name="author" content="js代码(www.jsdaima.com)" />
+<meta name="copyright" content="js代码(www.jsdaima.com)" />
+<link rel="stylesheet" type="text/css" href="css/login/style.css" />
+<link rel="stylesheet" type="text/css" href="css/public_effect/common.css" />
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/login/main.js"></script>
+</head>
+
+<body>
+	
+
+
+<div id="main">
+	<div class="demo">
+		<nav class="main_nav">
+			<ul class="optionUl">
+				<li><a class="cd-signin" href="#0">登录</a></li>
+				<li><a class="cd-signup" href="#0">注册</a></li>
+			</ul>
+			<a class="cd-forget" href="#">忘记密码</a>
+		</nav>
+	</div>
+	<div class="cd-user-modal"> 
+		<div class="cd-user-modal-container">
+			<ul class="cd-switcher">
+				<li><a href="#0">用户登录</a></li>
+				<li><a href="#0">注册新用户</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- 登录表单 -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signin-username">用户名</label>
+						<input class="full-width has-padding has-border" id="signin-username" type="text" placeholder="输入用户名">
+						<p class="check-back"></p>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">密码</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="输入密码">
+						<p class="check-back"></p>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">记住登录状态</label>
+						<p class="check-back"></p>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width2" type="submit" value="登 录">
+						<p class="check-back"></p>
+					</p>
+				</form>
+			</div>
+
+			<div id="cd-signup"> <!-- 注册表单 -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">用户名</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" value="www" placeholder="输入用户名" onblur="check1(this.value);">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password1">密码</label>
+						<input class="full-width has-padding has-border" id="signup-password1" type="password" value="123"  placeholder="输入密码">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password2">再次确认密码</label>
+						<input class="full-width has-padding has-border" id="signup-password2" type="password"  placeholder="再次输入密码">
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">邮箱</label>
+						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail">
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="accept-terms">
+						<label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width2" type="submit" value="注册新用户">
+					</p>
+				</form>
+			</div>
+			<a href="#0" class="cd-close-form">关闭</a>
+		</div>
+	</div> 
+	
+</div>
+
+
+</body>
+</html>

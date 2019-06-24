@@ -1,0 +1,80 @@
+:root {
+  --stripe-size: 120px;
+  /* 条1字色 */
+  --color1: rgb(0, 0, 0);
+  /* 条2字色 */
+  --color2: rgb(255, 255, 255);
+  /* 条1颜色 */
+  --color3: rgba(255, 255, 255, 0.6);
+  /* 条2颜色 */
+  --color4: rgb(0, 0, 0 , 0.7);
+  --duration: 5s;
+}
+
+.stripe {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-width: 800px;
+  height: 70px;
+  overflow: hidden;
+  border: solid rgb(0, 0, 0) 1px;
+}
+.stripe_inner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Microsoft Yahei', sans-serif;
+  /* 透明 */
+  color: rgba(255, 255, 255, 0);
+  background: repeating-linear-gradient(45deg, var(--color1) 25%, var(--color1) 50%, var(--color2) 50%, var(--color2) 75%);
+  background-size: var(--stripe-size) var(--stripe-size);
+  -webkit-background-clip: text;
+    background-clip: text;
+  animation: stripeBackgroundPosition var(--duration) linear infinite;
+}
+.stripe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + var(--stripe-size));
+  height: 100%;
+  background: repeating-linear-gradient(45deg, var(--color3) 25%, var(--color3) 50%, var(--color4) 50%, var(--color4) 75%);
+  background-size: var(--stripe-size) var(--stripe-size);
+  animation: stripeTransform var(--duration) linear infinite;
+}
+
+/* 四角阴影 */
+.stripe::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 40%, #090a0f 100%);
+}
+
+@keyframes stripeTransform {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(var(--stripe-size) * -1));
+  }
+}
+@keyframes stripeBackgroundPosition {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: calc(var(--stripe-size) * -1) 0;
+  }
+}

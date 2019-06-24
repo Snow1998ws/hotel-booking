@@ -1,0 +1,36 @@
+.intro{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+ .triangle{
+   background-image: url(../../img/icon/arrow.png);
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-color: rgb(255,255,255,0.5);
+   border-radius: 15px;
+   background-blend-mode: darken;
+   z-index: 2;
+}
+
+.intro_pic{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.intro_pic:nth-child(3){
+    background-image: url(../../img/hotel/hotel_001.jpg);
+    /* opacity: 1 */
+}
+
+.intro_pic:nth-child(4){
+    background-image: url(../../img/hotel/hotel_002.jpg);
+}
+
+.intro_pic:nth-child(5){
+    background-image: url(../../img/hotel/hotel_003.jpg);
+}
