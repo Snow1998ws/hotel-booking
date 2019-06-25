@@ -35,7 +35,6 @@
 
         <table schema="hotel_booking" tableName="user" domainObjectName="User">
             <property name="constructorBased" value="true"/>
-            <generatedKey column="id" sqlStatement="select uuid_short()" identity="true"/>
         </table>
 
 
