@@ -1,3 +1,4 @@
+// 更改放大图片的大小见其css
 $(function(){
 	if($('a.preview').length){
 		var img = preloadIm();

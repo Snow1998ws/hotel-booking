@@ -8,19 +8,24 @@
     z-index:999;
 }
 
+/* 放大图片的大小，长宽比不变 */
 #pi{
-    max-width: 800px;
+    width: 50vw;
+    min-width: 500px;
+    max-height: 400px;
 }
 
 .pic_bar{
     display: flex;
 }
 
+/* 大小设置在hotel_item的style.css中 */
 .preview{
-    width: 132px;
-    height: 132px;
+    display: block;
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
     margin-right: 15px;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.7);
 }
