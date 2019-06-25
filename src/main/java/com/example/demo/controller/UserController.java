@@ -8,6 +8,7 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +19,18 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping
+    @RequestMapping("/userinfo")
+    public String inforPage() {
+        return "user_info_change";
+    }
+
+    @RequestMapping("/home")
     public String homePage() {
         return "home";
     }
@@ -43,15 +49,26 @@ public class UserController {
     /*  ------------------------------------- 用户登陆 -------------------------------------------   */
     @PostMapping("/signin")
     public String signIn(User user, HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        session.setAttribute("user_id", user.getUserId());
-        session.setAttribute("psd", user.getPsd());
         try {
-            List<User> users = findUserByInAndPsd(user);
+            List<User> users = findUserByIdAndPsd(user);
             if (users.size() == 0) {
                 return "账号或密码错误";
             }
+            /* ----------------------- 将用户信息存储进session -------------------- */
+            User user_find = users.get(0);
+            HttpSession session = request.getSession();
+            session.setAttribute("user_id", user.getUserId());
+            session.setAttribute("psd", user.getPsd());
+            session.setAttribute("tel", user_find.getTel());
+            session.setAttribute("perm", user_find.getPerm());
+            session.setAttribute("mail", user_find.getMail());
+            session.setAttribute("city", user_find.getCity());
+            session.setAttribute("birth", user_find.getBirth());
+            session.setAttribute("nick", user_find.getNick());
+            session.setAttribute("gender", user_find.getGender());
+
             String result = "用户 "+ user.getUserId() + " 已登录";
+            /*---------------------- 获取并更新 cookie ------------------------*/
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
                 for (Cookie cookie: cookies) {
@@ -79,7 +96,7 @@ public class UserController {
         return userService.findUser();
     }
 
-    public List<User> findUserByInAndPsd(User user) {
+    public List<User> findUserByIdAndPsd(User user) {
         return userService.findUserByIdAndPsd(user);
     }
 

@@ -1,35 +1,35 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- 公有 -->
-    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-    <link rel="stylesheet" href="css/public_effect/common.css">
+    <script type="text/javascript" th:src="@{js/jquery-2.2.4.min.js}"></script>
+    <link rel="stylesheet" th:href="@{css/public_effect/common.css}">
     <!--本页-->
-    <link rel='stylesheet' href='css/home/style.css'>
-    <link rel="stylesheet" href="css/home/hide.css">
-    <script type="text/javascript" src="js/page_home/hide.js"></script>
-    <script type="text/javascript" src="js/page_home/intro.js"></script>
+    <link rel='stylesheet' th:href='@{css/home/style.css}'>
+    <link rel="stylesheet" th:href="@{css/home/hide.css}">
+    <script type="text/javascript" th:src="@{js/page_home/hide.js}"></script>
+    <script type="text/javascript" th:src="@{js/page_home/intro.js}"></script>
     <!-- 标题 -->
-    <link rel="stylesheet" href="css/title/style.css">
+    <link rel="stylesheet" th:href="@{css/title/style.css}">
     <!--导航栏-->
-    <link rel='stylesheet' href='css/navigation/all.min.css'>
-    <link rel="stylesheet" href="css/navigation/style.css">
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/navigation/navigation.js"></script>
+    <link rel='stylesheet' th:href='@{css/navigation/all.min.css}'>
+    <link rel="stylesheet" th:href="@{css/navigation/style.css}">
+    <script th:src="@{js/jquery-1.10.2.min.js}"></script>
+    <script th:src="@{js/navigation/navigation.js}"></script>
     <!-- 登录注册 -->
-    <link rel="stylesheet" type="text/css" href="css/login/style.css" />
-    <script src="js/login/main.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/style.css}" />
+    <script th:src="@{js/login/main.js}"></script>
     <!-- 酒店概览 -->
-    <link rel="stylesheet" href="css/hotel_item/style.css">
-    <link rel="stylesheet" type="text/css" href="css/pic_show/style.css">
-    <script type="text/javascript" src="js/pic_show/bigger.js"></script>
+    <link rel="stylesheet" th:href="@{css/hotel_item/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/pic_show/style.css}">
+    <script type="text/javascript" th:src="@{js/pic_show/bigger.js}"></script>
     <!-- 评分 -->
-    <link rel="stylesheet" href="css/star/style.css">
+    <link rel="stylesheet" th:href="@{css/star/style.css}">
     <!-- 日历选择 -->
-    <script src="js/calendar/laydate.js"></script>
+    <script th:src="@{js/calendar/laydate.js}"></script>
 </head>
 <body>
     <!-- 标题 -->
@@ -37,7 +37,7 @@
         <div class="Titem1">
             <a href="#">酒店辅助订购系统</a>
         </div>
-        <div class="Titem2">
+        <div class="Titem2" th:unless="${session.user_id != null}">
             <a href="javascript:;">登录/注册</a>
         </div>
     </div>
@@ -122,7 +122,7 @@
 
 
     <!--左侧导航（流外）-->
-    <div class="page">
+    <div class="page" th:unless="${session.user_id == null}">
         <div class="navbar">
             <div class="user">
                 <div class="user_pic"></div>
@@ -131,7 +131,7 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a><li class="active">个人信息</li></a>
+                        <a th:href="@{/userinfo}"><li class="active">个人信息</li></a>
                         <a><li>当前订单</li></a>
                         <a><li>历史订单</li></a>
                     </ul>
@@ -168,15 +168,15 @@
                 </ul>
     
                 <div id="cd-login"> <!-- 登录表单 -->
-                    <form class="cd-form">
+                    <form class="cd-form" method="post" th:action="@{/signin}">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
+                            <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
-                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
+                            <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
     
@@ -192,16 +192,16 @@
                 </div>
     
                 <div id="cd-signup"> <!-- 注册表单 -->
-                    <form class="cd-form">
+                    <form class="cd-form" method="post" th:action="@{/signup}">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" id="signup-username" name="userId" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" id="signup-password1" name="psd" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     
@@ -213,7 +213,7 @@
     
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signup-email">邮箱</label>
-                            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail"/>
+                            <input class="full-width has-padding has-border" id="signup-email" name="mail" type="email" placeholder="输入mail"/>
                             <p class="check-back hidden">邮箱格式错误</p>
                         </p>
     
@@ -231,7 +231,6 @@
             </div>
         </div> 
     </div>
-
 
 
 
