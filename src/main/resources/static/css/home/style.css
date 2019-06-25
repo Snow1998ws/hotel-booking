@@ -59,10 +59,13 @@
 #searchBar .div_search input{
     border: 0;
     outline:none;
+    width: 90%;
+    font-size: 16px;
+    font-weight: 600;
 }
 
-#searchBar .chose_condition{
-    flex: 1;
+#searchBar .chose_num{
+    flex: 2;
 }
 
 #searchBar .chose_position{

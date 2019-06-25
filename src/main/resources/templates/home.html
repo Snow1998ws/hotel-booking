@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +28,14 @@
     <script type="text/javascript" src="js/pic_show/bigger.js"></script>
     <!-- 评分 -->
     <link rel="stylesheet" href="css/star/style.css">
+    <!-- 日历选择 -->
+    <script src="js/calendar/laydate.js"></script>
 </head>
 <body>
     <!-- 标题 -->
     <div class="title" style="position: absolute; top: 0; left: 0; z-index: 3;">
         <div class="Titem1">
-            <div>酒店辅助订购系统</div>
+            <a href="#">酒店辅助订购系统</a>
         </div>
         <div class="Titem2">
             <a href="javascript:;">登录/注册</a>
@@ -44,9 +46,10 @@
     <!-- 广告图 -->
     <div class="intro">
         <div id="searchBar">
-            <div class="div_search chose_condition"></div>
-            <div class="div_search chose_position"><input type="text" value="地点"></div>
-            <div class="div_search chose_date"><input type="text" value="入住日期-退房日期"></div>
+            <div class="div_search chose_num"><input type="number"  placeholder="人数（1-20）" min="1" max="20" ></div>
+            <div class="div_search chose_position"><input type="text" placeholder="地点"></div>
+            <div class="div_search chose_date"><input type="text" placeholder="入住日期" onClick="laydate()"></div>
+            <div class="div_search chose_date"><input type="text" placeholder="退房日期" onClick="laydate()"></div>
             <div><div class="search_button">搜索</div></div>
         </div>
         <div class="mid right icon triangle" style="transform:rotate(180deg);"></div>
@@ -173,15 +176,15 @@
                 </ul>
     
                 <div id="cd-login"> <!-- 登录表单 -->
-                    <form class="cd-form" method="post">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
+                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
-                            <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
+                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
     
@@ -197,16 +200,16 @@
                 </div>
     
                 <div id="cd-signup"> <!-- 注册表单 -->
-                    <form class="cd-form" method="post" action="/home/signup">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" name="userId" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" name="psd" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     
@@ -218,7 +221,7 @@
     
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signup-email">邮箱</label>
-                            <input class="full-width has-padding has-border" id="signup-email" name="mail" type="email" placeholder="输入mail"/>
+                            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail"/>
                             <p class="check-back hidden">邮箱格式错误</p>
                         </p>
     
