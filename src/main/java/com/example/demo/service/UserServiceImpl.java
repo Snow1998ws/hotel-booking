@@ -22,6 +22,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findUserById(String id) {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        return userMapper.selectByExample(userExample);
+    }
+
+    @Override
     public List<User> findUser(){
         return userMapper.selectByExample(new UserExample());
     }
@@ -29,5 +37,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user) {
         userMapper.insertSelective(user);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
     }
 }
