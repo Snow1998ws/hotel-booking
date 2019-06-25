@@ -5,6 +5,7 @@ import com.example.demo.domain.User;
 
 @Service
 public interface UserService {
+    List<User> findUserByIdAndPsd(User user);
     List<User> findUser();
     void saveUser(User user);
 }
