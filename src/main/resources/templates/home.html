@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,7 +138,7 @@
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i> 账号设置</li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="user_info_change.html">修改账号信息</a></li>
                         <li><i class="fas fa-sign-out-alt"></i> 退出</li>
                     </ul>
                 </div>
@@ -168,15 +168,15 @@
                 </ul>
     
                 <div id="cd-login"> <!-- 登录表单 -->
-                    <form class="cd-form" method="post" action="/home/signin">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
+                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
-                            <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
+                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
     
@@ -192,16 +192,16 @@
                 </div>
     
                 <div id="cd-signup"> <!-- 注册表单 -->
-                    <form class="cd-form" method="post" action="/home/signup">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" name="userId" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" name="psd" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     
