@@ -45,13 +45,13 @@
     
     <!-- 广告图 -->
     <div class="intro">
-        <div id="searchBar">
-            <div class="div_search chose_num"><input type="number"  placeholder="人数（1-20）" min="1" max="20" ></div>
-            <div class="div_search chose_position"><input type="text" placeholder="地点"></div>
-            <div class="div_search chose_date"><input type="text" placeholder="入住日期" onClick="laydate()"></div>
-            <div class="div_search chose_date"><input type="text" placeholder="退房日期" onClick="laydate()"></div>
-            <div><div class="search_button">搜索</div></div>
-        </div>
+        <form id="searchBar">
+            <div class="div_search chose_num">人数：<input type="number"  placeholder="1-20" min="1" max="20" ></div>
+            <div class="div_search chose_position">入住地点：<input type="text" placeholder="输入地名"></div>
+            <div class="div_search chose_date">入住日期：<input type="text" placeholder="选择日期" onClick="laydate()"></div>
+            <div class="div_search chose_date">退房日期：<input type="text" placeholder="选择日期" onClick="laydate()"></div>
+            <div><input class="search_button" type="submit" value="搜索"></div>
+        </form>
         <div class="mid right icon triangle" style="transform:rotate(180deg);"></div>
         <div class="mid left icon triangle"></div>
         <div class="intro_pic"></div>
@@ -113,14 +113,6 @@
 
     <!-- 底部 -->
     <div class="home_bottom"></div>
-
-
-
-
-
-
-
-
 
 
 

@@ -44,7 +44,7 @@
     display: flex;
     left: 12.5vw;
     width: 75vw;
-    min-width: calc(75*8px);
+    min-width: 1000px;
     z-index: 2;
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 5px;
@@ -52,36 +52,39 @@
 }
 
 #searchBar .div_search{
-    padding: 25px;
+    padding: 25px 10px;
     border-right: 1px solid rgba(0,0,0,0.1);
 }
 
 #searchBar .div_search input{
     border: 0;
     outline:none;
-    width: 90%;
+    width: 50%;
     font-size: 16px;
     font-weight: 600;
 }
 
 #searchBar .chose_num{
-    flex: 2;
+    flex: 1;
 }
 
 #searchBar .chose_position{
-    flex:5;
+    flex:2;
 }
 
 #searchBar .chose_date{
-    flex:3;
+    flex:2;
     transition: all 0.5s;
 }
 
 #searchBar .chose_date:focus-within{
-    flex:5;
+    flex:3;
 }
 
 #searchBar .search_button{
+    display: block;
+    outline: none;
+    box-shadow: none;
     margin: 10px;
     padding: 15px 20px;
     background-color: rgb(255, 118, 118);

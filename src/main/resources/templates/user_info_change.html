@@ -8,17 +8,31 @@
     <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="css/public_effect/common.css">
     <!--本页-->
-
+    <link rel="stylesheet" href="css/user_info_change/style.css">
     <!-- 标题 -->
     <link rel="stylesheet" href="css/title/style.css">
 </head>
 <body>
     <!-- 标题 -->
-    <div class="title" style="position: absolute; top: 0; left: 0; z-index: 3;">
+    <div class="title">
         <div class="Titem1">
             <a href="home.html">酒店辅助订购系统</a>
         </div>
     </div>
     <!-- 标题结束 -->
+    <div class="change_big_div">
+        <form class="change_form">
+            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_radio" name="gender" value="0" type="radio" >男<input class="change_radio" name="gender" type="radio" value="1">女<span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text"  type="text" oninput = "value=value.replace(/[^\d]/g,'')"><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">更改新密码：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">输入旧密码：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <div class="change_small_div"><span class="left_span">再次输入旧密码：</span><input class="change_text"  type="text" ><span class="right_span"></span></div>
+            <input type="submit" class="change_complete_div" value="完成修改"></input>
+        </form>
+    </div>
 </body>
 </html>
