@@ -14,7 +14,7 @@ body{
     border-radius: 10px;
 }
 
-.change_form{
+#change_form{
     width: 80%;
     margin: 30px auto;
 }
@@ -39,8 +39,10 @@ body{
 }
 
 .change_small_div .right_span{
-
-    color: rgb(187, 57, 57);
+    position: relative;
+    left: 10px;
+    font-size: 14px;
+    color: rgb(226, 33, 33);
     text-align: left;
 }
 

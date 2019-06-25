@@ -304,12 +304,3 @@ body{
   font-size: 14px;
   margin: -1.5rem 0 -14px;
 }
-
-.input-error{
-  border: rgb(209, 18, 18) 1px solid!important;
-  background-color: rgb(250,250,210);
-}
-
-.hidden{
-  visibility: hidden;
-}

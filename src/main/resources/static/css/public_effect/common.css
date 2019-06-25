@@ -38,3 +38,12 @@ a:hover,a:link,a:active.a:visited{
 .left{
     left: 20px;
 }
+
+.hidden{
+    visibility: hidden;
+}
+
+.input-error{
+    border: rgb(209, 18, 18) 1px solid!important;
+    background-color: rgb(250,250,210);
+}
