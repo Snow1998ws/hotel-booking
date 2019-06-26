@@ -15,7 +15,9 @@ $(function(){
         $('.dropProv').toggle();
             //点击省份时，自动选择省会城市
             $('.dropProvLi').on('click',function(){
-                $('.cityName').text( arr2[$(this).index()][0]);
+                // $('.cityName').text( arr2[$(this).index()][0]);
+                //强行输入到input  （·_·）
+                $("input[name='city']").val(arr2[$(this).index()][0]);
                 $('.dropDown div').css("display","none");
             });
             //给省级列表添加mouseover事件
@@ -32,7 +34,9 @@ $(function(){
                 //选择城市
                 $('.dropCityLi').on("click", function () {
                     //console.log($(this).text());
-                    $('.cityName').text($(this).text());
+                    // $('.cityName').text($(this).text());
+                    //强行输入到input  （·_·）
+                    $("input[name='city']").val($(this).text());
                     $('.dropDown div').css("display","none");
                 });
             });

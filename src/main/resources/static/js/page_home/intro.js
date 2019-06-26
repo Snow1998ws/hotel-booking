@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
-    var $right_arrow = $('.triangle').eq(0),
-        $left_arrow = $('.triangle').eq(1),
+    var $right_arrow = $('.right'),
+        $left_arrow = $('.left'),
         $intro_pic1 = $('.intro_pic').eq(0),
         $intro_pic2 = $('.intro_pic').eq(1),
         $intro_pic3 = $('.intro_pic').eq(2),

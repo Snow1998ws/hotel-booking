@@ -1,7 +1,6 @@
 body{
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
     min-width: 800px;
 }
 
@@ -21,23 +20,46 @@ a:hover,a:link,a:active.a:visited{
     top: 0;
 }
 
-.icon{
+
+
+.right{
+    right: 0px;
+    transform:rotate(180deg);
+}
+
+.left{
+    left: 0px;
+}
+
+.black_tab{
     width: 30px;
-    height: 30px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(225, 225, 225, 0.5) , rgba(55, 55, 55, 0.7));
+    position: absolute;
+    filter: blur(30px);
+    transition: all 0.5s;
+    z-index: 4;
+}
+
+.black_tab:hover{
+    filter: none;
+    width: 60px;
+}
+
+.icon{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     cursor: pointer;
 }
 
-.mid{
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
+.icon_triangle{
+    background-image: url(../../img/icon/arrow.png);
+    
 }
-.right{
-    right: 20px;
-}
-.left{
-    left: 20px;
-}
+
 
 .hidden{
     visibility: hidden;
@@ -46,4 +68,11 @@ a:hover,a:link,a:active.a:visited{
 .input-error{
     border: rgb(209, 18, 18) 1px solid!important;
     background-color: rgb(250,250,210);
+}
+
+.page_bottom{
+    margin-top: 150px;
+    height: 30px;
+    width: 100%;
+    background-color: rgb(21, 49, 71)
 }

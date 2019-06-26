@@ -5,10 +5,10 @@ html body{
     background-color: rgba(16, 14, 4, 0.03);
 }
 .search{
-    width:250px;
+    width:50px;
     height:44px;
-    margin:100px auto;
-    background-color: white;
+    position: absolute;
+    z-index: 3;
 }
 .citySelect{
     width:100px;
@@ -33,7 +33,7 @@ html body{
     position:absolute;
     top:15px;
     right:7px;
-    background-image: url("../images/icons.png");
+    background-image: url("../../img/icon/icons.png");
     background-repeat: no-repeat;
     background-position: 0 -2044px;
     cursor:pointer;

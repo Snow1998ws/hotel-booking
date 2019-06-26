@@ -4,8 +4,9 @@ a {
 ul{
   padding: 0;
 }
+
 .page {
-  width: 280px;
+  width: 255px;
   height: 100vh;
   font-family: Lato;
   display: flex;
@@ -14,6 +15,7 @@ ul{
   left: -255px;
   top: 0;
   z-index: 90;
+  position: absolute;
 }
 
 .navbar {
@@ -172,14 +174,14 @@ ul{
 .hidebar{
   width: 20px;
   height: 150px;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
   top: 55px;
-  left: 5px;
+  left: 255px;
+  z-index: 91;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
-  /* border: 1px solid rgb(255, 255, 255, 0.3);
-  border-left: 0; */
+  transition: all 0.3s;
 }
 .hidebar:hover{
   background-color: rgba(0, 0, 0, 1);

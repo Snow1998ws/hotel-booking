@@ -9,16 +9,19 @@
     z-index: 92;
 }
 
-.cancel{
+.icon_cancel{
+    width: 30px;
+    height: 30px;
     position: absolute;
     top: 30px;
     right: 30px;
     background-image:  url(../../img/icon/cancel.png);
     background-size: contain;
     transition: all 0.3s;
+    cursor: pointer;
 }
 
-.cancel:hover{
+.icon_cancel:hover{
     width: 40px;
     height: 40px;
 }
