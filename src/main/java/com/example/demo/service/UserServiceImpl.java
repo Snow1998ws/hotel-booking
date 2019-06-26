@@ -22,11 +22,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUserById(String id) {
-        UserExample userExample = new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andUserIdEqualTo(id);
-        return userMapper.selectByExample(userExample);
+    public User findUserById(String id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override

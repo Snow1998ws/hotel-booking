@@ -37,6 +37,11 @@
             <property name="constructorBased" value="true"/>
         </table>
 
+        <table schema="hotel_booking" tableName="hotel" domainObjectName="Hotel">
+            <property name="constructorBased" value="true"/>
+            <generatedKey column="h_id" sqlStatement="select uuid_short()" identity="true"/>
+        </table>
+
 
     </context>
 </generatorConfiguration>

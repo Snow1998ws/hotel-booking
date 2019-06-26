@@ -1,21 +1,13 @@
 package com.example.demo.controller;
+import com.example.demo.domain.Hotel;
 import com.example.demo.domain.User;
+import com.example.demo.service.HotelService;
 import com.example.demo.service.UserService;
-import com.example.demo.service.UserServiceImpl;
-import org.apache.commons.io.filefilter.FalseFileFilter;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.servlet.http.*;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -24,26 +16,27 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private HotelService hotelService;
 
     @RequestMapping("/userinfo")
     public String inforPage(HttpServletRequest request, Model model) {
         /* ----------------------- 将用户信息存储进session -------------------- */
         HttpSession session = request.getSession();
         String user_id = (String)session.getAttribute("user_id");
-        List<User> users = findUserById(user_id);
-        User user_find = users.get(0);
-        model.addAttribute("tel", user_find.getTel());
-        model.addAttribute("birth", user_find.getBirth());
-        model.addAttribute("perm", user_find.getPerm());
-        model.addAttribute("gender", user_find.getGender().equals("m")? 0 : 1);
-        model.addAttribute("mail", user_find.getMail());
-        model.addAttribute("nick", user_find.getNick());
-        model.addAttribute("city", user_find.getCity());
+        User user_find = findUserById(user_id);
+        model.addAttribute("user", user_find);
+        if (user_find.getGender() != null)
+            model.addAttribute("gender", user_find.getGender().equals("m")? 0 : 1);
         return "user_info_change";
     }
 
     @RequestMapping("/home")
-    public String homePage() {
+    public String homePage(Model model) {
+        List<Hotel> hotels = findHotel();
+        for (int i = 0; i < 6; i++) {
+            model.addAttribute("hotel_rand_" + i, hotels.get((int)(Math.random() * 100)));
+        }
         return "home";
     }
 
@@ -121,7 +114,7 @@ public class UserController {
         return userService.findUser();
     }
 
-    public List<User> findUserById(String id) {
+    public User findUserById(String id) {
         return userService.findUserById(id);
     }
 
@@ -135,6 +128,14 @@ public class UserController {
 
     public void updateUser(User user) {
         userService.updateUser(user);
+    }
+
+    public List<Hotel> findHotel() {
+        return hotelService.findHotel();
+    }
+
+    public List<Hotel> findHotel(Hotel hotel) {
+        return hotelService.findHotelSelective(hotel);
     }
 }
 

@@ -62,51 +62,61 @@
 
     <!-- 酒店概览 -->
     <div class="item_block_big">
-        <div class="item_block_small item_row">
-            <a href="" path="img/fourPicShow/hotel01.jpg" style="background-image: url(img/fourPicShow/hotel01.jpg);" class="preview"></a>
+        <div class="item_block_small item_row" th:object="${hotel_rand_1}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
                 <div class="item_info_1 item_row">整套房子·2床</div>
-                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_2 item_row" th:text="*{hName}"></div>
                 <div class="item_info_3 item_row">
                     <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                    <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                    <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
                 </div>                    
         </div>
-        <div class="item_block_small item_row">
-            <a href="" path="img/fourPicShow/hotel02.jpg" style="background-image: url(img/fourPicShow/hotel02.jpg);" class="preview"></a>
+        <div class="item_block_small item_row" th:object="${hotel_rand_2}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
                 <div class="item_info_1 item_row">整套房子·2床</div>
-                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_2 item_row" th:text="*{hName}"></div>
                 <div class="item_info_3 item_row">
                     <div class="xzw_starBox"><span class="show"><span class="score score3"></span></span></div>
-                    <div><span class="price_now">￥270</span><span class="price_pre">￥450</span>每晚</div>  
+                    <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
                 </div>                     
         </div>
-        <div class="item_block_small item_row">
-            <a href="" path="img/fourPicShow/hotel03.jpg" style="background-image: url(img/fourPicShow/hotel03.jpg);" class="preview"></a>
+        <div class="item_block_small item_row" th:object="${hotel_rand_3}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
                 <div class="item_info_1 item_row">整套房子·2床</div>
-                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_2 item_row" th:text="*{hName}"></div>
                 <div class="item_info_3 item_row">
                     <div class="xzw_starBox"><span class="show"><span class="score score4"></span></span></div>
-                    <div><span class="price_now">￥100</span><span class="price_pre">￥200</span>每晚</div>  
+                    <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
                 </div>                    
         </div>
-        <div class="item_block_small item_row">
-            <a href="" path="img/fourPicShow/hotel04.jpg" style="background-image: url(img/fourPicShow/hotel04.jpg);" class="preview"></a>
+        <div class="item_block_small item_row" th:object="${hotel_rand_4}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
                 <div class="item_info_1 item_row">整套房子·2床</div>
-                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_2 item_row" th:text="*{hName}"></div>
                 <div class="item_info_3 item_row">
                     <div class="xzw_starBox"><span class="show"><span class="score score8"></span></span></div>
-                    <div><span class="price_now">￥170</span><span class="price_pre">￥200</span>每晚</div>  
+                    <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
                 </div>                     
         </div>
-        <div class="item_block_small item_row">
-            <a href="" path="img/fourPicShow/hotel01.jpg" style="background-image: url(img/fourPicShow/hotel01.jpg);" class="preview"></a>
+        <div class="item_block_small item_row" th:object="${hotel_rand_5}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
                 <div class="item_info_1 item_row">整套房子·2床</div>
-                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_2 item_row" th:text="*{hName}"></div>
                 <div class="item_info_3 item_row">
                     <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
-                    <div><span class="price_now">￥140</span><span class="price_pre">￥250</span>每晚</div>  
+                    <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
                 </div>                     
         </div>
+        <div class="item_block_small item_row" th:object="${hotel_rand_0}">
+            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
+            <div class="item_info_1 item_row">整套房子·2床</div>
+            <div class="item_info_2 item_row" th:text="*{hName}">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
+            <div class="item_info_3 item_row">
+                <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
+                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
+            </div>
+        </div>
+
     </div>
     <!-- 酒店概览结束 -->
 
