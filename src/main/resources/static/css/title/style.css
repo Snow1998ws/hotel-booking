@@ -1,5 +1,5 @@
 .title{
-    width: 100vw;
+    width: 100%;
     min-width: 600px;
     height: auto;
     display: flex;
@@ -9,7 +9,7 @@
 
 .title .Titem1{
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 1);
     padding: 10px 50px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .title .Titem2 a:hover{
-    color: rgb(25, 175, 235);
+    color: rgb(15, 112, 150);
     font-size: 22px;
     font-weight: 600;
     padding: 10px;

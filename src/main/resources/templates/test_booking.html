@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/public_effect/common.css">
+    <link rel="stylesheet" href="css/booking/style.css">
+    <!-- 评分 -->
+    <link rel="stylesheet" href="css/star/style.css">
+    <!-- 日历选择 -->
+    <script src="js/calendar/laydate.js"></script>
+
+</head>
+<body>
+    <div class="booking_div">
+        <div class="booking_top"></div>
+        <div class="booking_simple_info">
+            <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
+                    <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                </div>    
+            </div>       
+        <form class="booking_form">
+            <p>人数</p>
+            <div class="booking_small_div">
+                <input class="booking_text" type="number" name="num" placeholder="1-20" min="1" max="20" >
+            </div>
+            <p>日期</p>
+            <div class="booking_small_div">
+                <input class="booking_text" name="date1" type="text"onClick="laydate()" placeholder="入住日期">
+                <input class="booking_text" name="date2" type="text"onClick="laydate()" placeholder="退房日期">
+            </div>
+            <input class="booking_button" type="submit" value="订购">
+        </form>
+        <div class="booking_bottom"></div>
+    </div>
+</body>
+</html>

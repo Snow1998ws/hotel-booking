@@ -3,7 +3,9 @@
 }
 
 .item_block_big{
-    margin: 40px auto;
+    border-top: 1px solid rgba(105,105,105,0.5);
+    padding-top: 30px;
+    margin: 50px auto 220px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
@@ -66,7 +68,6 @@
     .item_block_big{
         width: 88vw;
         min-width: calc(88*var(--pixel));
-        margin-bottom: 10px;
     }
     .item_block_small{
         padding: 1vw;
@@ -83,3 +84,4 @@
         min-height: calc(27*var(--pixel));
     }
 }
+

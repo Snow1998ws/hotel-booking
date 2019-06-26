@@ -1,0 +1,118 @@
+:root {
+    --max_width: 380px;
+    --width: 28vw;
+    --min_width: 280px;
+}
+
+.booking_div{
+    position: fixed;
+    max-width: calc(var(--max_width));
+    width: calc(var(--width));
+    min-width: calc(var(--min_width));
+    top: 80px;
+    right: 3vw;
+    padding: 0 20px;
+    border: rgb(221, 97, 89) 1px solid;
+    background: rgb(255,255,255);
+}
+
+.booking_simple_info{
+    padding: 15px 0;
+    border-bottom: rgba(105,105,105,0.5) 1px solid;
+}
+
+.booking_form{
+    max-width: calc(var(--max_width));
+    width: calc(var(--width));
+    min-width: calc(var(--min_width));
+    padding: 15px 0;
+}
+
+.booking_form p{
+    margin: 25px 0 5px;
+}
+
+.booking_small_div{
+    max-width: calc(var(--max_width));
+    width: calc(var(--width));
+    min-width: calc(var(--min_width));
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.booking_small_div .booking_text{
+    text-align: center;
+    width: 100px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+}
+
+.booking_bottom{
+    background: rgba(47, 160, 191, 1);
+    height: 20px;
+    margin-top: 30px;
+}
+
+.booking_top{
+    background: rgb(221, 97, 89);
+    height: 20px;
+    margin-bottom: 30px;
+}
+
+.booking_button{
+    width: 100%;
+    height: 45px;
+    margin-top: 40px;
+    color: rgb(255,255,255);
+    background: rgb(221, 97, 89);
+    border: none;
+    cursor: pointer;
+}
+
+.booking_button:active{
+    font-size: 16px;
+    font-weight: 600px;
+    background: rgb(202, 61, 51);
+    border: none;
+}
+
+.item_info_1{
+    font-size: 12px;
+    color: rgb(240, 132, 44);
+}
+
+.item_info_2{
+    font-size: 16px;
+    font-weight: 600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.item_info_3{
+    font-size: 14;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.item_info_3 .price_now{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item_info_3 .price_pre{
+    text-decoration: line-through;
+    margin: 0 5px;
+}
+
+.show{
+    transform: scale(0.7,0.7);
+    position: relative;
+    left: -20px;
+}
