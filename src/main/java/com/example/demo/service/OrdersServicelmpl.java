@@ -16,12 +16,9 @@ public class OrdersServicelmpl implements OrdersService{
 
 
     @Override
-    public List<Orders> findOrdersByid(Integer id)
+    public Orders findOrdersByOrder_id(Integer id)
     {
-        OrdersExample ordersExample=new OrdersExample();
-        OrdersExample.Criteria criteria=ordersExample.createCriteria();
-        criteria.andOrderIdEqualTo(id);
-        return ordersMapper.selectByExample(ordersExample);
+        return ordersMapper.selectByPrimaryKey(id);
     }
     @Override
     public List<Orders> findPre_ordersByid(String id)
@@ -54,8 +51,8 @@ public class OrdersServicelmpl implements OrdersService{
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override
-    public void deleteOrderByid(Integer id)
+    public void deleteOrderByid(Orders orders)
     {
-        ordersMapper.deleteByPrimaryKey(id);
+        ordersMapper.updateByPrimaryKey(orders);
     }
 }
