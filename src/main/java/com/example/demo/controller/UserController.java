@@ -108,7 +108,7 @@ public class UserController {
             HttpSession session = request.getSession();
             if ("0".equals(user.getGender())) user.setGender("m");
             else user.setGender("f");
-            user.setUserId(Integer.valueOf((String)session.getAttribute("user_id")));
+            user.setUserId((String)session.getAttribute("user_id"));
             updateUser(user);
             return "redirect:/home";
         } catch (Exception e) {

@@ -23,7 +23,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserById(String id) {
-        return userMapper.selectByPrimaryKey(Integer.valueOf(id));
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUserIdEqualTo(id);
+        return userMapper.selectByPrimaryKey(id);
     }
 
     @Override
