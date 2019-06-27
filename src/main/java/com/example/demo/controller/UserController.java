@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.jws.WebParam;
 import javax.servlet.http.*;
 import java.util.List;
 
@@ -34,16 +36,27 @@ public class UserController {
     @RequestMapping("/home")
     public String homePage(Model model) {
         List<Hotel> hotels = findHotel();
-        for (int i = 0; i < 6; i++) {
-            model.addAttribute("hotel_rand_" + i, hotels.get((int)(Math.random() * 100)));
-        }
+        model.addAttribute("hotels", hotels);
+//        for (int i = 0; i < 6; i++) {
+//            model.addAttribute("hotel_rand_" + i, hotels.get((int)(Math.random() * 100)));
+//        }
         return "home";
+    }
+
+    @RequestMapping(value = "/hotelinfo/{hotel_id}")
+    public String hotelInfo(@PathVariable("hotel_id") int id, Model model) {
+        Hotel hotel = hotelService.findHotelById(id);
+        model.addAttribute("hotel", hotel);
+        return "hotel_info";
     }
 
     /*  ------------------------------------ 用户注册 ------------------------------------------   */
     @PostMapping("/signup")
-    public String signUp(User user) {
+    public String signUp(User user, HttpServletRequest request) {
         addUser(user);
+        HttpSession session = request.getSession();
+        session.setAttribute("user_id", user.getUserId());
+        session.setAttribute("psd", user.getPsd());
         return "redirect:/home";
     }
 

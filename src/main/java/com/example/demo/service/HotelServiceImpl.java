@@ -31,4 +31,9 @@ public class HotelServiceImpl implements HotelService{
             criteria.andHScoreEqualTo(hotel.gethScore());
         return hotelMapper.selectByExample(hotelExample);
     }
+
+    @Override
+    public Hotel findHotelById(int id) {
+        return hotelMapper.selectByPrimaryKey(id);
+    }
 }
