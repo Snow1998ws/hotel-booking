@@ -42,7 +42,7 @@
     
 
     <div class="right_intro">
-        <div class="right_title" th:text="${hotel.hName}">超级无敌大酒店</div>
+        <div class="right_title" th:text="${hotel.hName}"></div>
         <div class="right_pic">
             <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto1} + ')'"></div>
             <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto2} + ')'"></div>
@@ -70,7 +70,7 @@
         <div class="booking_top"></div>
         <div class="booking_simple_info">
             <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
+            <div class="item_info_2 item_row" th:text="${hotel.hAddress}"></div>
             <div class="item_info_3 item_row">
                 <div class="xzw_starBox"><span class="show"><span th:class="'score score' + ${hotel.hScore}"></span></span></div>
                 <div><span class="price_now" th:text="'￥' + ${hotel.hRates} + '每晚'"></span></div>
@@ -143,15 +143,15 @@
                 </ul>
     
                 <div id="cd-login"> <!-- 登录表单 -->
-                    <form class="cd-form">
+                    <form class="cd-form" th:method="POST" th:action="@{/signin}">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
+                            <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
-                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
+                            <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
     
@@ -167,16 +167,16 @@
                 </div>
     
                 <div id="cd-signup"> <!-- 注册表单 -->
-                    <form class="cd-form">
+                    <form class="cd-form" th:method="POST" th:action="@{/signup}">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" name="userId" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" name="psd" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     

@@ -89,7 +89,7 @@
         <div class="item_block_small item_row" th:each="hotel: ${hotels}">
             <a th:href="'/hotelinfo/' + ${hotel.hId}" th:path="${hotel.hPhoto1}" th:style="'background-image: url(' + ${hotel.hPhoto1} + ');'" class="preview"></a>
             <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="${hotel.hName}"></div>
+            <div class="item_info_2 item_row" th:text="${hotel.hAddress}"></div>
             <div class="item_info_3 item_row">
                 <div class="xzw_starBox"><span class="show"><span th:class="'score score' + ${hotel.hScore}"></span></span></div>
                 <div><span class="price_now" th:text="'￥' + ${hotel.hRates}"></span>每晚</div>
