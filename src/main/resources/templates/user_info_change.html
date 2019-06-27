@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -17,51 +17,54 @@
     <!-- 城市选择 -->
     <link rel="stylesheet" href="css/select_city/citySelect.css">
     <script type="text/javascript" src="js/select_city/citySelect.js"></script>
-    <script th:inline="javascript">
-        function updateInfo() {
-            var newpsd = $("#newpsd").val(), newpsd2 = $("#newpsd2").val(),
-                oldpsd = $("#oldpsd").val();
-            var psd = [[${session.psd}]];
-            if (newpsd != "") {
-                alert(newpsd);
-                if (newpsd2 == newpsd) {
-                    if (psd == oldpsd) {
-                        alert("更新信息成功!");
-                        $("#newpsd").attr("name", "psd");
-                    } else {
-                        alert("输入的旧密码不正确!");
-                    }
-                } else {
-                    alert("请确认两次输入的密码相同!");
-                }
-            } else {
-                alert("更新信息成功!");
-            }
-        }
-    </script>
 </head>
 <body>
     <!-- 标题 -->
     <div class="title">
         <div class="Titem1">
-            <a href="home.html">酒店辅助订购系统</a>
+            <a href="home.html"><div class="web_logo"></div></a>
         </div>
     </div>
     <!-- 标题结束 -->
-    <div class="change_big_div">
-        <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:onsubmit="updateInfo()" th:object="${user}">
-            <div class="change_small_div"><span class="left_span" >昵称：</span><input class="change_text" name="nick" type="text" th:value="*{nick}"><span class="right_span hidden">该昵称已被使用</span></div>
-            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_radio" name="gender" type="radio" checked="checked">男<input class="change_radio" name="gender" type="radio" value="1">女<span class="right_span hidden"></span></div>
-            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" onClick="laydate()" th:value="${user.birth}"><span class="right_span hidden">请填写生日信息</span></div>
-            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" th:value="*{city}"><span class="right_span hidden">请填写居住地信息</span></div>
-            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" type="text" oninput = "value=value.replace(/[^\d]/g,'')" th:value="*{tel}"><span class="right_span hidden">手机号信息错误</span></div>
-            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" type="text" th:value="*{mail}"><span class="right_span hidden">邮箱信息错误</span></div>
-            <div class="change_small_div"><span class="left_span">更改新密码：</span><input class="change_text" type="text" id="newpsd"><span class="right_span hidden">密码格式错误</span></div>
-            <div class="change_small_div"><span class="left_span">再次输入新密码：</span><input class="change_text" type="text" id="newpsd2"><span class="right_span hidden">两次密码不一样</span></div>
-            <div class="change_small_div"><span class="left_span">输入旧密码：</span><input class="change_text" type="text" id="oldpsd"><span class="right_span hidden">密码错误</span></div>
 
+    <div class="change_big_div">
+        <form id="change_form">
+            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" ><span class="right_span hidden">该昵称已被使用</span></div>
+            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_radio" name="gender" value="0" type="radio" checked="checked">男<input class="change_radio" name="gender" type="radio" value="1">女<span class="right_span hidden"></span></div>
+            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text"  readonly="readonly" onClick="laydate()"><span class="right_span hidden">请填写生日信息</span></div>
+            <div class="change_small_div"><span class="left_span">居住地：</span>
+                <input class="change_text" name="city" type="text" readonly="readonly">
+                <!-- console.log($("input[name='city']").val()) 供给控制台测试 -->
+                <div class="search">
+                        <div class="citySelect">
+                            <span class="cityName"></span>
+                            <i class="iconDown"></i>
+                            <i class="line"></i>
+                        </div>
+                    
+                        <div class="dropDown">
+                            <div class="dropProv">
+                                <ul class="dropProvUl dropUl"></ul>
+                            </div>
+                            <div class="dropCity">
+                                <ul class="dropCityUl dropUl"></ul>
+                            </div>
+                        </div>
+                    </div>
+                <span class="right_span hidden">请填写居住地信息</span></div>
+            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" type="text" oninput = "value=value.replace(/[^\d]/g,'')"><span class="right_span hidden">手机号信息错误</span></div>
+            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" type="text" ><span class="right_span hidden">邮箱信息错误</span></div>
+            <div class="change_small_div"><span class="left_span">更改新密码：</span><input class="change_text" name="newpw1" type="text" ><span class="right_span hidden">密码格式错误</span></div>
+            <div class="change_small_div"><span class="left_span">确认新密码：</span><input class="change_text" name="newpw2" type="text" ><span class="right_span hidden">两次密码不一致</span></div>
+            <div class="change_small_div"><span class="left_span">输入旧密码：</span><input class="change_text" name="oldpw" type="text" ><span class="right_span hidden">密码错误</span></div>
             <input type="submit" class="change_complete_div" value="完成修改"></input>
         </form>
+    </div>
+
+    <!-- 底部 -->
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
     </div>
 </body>
 </html>

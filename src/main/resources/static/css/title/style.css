@@ -9,14 +9,46 @@
 
 .title .Titem1{
     height: 100%;
-    background-color: rgba(0, 0, 0, 1);
     padding: 10px 50px;
+    display: flex;
 }
 
 .title .Titem1 a{
     color: rgb(255, 255, 255);
     font-weight: 600;
     font-size: 22px;
+}
+
+.title .title_search_div{
+    position: relative;
+    top: 5px;
+    left: 10px;
+    display: flex;
+}
+
+.title .title_search{
+    width: 230px;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+    border: none;
+}
+
+.title .title_search_icon{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: -31px;
+    top: 1px;
+    background-image: url(../../img/icon/search.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.title .title_search:active{
+    border: none;
+    outline: none;
 }
 
 .title .Titem2{

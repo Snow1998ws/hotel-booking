@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,9 +37,13 @@
     <!-- 标题 -->
     <div class="title" style="position: absolute; top: 0; left: 0; z-index: 5;">
         <div class="Titem1">
-            <a href="#">酒店辅助订购系统</a>
+            <div class="web_logo"></div>
+            <div class="title_search_div">
+                <input class="title_search" type="search" placeholder="搜索...">
+                <div class="title_search_icon"></div>
+            </div>
         </div>
-        <div class="Titem2" th:unless="${session.user_id != null}">
+        <div class="Titem2">
             <a href="javascript:;">登录/注册</a>
         </div>
     </div>
@@ -81,70 +85,87 @@
     <!-- 广告图结束 -->
 
     <!-- 酒店概览 -->
-
-    <!-- 酒店概览 -->
     <div class="item_block_big">
-        <div class="item_block_small item_row" th:object="${hotel_rand_1}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
+        <div class="item_block_small item_row">
+            <a href="hotel_info.html" path="img/fourPicShow/hotel01.jpg" style="background-image: url(img/fourPicShow/hotel01.jpg);" class="preview"></a>
+                <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
+                    <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                </div>                    
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_2}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score3"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
+        <div class="item_block_small item_row">
+            <a href="" path="img/fourPicShow/hotel02.jpg" style="background-image: url(img/fourPicShow/hotel02.jpg);" class="preview"></a>
+                <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score3"></span></span></div>
+                    <div><span class="price_now">￥270</span><span class="price_pre">￥450</span>每晚</div>  
+                </div>                     
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_3}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score4"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
+        <div class="item_block_small item_row">
+            <a href="" path="img/fourPicShow/hotel03.jpg" style="background-image: url(img/fourPicShow/hotel03.jpg);" class="preview"></a>
+                <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score4"></span></span></div>
+                    <div><span class="price_now">￥100</span><span class="price_pre">￥200</span>每晚</div>  
+                </div>                    
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_4}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score8"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
+        <div class="item_block_small item_row">
+            <a href="" path="img/fourPicShow/hotel04.jpg" style="background-image: url(img/fourPicShow/hotel04.jpg);" class="preview"></a>
+                <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score8"></span></span></div>
+                    <div><span class="price_now">￥170</span><span class="price_pre">￥200</span>每晚</div>  
+                </div>                     
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_5}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
+        <div class="item_block_small item_row">
+            <a href="" path="img/fourPicShow/hotel01.jpg" style="background-image: url(img/fourPicShow/hotel01.jpg);" class="preview"></a>
+                <div class="item_info_1 item_row">整套房子·2床</div>
+                <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+                <div class="item_info_3 item_row">
+                    <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
+                    <div><span class="price_now">￥140</span><span class="price_pre">￥250</span>每晚</div>  
+                </div>                     
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_0}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
-
     </div>
     <!-- 酒店概览结束 -->
 
 
+    <div class="related_service">
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>24小时中文客服</p>
+                <p>400-841-8888</p>
+            </div>
+        </div>
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>安全支付</p>
+                <p>支付宝付款已向中国用户开通</p>
+            </div>
+        </div>
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>芝麻信用</p>
+                <p>实名认证房东房客信息，真实可靠</p>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- 底部 -->
-    <div class="page_bottom"></div>
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
 
 
 
@@ -154,7 +175,7 @@
 
 
     <!--左侧导航（流外）-->
-    <div class="page" th:unless="${session.user_id == null}">
+    <div class="page">
         <div class="navbar">
             <div class="user">
                 <div class="user_pic"></div>
@@ -163,7 +184,7 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="/userinfo"><li class="active">个人信息</li></a>
+                        <a href="user_info.html"><li class="active">个人信息</li></a>
                         <a href="present_booking.html"><li>当前订单</li></a>
                         <a href="wait_for_pay_booking.html"><li>待支付订单</li></a>
                         <a href="history_booking.html"><li>历史订单</li></a>
@@ -200,17 +221,17 @@
                     <li><a href="#0">用户登录</a></li>
                     <li><a href="#0">注册新用户</a></li>
                 </ul>
-    E
+    
                 <div id="cd-login"> <!-- 登录表单 -->
-                    <form class="cd-form" th:method="POST" th:action="@{/signin}">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
+                            <input class="full-width has-padding has-border" id="signin-username" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
-                            <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
+                            <input class="full-width has-padding has-border" id="signin-password" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
     
@@ -226,16 +247,16 @@
                 </div>
     
                 <div id="cd-signup"> <!-- 注册表单 -->
-                    <form class="cd-form" th:method="POST" th:action="@{/signup}">
+                    <form class="cd-form">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" name="userId" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" name="psd" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     

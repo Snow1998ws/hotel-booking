@@ -21,4 +21,14 @@ jQuery(document).ready(function($){
       intro_picArr[pos].animate({opacity: '1'},1000);
       intro_picArr[pos].css('z-index','1');
     });
+
+    t = setInterval("change()", 5000);
 });
+
+function change(){
+  intro_picArr[pos].animate({opacity: '0'},1000);
+  intro_picArr[pos].css('z-index','0');
+  pos = (pos-1+3)%3;
+  intro_picArr[pos].animate({opacity: '1'},1000);
+  intro_picArr[pos].css('z-index','1');
+}
