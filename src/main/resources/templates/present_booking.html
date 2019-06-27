@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -41,13 +41,13 @@
             <div class="booking_item_left">
 
             </div>
-            <div class="booking_item_mid">
-                <div class="booking_simple_info">
+            <div class="booking_item_mid" th:unless="${order1==null}">
+                <div class="booking_simple_info"  th:object="${order1}">
                     <div class="item_info_1 item_row">整套房子·2床</div>
                     <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
                     <div class="item_info_3 item_row">
                         <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                        <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                        <div><span class="price_now" th:text="*{totalprice}" ></span><span class="price_pre" th:text="*{totalprice}"></span>每晚</div>
                     </div>    
                 </div>
             </div>       
@@ -65,13 +65,13 @@
         <div class="booking_item_main">
             <div class="booking_item_left_tab"></div>
             <div class="booking_item_left"></div>
-            <div class="booking_item_mid">
-                <div class="booking_simple_info">
+            <div class="booking_item_mid" th:unless="${order2==null}">
+                <div class="booking_simple_info"  th:object="${order2}">
                     <div class="item_info_1 item_row">整套房子·2床</div>
                     <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
                     <div class="item_info_3 item_row">
                         <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                        <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                        <div><span class="price_now" th:text="*{totalprice}"></span><span class="price_pre" th:text="*{totalprice}"></span>每晚</div>
                     </div>    
                 </div>
             </div>       
