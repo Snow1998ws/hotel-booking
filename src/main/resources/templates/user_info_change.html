@@ -52,7 +52,7 @@
         <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:onsubmit="updateInfo()" th:object="${user}">
             <div class="change_small_div"><span class="left_span" >昵称：</span><input class="change_text" name="nick" type="text" th:value="*{nick}"><span class="right_span hidden">该昵称已被使用</span></div>
             <div class="change_small_div"><span class="left_span">性别：</span><input class="change_radio" name="gender" type="radio" checked="checked">男<input class="change_radio" name="gender" type="radio" value="1">女<span class="right_span hidden"></span></div>
-            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" onClick="laydate()" th:value="${user.birth}"><span class="right_span hidden">请填写生日信息</span></div>
+            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" onClick="laydate()" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"><span class="right_span hidden">请填写生日信息</span></div>
             <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" th:value="*{city}"><span class="right_span hidden">请填写居住地信息</span></div>
             <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" type="text" oninput = "value=value.replace(/[^\d]/g,'')" th:value="*{tel}"><span class="right_span hidden">手机号信息错误</span></div>
             <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" type="text" th:value="*{mail}"><span class="right_span hidden">邮箱信息错误</span></div>

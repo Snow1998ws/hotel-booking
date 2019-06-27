@@ -8,4 +8,5 @@ import java.util.List;
 public interface HotelService {
     List<Hotel> findHotelSelective(Hotel hotel);
     List<Hotel> findHotel();
+    Hotel findHotelById(int id);
 }

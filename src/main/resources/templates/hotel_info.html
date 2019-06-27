@@ -1,32 +1,32 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- 公有 -->
-    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
-    <link rel="stylesheet" href="css/public_effect/common.css">
+    <script type="text/javascript" src="../js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="../css/public_effect/common.css">
     <!--本页-->
-    <link rel="stylesheet" href="css/hotel_info/style.css">
-    <script src="js/hotel_info/change_pic.js"></script>
+    <link rel="stylesheet" href="../css/hotel_info/style.css">
+    <script src="../js/hotel_info/change_pic.js"></script>
     <!-- 右侧订购 -->
-    <link rel="stylesheet" href="css/booking/style.css">
+    <link rel="stylesheet" href="../css/booking/style.css">
     <!-- 标题 -->
-    <link rel="stylesheet" href="css/title/style.css">
+    <link rel="stylesheet" href="../css/title/style.css">
     <!--导航栏-->
-    <link rel='stylesheet' href='css/navigation/all.min.css'>
-    <link rel="stylesheet" href="css/navigation/style.css">
-    <script src="js/navigation/navigation.js"></script>
+    <link rel='stylesheet' href='../css/navigation/all.min.css'>
+    <link rel="stylesheet" href="../css/navigation/style.css">
+    <script src="../js/navigation/navigation.js"></script>
     <!-- 登录注册 -->
-    <link rel="stylesheet" href="css/home/hide.css">
-    <link rel="stylesheet" type="text/css" href="css/login/style.css" />
-    <script src="js/login/main.js"></script>
-    <script type="text/javascript" src="js/page_home/hide.js"></script>
+    <link rel="stylesheet" href="../css/home/hide.css">
+    <link rel="stylesheet" type="text/css" href="../css/login/style.css" />
+    <script src="../js/login/main.js"></script>
+    <script type="text/javascript" src="../js/page_home/hide.js"></script>
     <!-- 评分 -->
-    <link rel="stylesheet" href="css/star/style.css">
+    <link rel="stylesheet" href="../css/star/style.css">
     <!-- 日历选择 -->
-    <script src="js/calendar/laydate.js"></script>
+    <script src="../js/calendar/laydate.js"></script>
 </head>
 <body>
     <!-- 标题 -->
@@ -34,7 +34,7 @@
         <div class="Titem1">
             <a href="home.html">酒店辅助订购系统</a>
         </div>
-        <div class="Titem2">
+        <div class="Titem2" th:unless="${session.user_id != null}">
             <a href="javascript:;" style="color: rgb(0,0,0)">登录/注册</a>
         </div>
     </div>
@@ -42,19 +42,18 @@
     
 
     <div class="right_intro">
-        <div class="right_title">超级无敌大酒店</div>
+        <div class="right_title" th:text="${hotel.hName}">超级无敌大酒店</div>
         <div class="right_pic">
-            <div class="hotel_info_pic"></div>
-            <div class="hotel_info_pic"></div>
-            <div class="hotel_info_pic"></div>
-            <div class="hotel_info_pic"></div>
-            <div class="hotel_info_pic"></div>
+            <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto1} + ')'"></div>
+            <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto2} + ')'"></div>
+            <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto3} + ')'"></div>
+            <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto4} + ')'"></div>
+            <div class="hotel_info_pic" th:style="'background-image:url(' + ${hotel.hPhoto5} + ')'"></div>
             <div class="right black_tab"><div class="icon icon_triangle"></div></div>
             <div class="left black_tab"><div class="icon icon_triangle"></div></div>
         </div>
         <div class="right_text">
-            <p>虽然绝大部分国家都有类似的纪念日，但是由于复杂的政治关系，部分国家的这一节日不能够称为国庆日，比如美国只有独立日，没有国庆日，但是两者意义相同。</p>
-            <p>虽然绝大部分国家都有类似的纪念日，但是由于复杂的政治关系，部分国家的这一节日不能够称为国庆日，比如美国只有独立日，没有国庆日，但是两者意义相同。</p>
+            <p th:text="${hotel.hOverview}"></p>
         </div>
     </div>
 
@@ -68,10 +67,10 @@
         <div class="booking_top"></div>
         <div class="booking_simple_info">
             <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
+            <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
             <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                <div class="xzw_starBox"><span class="show"><span th:class="'score score' + ${hotel.hScore}"></span></span></div>
+                <div><span class="price_now" th:text="'￥' + ${hotel.hRates} + '每晚'"></span></div>
             </div>    
         </div>       
         <form class="booking_form">
@@ -93,7 +92,7 @@
     <div class="home_bottom"></div>
 
    <!--左侧导航（流外）-->
-   <div class="page">
+   <div class="page" th:unless="${session.user_id == null}">
         <div class="navbar">
             <div class="user">
                 <div class="user_pic"></div>
@@ -102,7 +101,7 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="user_info.html"><li class="active">个人信息</li></a>
+                        <a href="/userinfo"><li class="active">个人信息</li></a>
                         <a href="present_booking.html"><li>当前订单</li></a>
                         <a href="wait_for_pay_booking.html"><li>待支付订单</li></a>
                         <a href="history_booking.html"><li>历史订单</li></a>

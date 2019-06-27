@@ -84,60 +84,16 @@
 
     <!-- 酒店概览 -->
     <div class="item_block_big">
-        <div class="item_block_small item_row" th:object="${hotel_rand_1}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
+        <div class="item_block_small item_row" th:each="hotel: ${hotels}">
+            <a th:href="'/hotelinfo/' + ${hotel.hId}" th:path="${hotel.hPhoto1}" th:style="'background-image: url(' + ${hotel.hPhoto1} + ');'" class="preview"></a>
             <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
+            <div class="item_info_2 item_row" th:text="${hotel.hName}"></div>
             <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
+                <div class="xzw_starBox"><span class="show"><span th:class="'score score' + ${hotel.hScore}"></span></span></div>
+                <div><span class="price_now" th:text="'￥' + ${hotel.hRates}"></span>每晚</div>
             </div>
         </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_2}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score3"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_3}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score4"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_4}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score8"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_5}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
-        <div class="item_block_small item_row" th:object="${hotel_rand_0}">
-            <a href="" th:path="*{hPhoto1}" th:style="'background-image: url(' + *{hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="*{hName}">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span class="score score6"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + *{hRates}"></span>每晚</div>
-            </div>
-        </div>
+
 
     </div>
     <!-- 酒店概览结束 -->
@@ -200,7 +156,7 @@
                     <li><a href="#0">用户登录</a></li>
                     <li><a href="#0">注册新用户</a></li>
                 </ul>
-    E
+
                 <div id="cd-login"> <!-- 登录表单 -->
                     <form class="cd-form" th:method="POST" th:action="@{/signin}">
                         <p class="fieldset">
