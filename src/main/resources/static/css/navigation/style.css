@@ -15,7 +15,7 @@ ul{
   left: -255px;
   top: 0;
   z-index: 90;
-  position: absolute;
+  position: fixed;
 }
 
 .navbar {

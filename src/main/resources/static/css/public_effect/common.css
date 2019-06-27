@@ -71,8 +71,26 @@ a:hover,a:link,a:active.a:visited{
 }
 
 .page_bottom{
-    margin-top: 150px;
-    height: 30px;
-    width: 100%;
-    background-color: rgb(21, 49, 71)
+    width: 60%;
+    min-width: 500px;
+    height: 50px;
+    padding: 30px 10%;
+    margin: 100px auto 0;
+    border-top: 1px solid rgba(105,105,105,0.5);
+    display: flex;
+}
+
+.web_logo{
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    background-image: url(../../img/icon/web_logo.png);
+    background-size: contain;
+}
+
+.page_bottom_text{
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    padding: 12px;
 }

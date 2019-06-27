@@ -37,10 +37,14 @@
     <!-- 标题 -->
     <div class="title" style="position: absolute; top: 0; left: 0; z-index: 5;">
         <div class="Titem1">
-            <a href="#">酒店辅助订购系统</a>
+            <div class="web_logo"></div>
+            <div class="title_search_div">
+                <input class="title_search" type="search" placeholder="搜索...">
+                <div class="title_search_icon"></div>
+            </div>
         </div>
-        <div class="Titem2" th:unless="${session.user_id != null}">
-            <a href="javascript:;">登录/注册</a>
+        <div class="Titem2">
+            <a href="javascript:;" th:unless="${session.user_id != null}">登录/注册</a>
         </div>
     </div>
     <!-- 标题结束 -->
@@ -81,8 +85,6 @@
     <!-- 广告图结束 -->
 
     <!-- 酒店概览 -->
-
-    <!-- 酒店概览 -->
     <div class="item_block_big">
         <div class="item_block_small item_row" th:each="hotel: ${hotels}">
             <a th:href="'/hotelinfo/' + ${hotel.hId}" th:path="${hotel.hPhoto1}" th:style="'background-image: url(' + ${hotel.hPhoto1} + ');'" class="preview"></a>
@@ -93,14 +95,41 @@
                 <div><span class="price_now" th:text="'￥' + ${hotel.hRates}"></span>每晚</div>
             </div>
         </div>
-
-
     </div>
     <!-- 酒店概览结束 -->
 
 
+    <div class="related_service">
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>24小时中文客服</p>
+                <p>400-841-8888</p>
+            </div>
+        </div>
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>安全支付</p>
+                <p>支付宝付款已向中国用户开通</p>
+            </div>
+        </div>
+        <div class="Related_service_item">
+            <div class="Related_service_icon"></div>
+            <div class="Related_service_text">
+                <p>芝麻信用</p>
+                <p>实名认证房东房客信息，真实可靠</p>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- 底部 -->
-    <div class="page_bottom"></div>
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
 
 
 
@@ -157,6 +186,7 @@
                     <li><a href="#0">注册新用户</a></li>
                 </ul>
 
+
                 <div id="cd-login"> <!-- 登录表单 -->
                     <form class="cd-form" th:method="POST" th:action="@{/signin}">
                         <p class="fieldset">
@@ -185,13 +215,13 @@
                     <form class="cd-form" th:method="POST" th:action="@{/signup}">
                         <p class="fieldset">
                             <label class="image-replace cd-username" for="signup-username">用户名</label>
-                            <input class="full-width has-padding has-border" id="signup-username" name="userId" type="text" maxlength="15" placeholder="输入用户名"/>
+                            <input class="full-width has-padding has-border" name="userId" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
     
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
-                            <input class="full-width has-padding has-border" id="signup-password1" name="psd" type="password" maxlength="15" placeholder="输入6-15位密码"/>
+                            <input class="full-width has-padding has-border" name="psd"  id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
     
@@ -203,7 +233,7 @@
     
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signup-email">邮箱</label>
-                            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="输入mail"/>
+                            <input class="full-width has-padding has-border" id="signup-email" name="mail" type="email" placeholder="输入mail"/>
                             <p class="check-back hidden">邮箱格式错误</p>
                         </p>
     

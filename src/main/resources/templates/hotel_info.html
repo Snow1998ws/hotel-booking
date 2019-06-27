@@ -32,7 +32,7 @@
     <!-- 标题 -->
     <div class="title">
         <div class="Titem1">
-            <a href="home.html">酒店辅助订购系统</a>
+            <a href="home.html"><div class="web_logo"></div></a>
         </div>
         <div class="Titem2" th:unless="${session.user_id != null}">
             <a href="javascript:;" style="color: rgb(0,0,0)">登录/注册</a>
@@ -60,7 +60,10 @@
 
 
     <!-- 底部 -->
-    <div class="page_bottom"></div>
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
 
     <!-- 右侧订购栏 -->
     <div class="booking_div">

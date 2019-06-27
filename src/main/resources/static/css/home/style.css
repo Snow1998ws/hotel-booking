@@ -103,3 +103,49 @@
     top: 25px;
     width: 250px;
 }
+
+
+.related_service{
+    width: 76%;
+    height: 50px;
+    padding: 40px 2% 20px;
+    margin: 50px auto;
+    display: flex;
+}
+
+.Related_service_item{
+    flex: 1;
+    display: flex;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.Related_service_icon{
+    position: relative;
+    top:15px;
+    right: 10px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Related_service_item:nth-of-type(1) .Related_service_icon{
+    background-image: url(../../img/icon/service_1.png);
+}
+.Related_service_item:nth-of-type(2) .Related_service_icon{
+    background-image: url(../../img/icon/service_2.png);
+}
+.Related_service_item:nth-of-type(3) .Related_service_icon{
+    background-image: url(../../img/icon/service_3.png);
+}
+
+.Related_service_text p:nth-of-type(1){
+    font-size: 16px;
+    font-weight: 600;
+}
+.Related_service_text p:nth-of-type(2){
+    font-size: 12px;
+}

@@ -3,14 +3,15 @@
 }
 
 .item_block_big{
-    border-top: 1px solid rgba(105,105,105,0.5);
-    padding-top: 30px;
-    margin: 50px auto 220px;
+    padding: 40px 0;
+    margin: 50px auto;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
+    border-top: 1px solid rgba(105,105,105,0.5);
+    border-bottom: 1px solid rgba(105,105,105,0.5);
 }
 
 .item_info_1{
