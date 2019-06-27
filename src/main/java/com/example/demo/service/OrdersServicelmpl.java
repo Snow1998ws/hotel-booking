@@ -28,9 +28,29 @@ public class OrdersServicelmpl implements OrdersService{
     {
         OrdersExample ordersExample=new OrdersExample();
         OrdersExample.Criteria criteria=ordersExample.createCriteria();
-        criteria.andOrderIdEqualTo(id);
+        criteria.andOUserIdEqualTo(id);
         Date date=new Date();
-        //criteria.andCheckinTimeLessThan(date);
+        criteria.andCheckinTimeGreaterThanOrEqualTo(date);
+        criteria.andIspayEqualTo("y");
+        return ordersMapper.selectByExample(ordersExample);
+    }
+    @Override
+    public List<Orders> findBef_ordersByid(Integer id)
+    {
+        OrdersExample ordersExample=new OrdersExample();
+        OrdersExample.Criteria criteria=ordersExample.createCriteria();
+        criteria.andOUserIdEqualTo(id);
+        Date date=new Date();
+        criteria.andLeaveTimeLessThan(date);
+        return ordersMapper.selectByExample(ordersExample);
+    }
+    @Override
+    public  List<Orders> findNotPay_orderByid(Integer id)
+    {
+        OrdersExample ordersExample=new OrdersExample();
+        OrdersExample.Criteria criteria=ordersExample.createCriteria();
+        criteria.andOUserIdEqualTo(id);
+        criteria.andIspayEqualTo("n");
         return ordersMapper.selectByExample(ordersExample);
     }
 }

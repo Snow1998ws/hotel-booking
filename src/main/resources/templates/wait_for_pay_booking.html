@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -36,7 +36,7 @@
     <!-- 标题结束 -->
 
     <!-- 一个模块 -->
-    <div class="booking_item_content">
+    <div class="booking_item_content" th:each="Not_payinfo:${order_Not_pay_info}">
         <div class="booking_item_top">
         <div class="booking_item_main">
             <div class="booking_item_left_tab"></div>
@@ -45,11 +45,11 @@
             </div>
             <div class="booking_item_mid">
                 <div class="booking_simple_info">
-                    <div class="item_info_1 item_row">整套房子·2床</div>
+                    <div class="item_info_1 item_row" th:text="${Not_payinfo.typename}"></div>
                     <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
                     <div class="item_info_3 item_row">
-                        <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                        <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
+                        <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
+                        <div><span class="price_now" th:text="${Not_payinfo.price}"></span><span class="price_pre" th:text="${Not_payinfo.discount}"></span>折</div>
                     </div>    
                 </div>
             </div>       
@@ -61,29 +61,7 @@
         </div>
     </div>  
 
-    <!-- 一个模块 -->
-    <div class="booking_item_content">
-        <div class="booking_item_top">
-        <div class="booking_item_main">
-            <div class="booking_item_left_tab"></div>
-            <div class="booking_item_left"></div>
-            <div class="booking_item_mid">
-                <div class="booking_simple_info">
-                    <div class="item_info_1 item_row">整套房子·2床</div>
-                    <div class="item_info_2 item_row">Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>  
-                    <div class="item_info_3 item_row">
-                        <div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>
-                        <div><span class="price_now">￥200</span><span class="price_pre">￥300</span>每晚</div>  
-                    </div>    
-                </div>
-            </div>       
-            <div class="booking_item_right">
-                <div class="booking_item_op_button">付款</div>
-            </div>
-            <div class="booking_item_right_tab"></div>
-        </div>
-        </div>
-    </div>  
+
 
     <!-- 底部 -->
     <div class="page_bottom">
@@ -101,10 +79,10 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a v-bind:href="msg_a1"><li class="active">个人信息</li></a>
-                        <a v-bind:href="msg_a2"><li>当前订单</li></a>
-                        <a v-bind:href="msg_a3"><li>待支付订单</li></a>
-                        <a v-bind:href="msg_a4"><li>历史订单</li></a>
+                        <a href="/userinfo"><li class="active">个人信息</li></a>
+                        <a href="/order_pre_info"><li>当前订单</li></a>
+                        <a href="/Order_Not_pay"><li>待支付订单</li></a>
+                        <a href="/order_bef_info"><li>历史订单</li></a>
                     </ul>
                 </div>
                 <div class="settings">

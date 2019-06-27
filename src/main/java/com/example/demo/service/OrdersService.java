@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrdersService {
     List<Orders> findOrdersByid(Integer id);
     List<Orders> findPre_ordersByid(Integer id);
+    List<Orders> findBef_ordersByid(Integer id);
+    List<Orders> findNotPay_orderByid(Integer id);
 }

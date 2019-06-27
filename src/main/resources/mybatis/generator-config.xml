@@ -33,14 +33,10 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="hotel_booking" tableName="user" domainObjectName="User">
-            <property name="constructorBased" value="true"/>
-        </table>
-
-        <!--<table schema="hotel_booking" tableName="hotel" domainObjectName="Hotel">-->
+        <!--<table schema="hotel_booking" tableName="user" domainObjectName="User">-->
             <!--<property name="constructorBased" value="true"/>-->
-            <!--<generatedKey column="h_id" sqlStatement="select uuid_short()" identity="true"/>-->
         <!--</table>-->
+
         <!--<table schema="hotel_booking" tableName="roomtype" domainObjectName="RoomType">-->
             <!--<property name="constructorBased" value="true"/>-->
             <!--<generatedKey column="rt_id" sqlStatement="select uuid_short()" identity="true"/>-->
