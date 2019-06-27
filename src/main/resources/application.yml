@@ -15,7 +15,7 @@ spring:
       suffix: .html
       encoding: UTF-8
 #      content-type: text/html
-      mode: HTML5
+      mode: HTML
 logging:
   level:
      com.example.demo.mapper : debug

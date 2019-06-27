@@ -6,6 +6,8 @@
     <title>Document</title>
     <!-- 公有 -->
     <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/public_js/message.js"></script>
     <link rel="stylesheet" href="css/public_effect/common.css">
     <!--本页-->
     <link rel='stylesheet' href='css/home/style.css'>
@@ -170,7 +172,7 @@
 
 
     <!--左侧导航（流外）-->
-    <div class="page" th:unless="${session.user_id == null}">
+    <div id="left_navigation" class="page" th:unless="${session.user_id == null}">
         <div class="navbar">
             <div class="user">
                 <div class="user_pic"></div>
@@ -179,15 +181,15 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="/userinfo"><li class="active">个人信息</li></a>
-                        <a href="present_booking.html"><li>当前订单</li></a>
-                        <a href="wait_for_pay_booking.html"><li>待支付订单</li></a>
-                        <a href="history_booking.html"><li>历史订单</li></a>
+                        <a v-bind:href="msg_a1"><li class="active">个人信息</li></a>
+                        <a v-bind:href="msg_a2"><li>当前订单</li></a>
+                        <a v-bind:href="msg_a3"><li>待支付订单</li></a>
+                        <a v-bind:href="msg_a4"><li>历史订单</li></a>
                     </ul>
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="user_info_change.html">修改账号信息</a></li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
                         <li><i class="fas fa-sign-out-alt"></i> 退出</li>
                     </ul>
                 </div>
