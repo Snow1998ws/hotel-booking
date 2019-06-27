@@ -109,7 +109,8 @@ public class OrderController
     {
         HttpSession session=request.getSession();
         int order_id=((Order_info)session.getAttribute("orderinfo")).getOrder_id();
-        
+        ordersService.deleteOrderByid(order_id);
+
         return "order_pre_info";
     }
 

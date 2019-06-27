@@ -11,4 +11,5 @@ public interface OrdersService {
     List<Orders> findPre_ordersByid(String id);
     List<Orders> findBef_ordersByid(String id);
     List<Orders> findNotPay_orderByid(String id);
+    void deleteOrderByid(Integer id);
 }

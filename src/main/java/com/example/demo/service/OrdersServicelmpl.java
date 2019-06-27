@@ -53,4 +53,9 @@ public class OrdersServicelmpl implements OrdersService{
         criteria.andIspayEqualTo("n");
         return ordersMapper.selectByExample(ordersExample);
     }
+    @Override
+    public void deleteOrderByid(Integer id)
+    {
+        ordersMapper.deleteByPrimaryKey(id);
+    }
 }
