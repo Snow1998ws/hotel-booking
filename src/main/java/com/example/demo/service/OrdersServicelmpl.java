@@ -24,7 +24,7 @@ public class OrdersServicelmpl implements OrdersService{
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override
-    public List<Orders> findPre_ordersByid(Integer id)
+    public List<Orders> findPre_ordersByid(String id)
     {
         OrdersExample ordersExample=new OrdersExample();
         OrdersExample.Criteria criteria=ordersExample.createCriteria();
@@ -35,7 +35,7 @@ public class OrdersServicelmpl implements OrdersService{
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override
-    public List<Orders> findBef_ordersByid(Integer id)
+    public List<Orders> findBef_ordersByid(String id)
     {
         OrdersExample ordersExample=new OrdersExample();
         OrdersExample.Criteria criteria=ordersExample.createCriteria();
@@ -45,7 +45,7 @@ public class OrdersServicelmpl implements OrdersService{
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override
-    public  List<Orders> findNotPay_orderByid(Integer id)
+    public  List<Orders> findNotPay_orderByid(String id)
     {
         OrdersExample ordersExample=new OrdersExample();
         OrdersExample.Criteria criteria=ordersExample.createCriteria();

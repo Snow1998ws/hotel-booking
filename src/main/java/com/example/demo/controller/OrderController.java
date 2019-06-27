@@ -36,7 +36,7 @@ public class OrderController
     {
         HttpSession session=request.getSession();
         String user_id=session.getAttribute("user_id").toString();
-        List<Orders> orders=ordersService.findPre_ordersByid(Integer.valueOf(user_id));
+        List<Orders> orders=ordersService.findPre_ordersByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
         List<RoomType> roomTypes=roomTypeService.findRoomTypeByRooms(rooms);
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
@@ -64,7 +64,7 @@ public class OrderController
     {
         HttpSession session=request.getSession();
         String user_id=session.getAttribute("user_id").toString();
-        List<Orders> orders=ordersService.findBef_ordersByid(Integer.valueOf(user_id));
+        List<Orders> orders=ordersService.findBef_ordersByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
         List<RoomType> roomTypes=roomTypeService.findRoomTypeByRooms(rooms);
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
@@ -76,7 +76,6 @@ public class OrderController
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setOrder_id(orders.get(i).getOrderId());
             order_info.setTypename(roomTypes.get(i).getTypeName());
-
             order_infos.add(order_info);
         }
         model.addAttribute("order_bef_info",order_infos);
@@ -87,7 +86,7 @@ public class OrderController
     {
         HttpSession session=request.getSession();
         String user_id=session.getAttribute("user_id").toString();
-        List<Orders> orders=ordersService.findNotPay_orderByid(Integer.valueOf(user_id));
+        List<Orders> orders=ordersService.findNotPay_orderByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
         List<RoomType> roomTypes=roomTypeService.findRoomTypeByRooms(rooms);
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);

@@ -15,7 +15,7 @@
       <arg column="discount" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="arrive" javaType="java.util.Date" jdbcType="TIME" />
       <arg column="people" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="o_user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="o_user_id" javaType="java.lang.String" jdbcType="INTEGER" />
       <arg column="o_room_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="Ispay" javaType="java.lang.String" jdbcType="CHAR" />
     </constructor>

@@ -73,7 +73,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
-    private Integer oUserId;
+    private String oUserId;
 
     /**
      *
@@ -99,7 +99,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
-    public Orders(Integer orderId, Date checkinTime, Date leaveTime, Integer totalprice, Integer discount, Date arrive, Integer people, Integer oUserId, Integer oRoomId, String ispay) {
+    public Orders(Integer orderId, Date checkinTime, Date leaveTime, Integer totalprice, Integer discount, Date arrive, Integer people, String oUserId, Integer oRoomId, String ispay) {
         this.orderId = orderId;
         this.checkinTime = checkinTime;
         this.leaveTime = leaveTime;
@@ -298,7 +298,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
-    public Integer getoUserId() {
+    public String getoUserId() {
         return oUserId;
     }
 
@@ -310,7 +310,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
-    public void setoUserId(Integer oUserId) {
+    public void setoUserId(String oUserId) {
         this.oUserId = oUserId;
     }
 

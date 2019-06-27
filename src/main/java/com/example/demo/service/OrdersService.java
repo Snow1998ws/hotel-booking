@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface OrdersService {
     List<Orders> findOrdersByid(Integer id);
-    List<Orders> findPre_ordersByid(Integer id);
-    List<Orders> findBef_ordersByid(Integer id);
-    List<Orders> findNotPay_orderByid(Integer id);
+    List<Orders> findPre_ordersByid(String id);
+    List<Orders> findBef_ordersByid(String id);
+    List<Orders> findNotPay_orderByid(String id);
 }
