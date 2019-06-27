@@ -18,6 +18,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private HotelService hotelService;
 
@@ -43,12 +44,6 @@ public class UserController {
         return "home";
     }
 
-    @RequestMapping(value = "/hotelinfo/{hotel_id}")
-    public String hotelInfo(@PathVariable("hotel_id") int id, Model model) {
-        Hotel hotel = hotelService.findHotelById(id);
-        model.addAttribute("hotel", hotel);
-        return "hotel_info";
-    }
 
     /*  ------------------------------------ 用户注册 ------------------------------------------   */
     @PostMapping("/signup")
@@ -150,5 +145,7 @@ public class UserController {
     public List<Hotel> findHotel(Hotel hotel) {
         return hotelService.findHotelSelective(hotel);
     }
+
+
 }
 

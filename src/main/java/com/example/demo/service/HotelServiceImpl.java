@@ -27,8 +27,12 @@ public class HotelServiceImpl implements HotelService{
             criteria.andHCityLike(hotel.gethCity());
         if (hotel.gethName() != null)
             criteria.andHNameLike(hotel.gethName());
+        if (hotel.gethAddress() != null)
+            criteria.andHAddressLike(hotel.gethAddress());
         if (hotel.gethScore() != null)
             criteria.andHScoreEqualTo(hotel.gethScore());
+        if (hotel.gethOverview() != null)
+            criteria.andHOverviewLike(hotel.gethOverview());
         return hotelMapper.selectByExample(hotelExample);
     }
 

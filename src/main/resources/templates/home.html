@@ -32,6 +32,39 @@
     <!-- 城市选择 -->
     <link rel="stylesheet" href="css/select_city/citySelect.css">
     <script type="text/javascript" src="js/select_city/citySelect.js"></script>
+    <script>
+        function searchHotel() {
+            $(".item_block_big").empty();
+            info = {
+                "city": $('#search_city').val()
+            };
+            $.ajax({
+                type: "post",
+                url: "/hotelsearch/" + $('#search_city').val(),
+                data: info,
+                dataType: 'json',
+
+                success: function (hotels) {
+                    var add_htmls = "";
+                    for (i in hotels) {
+                        add_htmls += "<div class='item_block_small item_row'>\n";
+                        add_htmls += "<a href='/hotelinfo/" + hotels[i].hId + "' ";
+                        add_htmls += "path='" + hotels[i].hPhoto1;
+                        add_htmls += "' style='background-image: url(" + hotels[i].hPhoto1 + ");' ";
+                        add_htmls += "class='preview'></a>\n";
+                        add_htmls += "<div class='item_info_1 item_row'>整套房子·2床</div>\n";
+                        add_htmls += "<div class='item_info_2 item_row'>" + hotels[i].hAddress + "</div>\n";
+                        add_htmls += "<div class='item_info_3 item_row'\n>";
+                        add_htmls += "<div class='xzw_starBox'><span class='show'>";
+                        add_htmls += "<span class='score score" + hotels[i].hScore + "'</span></span></div>\n";
+                        add_htmls += "<div><span class='price_now'>￥" + hotels[i].hRates + "</span>每晚</div>\n</div></div>";
+                    }
+                    $(".item_block_big").html(add_htmls);
+                }
+            });
+            return false;
+        };
+    </script>
 </head>
 <body>
     <!-- 标题 -->
@@ -54,7 +87,7 @@
         <form id="searchBar">
             <div class="div_search chose_num">人数：<input name="num" type="number"  placeholder="1-20" min="1" max="20" ></div>
             <div class="div_search chose_position">入住地点：
-                <input name="city" type="text" placeholder="输入地名" readonly="readonly">
+                <input name="city" type="text" id="search_city" placeholder="输入地名" readonly="readonly">
                 <div class="search">
                     <div class="citySelect">
                         <span class="cityName"></span>
@@ -74,7 +107,7 @@
             </div>
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" onClick="laydate()"></div>
-            <div><input class="search_button" type="submit" value="搜索"></div>
+            <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
         </form>
         <div class="right black_tab"><div class="icon icon_triangle"></div></div>
         <div class="left black_tab"><div class="icon icon_triangle"></div></div>
@@ -130,8 +163,6 @@
         <div class="web_logo"></div>
         <div class="page_bottom_text">四川大学JAVA项目27组</div>
     </div>
-
-
 
 
 
