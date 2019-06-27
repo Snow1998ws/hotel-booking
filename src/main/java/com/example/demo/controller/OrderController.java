@@ -4,6 +4,7 @@ import com.example.demo.domain.Hotel;
 import com.example.demo.domain.Orders;
 import com.example.demo.domain.Room;
 import com.example.demo.domain.RoomType;
+import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
 import com.example.demo.service.RoomTypeService;

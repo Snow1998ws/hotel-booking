@@ -2,10 +2,12 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Hotel;
 import com.example.demo.domain.HotelExample;
+import com.example.demo.domain.Room;
 import com.example.demo.mapper.HotelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,5 +41,18 @@ public class HotelServiceImpl implements HotelService{
     @Override
     public Hotel findHotelById(int id) {
         return hotelMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Hotel> findHotelsByRooms(List<Room> rooms)
+    {
+        List<Hotel> hotels=new ArrayList<>();
+        for(int i=0;i<rooms.size();i++)
+        {
+            int hotel_id=rooms.get(i).getrHotelId();
+            Hotel hotel=hotelMapper.selectByPrimaryKey(hotel_id);
+            hotels.add(hotel);
+        }
+        return hotels;
     }
 }
