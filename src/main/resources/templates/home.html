@@ -36,16 +36,21 @@
     <script type="text/javascript" src="js/select_city/citySelect.js"></script>
     <script>
         function searchHotel() {
+            var checkin_time = $("#calendar").val(), leave_time = $("#calendar2").val(), url;
+            if (checkin_time == "" || leave_time == "")
+                url = "/hotelsearch/" + $('#search_city').val();
+            else
+                url = "/hotelsearch/" + $('#search_city').val() + "/" + checkin_time + "/" + leave_time;
+            // alert(url);
             $(".item_block_big").empty();
             info = {
                 "city": $('#search_city').val()
             };
             $.ajax({
                 type: "post",
-                url: "/hotelsearch/" + $('#search_city').val(),
+                url: url,
                 data: info,
                 dataType: 'json',
-
                 success: function (hotels) {
                     var add_htmls = "";
                     for (i in hotels) {
@@ -108,7 +113,7 @@
                 </div>
             </div>
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
-            <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" onClick="laydate()"></div>
+            <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
             <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
         </form>
         <div class="right black_tab"><div class="icon icon_triangle"></div></div>
@@ -189,7 +194,7 @@
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="msg_a5">修改账号信息</a></li>
                         <li><i class="fas fa-sign-out-alt"></i> 退出</li>
                     </ul>
                 </div>

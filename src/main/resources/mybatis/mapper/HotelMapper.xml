@@ -2,24 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.HotelMapper">
   <resultMap id="BaseResultMap" type="com.example.demo.domain.Hotel">
-    <constructor>
-      <idArg column="h_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="h_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_city" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_address" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_star" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="h_longtitude" javaType="java.lang.Double" jdbcType="DOUBLE" />
-      <arg column="h_latitude" javaType="java.lang.Double" jdbcType="DOUBLE" />
-      <arg column="h_rates" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="h_score" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="h_overview" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_photo1" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_photo2" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_photo3" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_photo4" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_photo5" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="h_tel" javaType="java.lang.String" jdbcType="VARCHAR" />
-    </constructor>
+    <!--<constructor>-->
+      <!--<idArg column="h_id" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="h_name" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_city" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_address" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_star" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="h_longtitude" javaType="java.lang.Double" jdbcType="DOUBLE" />-->
+      <!--<arg column="h_latitude" javaType="java.lang.Double" jdbcType="DOUBLE" />-->
+      <!--<arg column="h_rates" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="h_score" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="h_overview" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_photo1" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_photo2" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_photo3" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_photo4" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_photo5" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="h_tel" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+      <id property="hId" column="h_id" jdbcType="INTEGER"/>
+      <result property="hName" column="h_name" jdbcType="VARCHAR"/>
+      <result property="hCity" column="h_city" jdbcType="VARCHAR"/>
+      <result property="hAddress" column="h_address" jdbcType="VARCHAR"/>
+      <result property="hStar" column="h_star" jdbcType="INTEGER"/>
+      <result property="hLongtitude" column="h_longtitude" jdbcType="DOUBLE"/>
+      <result property="hLatitude" column="h_latitude" jdbcType="DOUBLE"/>
+      <result property="hRates" column="h_rates" jdbcType="INTEGER"/>
+      <result property="hScore" column="h_score" jdbcType="INTEGER"/>
+      <result property="hOverview" column="h_overview" jdbcType="VARCHAR"/>
+      <result property="hPhoto1" column="h_photo1" jdbcType="VARCHAR"/>
+      <result property="hPhoto2" column="h_photo2" jdbcType="VARCHAR"/>
+      <result property="hPhoto3" column="h_photo3" jdbcType="VARCHAR"/>
+      <result property="hPhoto4" column="h_photo4" jdbcType="VARCHAR"/>
+      <result property="hPhoto5" column="h_photo5" jdbcType="VARCHAR"/>
+      <result property="hTel" column="h_tel" jdbcType="VARCHAR"/>
+      <collection property="rooms" ofType="com.example.demo.domain.Room">
+          <id property="roomId" column="room_id" jdbcType="INTEGER"></id>
+          <result property="rHotelId" column="r_hotel_id" jdbcType="INTEGER" />
+          <result property="rRoomtypeId" column="r_roomtype_id" jdbcType="INTEGER" />
+          <result property="rPrice" column="r_price"  jdbcType="INTEGER" />
+          <result property="rIsempty" column="r_isempty" jdbcType="CHAR" />
+          <collection property="orders" ofType="com.example.demo.domain.Orders">
+              <id property="orderId" column="order_id" jdbcType="INTEGER" />
+              <result property="checkinTime" column="checkin_time"  jdbcType="DATE" />
+              <result property="leaveTime" column="leave_time"  jdbcType="DATE" />
+              <result property="totalprice" column="totalprice"  jdbcType="INTEGER" />
+              <result property="discount" column="discount" jdbcType="INTEGER" />
+              <result property="arrive" column="arrive" jdbcType="TIME" />
+              <result property="people" column="people" jdbcType="INTEGER" />
+              <result property="oUserId" column="o_user_id" jdbcType="INTEGER" />
+              <result property="oRoomId" column="o_room_id"  jdbcType="INTEGER" />
+              <result property="Ispay" column="Ispay" jdbcType="CHAR" />
+          </collection>
+      </collection>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -97,6 +132,11 @@
       order by ${orderByClause}
     </if>
   </select>
+    <select id="selectByDateAndCity" resultMap="BaseResultMap">
+        select distinct
+        <include refid="Base_Column_List" />
+        from hotel, room where r_hotel_id = h_id and h_city = #{city} and room_id not in (select DISTINCT o_room_id from orders where not(#{checkin_time} >= leave_time or #{leave_time} &lt;= checkin_time))
+    </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
