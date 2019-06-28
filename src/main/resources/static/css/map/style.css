@@ -1,0 +1,71 @@
+.map_content{
+   width: 100%; 
+   height: 90vh;
+   padding: 5vh 0;
+   min-width: 600px;
+   min-height: 400px;
+   position: absolute;
+   top: -100vh;
+   left: 0;
+   background-color: rgba(225,225,225,0.9);
+}
+#container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    box-shadow: 0 0 20px 5px rgb(0,0,0);
+}
+
+.map_info{
+    position: absolute;
+    right: 7vw;
+    top: 7vh;
+    width: 300px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.map_input{
+    width: 120px;
+}
+
+.map_btn{
+    text-align: center;
+    height: 30px;
+    width: 50px;
+    color: rgb(255,255,255);
+    background-color: rgb(38, 184, 228);
+    cursor: pointer;
+}
+
+.map_btn:active{
+    background-color: rgb(17, 113, 143);
+}
+
+.map_cancel{
+    position: absolute;
+    top: 3vh;
+    right: 2vw;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../img/icon/cancel.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.map_cancel:hover{
+    transform: scale(1.5,1.5);
+}
+
+.map_icon{
+    background-image: url(../../img/icon/map.jpg);
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
