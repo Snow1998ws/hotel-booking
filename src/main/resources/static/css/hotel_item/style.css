@@ -32,7 +32,7 @@
 .item_info_3{
     font-size: 14;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top: 5px;
 }
 
@@ -44,45 +44,5 @@
 .item_info_3 .price_pre{
     text-decoration: line-through;
     margin: 0 5px;
-}
-
-@media  screen and (min-width:1000px){
-    .item_block_big{
-        width: 75vw;
-        left: 20px;
-    }
-    .item_block_small{
-        padding: 0.5vw;
-        margin-bottom: 10px;
-    }
-    .item_row{
-        margin-top: 3px;
-        width: 24vw;
-    }
-    .preview{
-        width: 24vw;
-        height: 16vw;
-    }
-}
-
-@media  screen and (max-width:1000px){
-    .item_block_big{
-        width: 88vw;
-        min-width: calc(88*var(--pixel));
-    }
-    .item_block_small{
-        padding: 1vw;
-    }
-    .item_row{
-        margin-top: 5px;
-        width: 42vw;
-        min-width: calc(42*var(--pixel));
-    }
-    .preview{
-        width: 42vw;
-        min-width: calc(42*var(--pixel));
-        height: 27vw;
-        min-height: calc(27*var(--pixel));
-    }
 }
 
