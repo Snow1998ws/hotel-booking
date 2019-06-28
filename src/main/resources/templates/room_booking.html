@@ -10,8 +10,8 @@
     <script type="text/javascript" src="js/public_js/message.js"></script>
     <link rel="stylesheet" href="css/public_effect/common.css">
     <!--本页-->
-    <link rel='stylesheet' href='css/home/style.css'>
-    <script type="text/javascript" src="js/page_home/intro.js"></script>
+    <link rel="stylesheet" href="css/room_booking/style.css">
+    <link rel="stylesheet" href="css/noroom_booking/style.css">
     <!-- 标题 -->
     <link rel="stylesheet" href="css/title/style.css">
     <!--导航栏-->
@@ -34,132 +34,78 @@
     <!-- 城市选择 -->
     <link rel="stylesheet" href="css/select_city/citySelect.css">
     <script type="text/javascript" src="js/select_city/citySelect.js"></script>
-    <script>
-        function searchHotel() {
-            var checkin_time = $("#calendar").val(), leave_time = $("#calendar2").val(), url;
-            if (checkin_time == "" || leave_time == "")
-                url = "/hotelsearch/" + $('#search_city').val();
-            else
-                url = "/hotelsearch/" + $('#search_city').val() + "/" + checkin_time + "/" + leave_time;
-            // alert(url);
-            $(".item_block_big").empty();
-            info = {
-                "city": $('#search_city').val()
-            };
-            $.ajax({
-                type: "post",
-                url: url,
-                data: info,
-                dataType: 'json',
-                success: function (hotels) {
-                    var add_htmls = "";
-                    for (i in hotels) {
-                        add_htmls += "<div class='item_block_small item_row'>\n";
-                        add_htmls += "<a href='/hotelinfo/" + hotels[i].hId + "' ";
-                        add_htmls += "path='" + hotels[i].hPhoto1;
-                        add_htmls += "' style='background-image: url(" + hotels[i].hPhoto1 + ");' ";
-                        add_htmls += "class='preview'></a>\n";
-                        add_htmls += "<div class='item_info_1 item_row'>整套房子·2床</div>\n";
-                        add_htmls += "<div class='item_info_2 item_row'>" + hotels[i].hAddress + "</div>\n";
-                        add_htmls += "<div class='item_info_3 item_row'\n>";
-                        add_htmls += "<div class='xzw_starBox'><span class='show'>";
-                        add_htmls += "<span class='score score" + hotels[i].hScore + "'</span></span></div>\n";
-                        add_htmls += "<div><span class='price_now'>￥" + hotels[i].hRates + "</span>每晚</div>\n</div></div>";
-                    }
-                    $(".item_block_big").html(add_htmls);
-                }
-            });
-            return false;
-        };
-    </script>
 </head>
 <body>
     <!-- 标题 -->
-    <div class="title" style="position: absolute; top: 0; left: 0; z-index: 5;">
+    <div class="title">
         <div class="Titem1">
-            <div class="web_logo"></div>
-            <div class="title_search_div">
-                <input class="title_search" type="search" placeholder="搜索...">
-                <div class="title_search_icon"></div>
-            </div>
+            <a href="home.html"><div class="web_logo"></div></a>
         </div>
-        <div class="Titem2">
-            <a href="javascript:;" th:unless="${session.user_id != null}">登录/注册</a>
+        <div class="Titem2" th:unless="${session.user_id != null}">
+            <a href="javascript:;" style="color: rgb(0,0,0)">登录/注册</a>
         </div>
     </div>
     <!-- 标题结束 -->
     
-    <!-- 广告图 -->
-    <div class="intro">
-        <form id="searchBar">
-            <div class="div_search chose_num">人数：<input name="num" type="number"  placeholder="1-20" min="1" max="20" ></div>
-            <div class="div_search chose_position">入住地点：
-                <input name="city" type="text" id="search_city" placeholder="输入地名" readonly="readonly">
-                <div class="search">
-                    <div class="citySelect">
-                        <span class="cityName"></span>
-                        <i class="iconDown"></i>
-                        <i class="line"></i>
+    <!-- 有剩余房 -->
+    <div class="room_booking_item">
+        <div class="room_booking_item_title">6床女性宿舍间的1张床位 (Bed in 6-Bed Female Dormitory Room)</div>
+        <div class="room_booking_item_info">
+            <div class="room_booking_item_info_list list_0">
+                <div class="room_booking_item_info_list_title">房型</div>
+                <div class="room_booking_item_info_list_content">
+                    <a class="list_content_pic preview" href="#" path="img/hotel/hotel_001.jpg" style="background-image: url(img/hotel/hotel_001.jpg);"></a>
+                </div>
+            </div>
+            <div class="room_booking_item_info_list list_1">
+                <div class="room_booking_item_info_list_title">相关条款</div>
+                <div class="room_booking_item_info_list_content">
+                    <p style="font-weight: 600;">优惠</p>
+                    <div>
+                        <div class="list_content_item">无需信用卡</div>
+                        <div class="list_content_item">免费WiFi</div>
+                        <div class="list_content_item">1周内免费退订</div>
+                        <div class="list_content_item">立即确认</div>
                     </div>
-                
-                    <div class="dropDown">
-                        <div class="dropProv">
-                            <ul class="dropProvUl dropUl"></ul>
-                        </div>
-                        <div class="dropCity">
-                            <ul class="dropCityUl dropUl"></ul>
+                </div>
+            </div>
+            <div class="room_booking_item_info_list list_2">
+                <div class="room_booking_item_info_list_title">人数限制</div>
+                <div class="room_booking_item_info_list_content">
+                    <div class="list_content_text">1名13岁以下儿童可免费入住</div>
+                </div>
+            </div>
+            <div class="room_booking_item_info_list list_3">
+                <div class="room_booking_item_info_list_title">今日房价</div>
+                <div class="room_booking_item_info_list_content">
+                    <div class="list_content_text">
+                        <div>
+                            <span style="font-size: 18px">RMB</span><span>60</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
-            <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
-            <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
-        </form>
-        <div class="right black_tab"><div class="icon icon_triangle"></div></div>
-        <div class="left black_tab"><div class="icon icon_triangle"></div></div>
-        <div class="intro_pic"></div>
-        <div class="intro_pic"></div>
-        <div class="intro_pic"></div>
-    </div>
-    <!-- 广告图结束 -->
-
-    <!-- 酒店概览 -->
-    <div class="item_block_big">
-        <div class="item_block_small item_row" th:each="hotel: ${hotels}">
-            <a th:href="'/hotelinfo/' + ${hotel.hId}" th:path="${hotel.hPhoto1}" th:style="'background-image: url(' + ${hotel.hPhoto1} + ');'" class="preview"></a>
-            <div class="item_info_1 item_row">整套房子·2床</div>
-            <div class="item_info_2 item_row" th:text="${hotel.hAddress}"></div>
-            <div class="item_info_3 item_row">
-                <div class="xzw_starBox"><span class="show"><span th:class="'score score' + ${hotel.hScore}"></span></span></div>
-                <div><span class="price_now" th:text="'￥' + ${hotel.hRates}"></span>每晚</div>
+            <div class="room_booking_item_info_list list_4">
+                <div class="room_booking_item_info_list_title">房数</div>
+                <div class="room_booking_item_info_list_content">
+                    <input type="number" min="0" max="3">
+                </div>
+            </div>
+            <div class="room_booking_item_info_list list_5">
+                <div class="room_booking_item_info_list_title">用户首选</div>
+                <div class="room_booking_item_info_list_content">
+                    <div class="list_content_btn">立即预定</div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- 酒店概览结束 -->
 
-
-    <div class="related_service">
-        <div class="Related_service_item">
-            <div class="Related_service_icon"></div>
-            <div class="Related_service_text">
-                <p>24小时中文客服</p>
-                <p>400-841-8888</p>
-            </div>
-        </div>
-        <div class="Related_service_item">
-            <div class="Related_service_icon"></div>
-            <div class="Related_service_text">
-                <p>安全支付</p>
-                <p>支付宝付款已向中国用户开通</p>
-            </div>
-        </div>
-        <div class="Related_service_item">
-            <div class="Related_service_icon"></div>
-            <div class="Related_service_text">
-                <p>芝麻信用</p>
-                <p>实名认证房东房客信息，真实可靠</p>
-            </div>
+    <!-- 没有剩余房 -->
+    <div class="noroom_booking_item">
+        <a class="list_content_pic preview" href="#" path="img/hotel/hotel_001.jpg" style="background-image: url(img/hotel/hotel_001.jpg);"></a>
+        <div class="noroom_booking_item_content">
+            <div class="noroom_booking_item_title">混合6人宿舍-单人床位</div>
+            <div class="noroom_booking_item_text">你搜索的日期我们没房了...</div>
         </div>
     </div>
 
@@ -174,8 +120,6 @@
 
 
 
-
-
     <!--左侧导航（流外）-->
     <div id="left_navigation" class="page" th:unless="${session.user_id == null}">
         <div class="navbar">
@@ -186,15 +130,15 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="/userinfo"><li class="active">个人信息</li></a>
-                        <a href="/order_pre_info"><li>当前订单</li></a>
-                        <a href="/Order_Not_pay"><li>待支付订单</li></a>
-                        <a href="/order_bef_info"><li>历史订单</li></a>
+                        <a v-bind:href="msg_a1"><li class="active">个人信息</li></a>
+                        <a v-bind:href="msg_a2"><li>当前订单</li></a>
+                        <a v-bind:href="msg_a3"><li>待支付订单</li></a>
+                        <a v-bind:href="msg_a4"><li>历史订单</li></a>
                     </ul>
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="msg_a5">修改账号信息</a></li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
                         <li><i class="fas fa-sign-out-alt"></i> 退出</li>
                     </ul>
                 </div>
@@ -289,16 +233,6 @@
             </div>
         </div> 
     </div>
-
-
-
-    <script>
-        ;!function(){
-        laydate({
-           elem: '#calendar'
-        })
-        }();
-    </script>
 
 </body>
 </html>
