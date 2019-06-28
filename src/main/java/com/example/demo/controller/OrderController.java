@@ -8,12 +8,16 @@ import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
 import com.example.demo.service.RoomTypeService;
+import org.apache.ibatis.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -54,6 +58,7 @@ public class OrderController
             order_infos.add(order_info);
 
         }
+        session.setAttribute("info",order_infos);
         model.addAttribute("order_info",order_infos);
 //        model.addAttribute("orders",orders);
 //        model.addAttribute("roomTypes",roomTypes);
@@ -109,40 +114,53 @@ public class OrderController
         return "wait_for_pay_booking.html";
     }
 
-    @PostMapping("deleteRoom")
-    public String deleteRoom(HttpServletRequest request,Model model)
+    @PostMapping("/deleteRoom")
+    @ResponseBody
+    public String deleteRoom(HttpServletRequest request, Model model)
     {
         HttpSession session=request.getSession();
-        int order_id=((Order_info)session.getAttribute("orderinfo")).getOrder_id();
+        ArrayList tmp=(ArrayList)session.getAttribute("info");
+        //System.out.println(tmp.getClass());
+        Order_info info=(Order_info)tmp.get(0);
+        Integer order_id=info.getOrder_id();
         Orders order=ordersService.findOrdersByOrder_id(order_id);
         order.setIspay("o");//代表退款
         ordersService.deleteOrderByid(order);
 
-
-        String user_id=order.getoUserId();
-        List<Orders> orders=ordersService.findPre_ordersByid(user_id);
-        List<Room> rooms=roomService.findRoomsByOrders(orders);
-        List<RoomType> roomTypes=roomTypeService.findRoomTypeByRooms(rooms);
-        List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
-        List<Order_info> order_infos=new ArrayList<>();
-        for(int i=0;i<orders.size();i++)
-        {
-            Order_info order_info=new Order_info();
-            order_info.setDiscount(orders.get(i).getDiscount());
-            order_info.setPrice(orders.get(i).getTotalprice());
-            order_info.setTypename(roomTypes.get(i).getTypeName());
-            order_info.setOrder_id(orders.get(i).getOrderId());
-            order_infos.add(order_info);
-
-        }
-        model.addAttribute("order_info",order_infos);
-        return "order_pre_info";
+        //model.addAttribute("order_bef_info",order_infos);
+        return order_id.toString();
     }
 
     @RequestMapping("/payRoom")
     public String payRoom(HttpServletRequest request,Model model)
     {
+        HttpSession session=request.getSession();
+        ArrayList tmp=(ArrayList)session.getAttribute("info");
+        //System.out.println(tmp.getClass());
+        Order_info info=(Order_info)tmp.get(0);
+        int order_id=info.getOrder_id();
+        Orders order=ordersService.findOrdersByOrder_id(order_id);
+        order.setIspay("o");//代表退款
+        ordersService.deleteOrderByid(order);
         return "payment";
+    }
+
+    @PostMapping("/viewOrder_info")
+    @ResponseBody
+    public String viewOrder_info(HttpServletRequest request,Model model)
+    {
+        HttpSession session=request.getSession();
+        ArrayList tmp=(ArrayList)session.getAttribute("infos");
+        //System.out.println(tmp.getClass());
+        Order_info info=(Order_info)tmp.get(0);
+        int order_id=info.getOrder_id();
+        Orders order=ordersService.findOrdersByOrder_id(order_id);
+        int room_id=order.getoRoomId();
+        Room room=roomService.findRoomByRoomid(room_id);
+        int hotel_id=room.getrHotelId();
+        Hotel hotel=hotelService.findHotelById(hotel_id);
+        model.addAttribute("hotel",hotel);
+        return "hotel_info.html";
     }
 
 }
