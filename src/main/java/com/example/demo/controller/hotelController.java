@@ -4,10 +4,12 @@ import com.example.demo.domain.Hotel;
 import com.example.demo.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,8 +23,13 @@ public class hotelController {
     @Autowired
     private HotelService hotelService;
 
+    @RequestMapping("/roombook")
+    public String roomBook() {
+        return "room_booking";
+    }
+
     @RequestMapping(value = "/hotelinfo/{hotel_id}")
-    public String hotelInfo(@PathVariable("hotel_id") int id, Model model) throws ParseException{
+    public String hotelInfo(@PathVariable("hotel_id") int id, Model model) throws ParseException {
         Hotel hotel = findHotelById(id);
         model.addAttribute("hotel", hotel);
         return "hotel_info";
@@ -42,7 +49,8 @@ public class hotelController {
     @ResponseBody
     public List<Hotel> hotelSearch(@PathVariable("h_city") String city,
                                    @PathVariable("checkin_time") String checkin_time,
-                                   @PathVariable("leave_time") String leave_time, Model model) throws ParseException{
+                                   @PathVariable("leave_time") String leave_time,
+                                   Model model) throws ParseException {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
         List<Hotel> hotels = hotelService.findHotelByDateAndCity(city,
                 dateformat.parse(checkin_time), dateformat.parse(leave_time));
@@ -56,6 +64,5 @@ public class hotelController {
     public List<Hotel> findHotel(Hotel hotel) {
         return hotelService.findHotelSelective(hotel);
     }
-
 
 }

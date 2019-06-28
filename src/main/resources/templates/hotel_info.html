@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="../css/star/style.css">
     <!-- 日历选择 -->
     <script src="../js/calendar/laydate.js"></script>
+    <script>
+        function book() {
+            var val = "/roombook/" + [[${hotel.hId}]] + "/" + $("#calendar").val() + "/" + $("#calendar2").val();
+            $("#book_form").attr("action", val);
+        }
+    </script>
 </head>
 <body>
     <!-- 标题 -->
@@ -78,7 +84,7 @@
                 <div><span class="price_now" th:text="'￥' + ${hotel.hRates} + '每晚'"></span></div>
             </div>    
         </div>       
-        <form class="booking_form">
+        <form class="booking_form" method="post" id="book_form" onsubmit="book()">
             <p>人数</p>
             <div class="booking_small_div">
                 <input class="booking_text" type="number" name="num" placeholder="1-20" min="1" max="20" >
@@ -86,9 +92,9 @@
             <p>日期</p>
             <div class="booking_small_div">
                 <input class="booking_text" name="date1" type="text" readonly="readonly" id="calendar" placeholder="入住日期">
-                <input class="booking_text" name="date2" type="text" readonly="readonly" onClick="laydate()" placeholder="退房日期">
+                <input class="booking_text" name="date2" type="text" readonly="readonly" id="calendar2" onClick="laydate()" placeholder="退房日期">
             </div>
-            <input class="booking_button" type="submit" value="订购">
+            <input id="room_book" class="booking_button" type="submit" value="订购">
         </form>
         <div class="booking_bottom"></div>
     </div>

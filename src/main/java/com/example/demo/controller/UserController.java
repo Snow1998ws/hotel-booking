@@ -38,12 +38,17 @@ public class UserController {
     public String homePage(Model model) {
         List<Hotel> hotels = findHotel();
         model.addAttribute("hotels", hotels);
-//        for (int i = 0; i < 6; i++) {
-//            model.addAttribute("hotel_rand_" + i, hotels.get((int)(Math.random() * 100)));
-//        }
         return "home";
     }
 
+    /*  ------------------------------------ 用户登出 ------------------------------------------   */
+    @RequestMapping("/logout")
+    public String logOut(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("user_id", null);
+        session.setAttribute("psd", null);
+        return "redirect:/home";
+    }
 
     /*  ------------------------------------ 用户注册 ------------------------------------------   */
     @PostMapping("/signup")
@@ -68,13 +73,6 @@ public class UserController {
             HttpSession session = request.getSession();
             session.setAttribute("user_id", user.getUserId());
             session.setAttribute("psd", user.getPsd());
-//            session.setAttribute("tel", user_find.getTel());
-//            session.setAttribute("perm", user_find.getPerm());
-//            session.setAttribute("mail", user_find.getMail());
-//            session.setAttribute("city", user_find.getCity());
-//            session.setAttribute("birth", user_find.getBirth());
-//            session.setAttribute("nick", user_find.getNick());
-//            session.setAttribute("gender", user_find.getGender());
 
             String result = "用户 "+ user.getUserId() + " 已登录";
             /*----------------------------- 获取并更新 cookie -----------------------------------*/
