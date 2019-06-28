@@ -6,8 +6,8 @@
     <title>Document</title>
     <!-- 公有 -->
     <script type="text/javascript" src="../js/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="js/vue.min.js"></script>
-    <script type="text/javascript" src="js/public_js/message.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript" src="../js/public_js/message.js"></script>
     <link rel="stylesheet" href="../css/public_effect/common.css">
     <!--本页-->
     <link rel="stylesheet" href="../css/hotel_info/style.css">
@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="../css/star/style.css">
     <!-- 日历选择 -->
     <script src="../js/calendar/laydate.js"></script>
+
+    <!-- 地图 -->
+    <link rel="stylesheet" type="text/css" href="../css/map/style.css">
+    <!--地图api调用-->
+    <script src="https://webapi.amap.com/maps?v=1.4.14&key=4d81136d607c68fb6c906599c0bd1de1&plugin=AMap.Autocomplete,AMap.Geocoder"></script>
+    <script type="text/javascript" src="../js/underscore-min.js" ></script>
+    <script type="text/javascript" src="../js/backbone-min.js" ></script>
+    <script type="text/javascript" src='../js/map/prety-json.js'></script>
+    <script type="text/javascript" src='../js/map/input.js'></script>
     <script>
         function book() {
             var val = "/roombook/" + [[${hotel.hId}]] + "/" + $("#calendar").val() + "/" + $("#calendar2").val();
@@ -75,7 +84,9 @@
 
     <!-- 右侧订购栏 -->
     <div class="booking_div">
-        <div class="booking_top"></div>
+        <div class="booking_top">
+            <div class="map_icon"></div>
+        </div>
         <div class="booking_simple_info">
             <div class="item_info_1 item_row">整套房子·2床</div>
             <div class="item_info_2 item_row" th:text="${hotel.hAddress}"></div>
@@ -101,6 +112,18 @@
 
         <!-- 底部 -->
     <div class="home_bottom"></div>
+
+    
+    <!--地图（流外）-->
+    <div class="map_content">
+        <div id="container"></div>
+        <div class="map_info">
+            <input class='map_lat_input map_input' type="text" value='' placeholder="经度（-180，180）">
+            <input class='map_lng_input map_input' type="text" value='' placeholder="纬度（-90，90）">
+            <div class="map_btn">搜索</div>
+        </div>
+        <div class="map_cancel"></div>
+    </div>
 
    <!--左侧导航（流外）-->
    <div id="left_navigation" class="page" th:unless="${session.user_id == null}">
