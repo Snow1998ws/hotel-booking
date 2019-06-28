@@ -1,0 +1,30 @@
+.noroom_booking_item{
+    width: 80vw;
+    min-width: 600px;
+    margin: 30px auto;
+    border: 2px solid rgb(0,0,0);
+    display: flex;
+    background-color: rgb(255,255,255);
+    color: rgb(105,105,105);
+}
+
+.noroom_booking_item_title{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.noroom_booking_item_content{
+    margin: 10px;
+}
+
+.noroom_booking_item_text{
+    font-size: 24px;
+}
+
+.noroom_booking_item .list_content_pic{
+    width: 320px;
+    height: 180px;
+    margin: 10px;
+    filter: grayscale(75%);
+}

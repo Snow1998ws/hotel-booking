@@ -11,6 +11,7 @@ import com.example.demo.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,8 +46,8 @@ public class OrderController
         {
             Order_info order_info=new Order_info();
             order_info.setDiscount(orders.get(i).getDiscount());
-//            String tmp=hotels.get(i).gethAddress();
-//            order_info.setHotel_name(tmp);
+            Hotel hotel=hotels.get(i);
+            order_info.setHotel_name(hotel.gethAddress());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setTypename(roomTypes.get(i).getTypeName());
             order_info.setOrder_id(orders.get(i).getOrderId());
@@ -75,6 +76,8 @@ public class OrderController
             order_info.setDiscount(orders.get(i).getDiscount());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setOrder_id(orders.get(i).getOrderId());
+            Hotel hotel=hotels.get(i);
+            order_info.setHotel_name(hotel.gethAddress());
             order_info.setTypename(roomTypes.get(i).getTypeName());
             order_infos.add(order_info);
         }
@@ -97,6 +100,8 @@ public class OrderController
             order_info.setDiscount(orders.get(i).getDiscount());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setOrder_id(orders.get(i).getOrderId());
+            Hotel hotel=hotels.get(i);
+            order_info.setHotel_name(hotel.gethAddress());
             order_info.setTypename(roomTypes.get(i).getTypeName());
             order_infos.add(order_info);
         }
@@ -104,12 +109,33 @@ public class OrderController
         return "wait_for_pay_booking.html";
     }
 
-    @RequestMapping("/deleteRoom")
+    @PostMapping("deleteRoom")
     public String deleteRoom(HttpServletRequest request,Model model)
     {
         HttpSession session=request.getSession();
         int order_id=((Order_info)session.getAttribute("orderinfo")).getOrder_id();
-        
+        Orders order=ordersService.findOrdersByOrder_id(order_id);
+        order.setIspay("o");//代表退款
+        ordersService.deleteOrderByid(order);
+
+
+        String user_id=order.getoUserId();
+        List<Orders> orders=ordersService.findPre_ordersByid(user_id);
+        List<Room> rooms=roomService.findRoomsByOrders(orders);
+        List<RoomType> roomTypes=roomTypeService.findRoomTypeByRooms(rooms);
+        List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
+        List<Order_info> order_infos=new ArrayList<>();
+        for(int i=0;i<orders.size();i++)
+        {
+            Order_info order_info=new Order_info();
+            order_info.setDiscount(orders.get(i).getDiscount());
+            order_info.setPrice(orders.get(i).getTotalprice());
+            order_info.setTypename(roomTypes.get(i).getTypeName());
+            order_info.setOrder_id(orders.get(i).getOrderId());
+            order_infos.add(order_info);
+
+        }
+        model.addAttribute("order_info",order_infos);
         return "order_pre_info";
     }
 

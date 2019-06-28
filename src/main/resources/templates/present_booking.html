@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -46,7 +46,7 @@
             <div class="booking_item_mid"  >
                 <div class="booking_simple_info"    >
                     <div class="item_info_1 item_row" th:text="${orderinfo.typename}"></div>
-                    <div class="item_info_2 item_row" >Laguna蓝 /广州佛山/千灯湖/地铁口/祖庙/岭南新天地/南海万达/世纪莲/北京路/上下九/沙面</div>
+                    <div class="item_info_2 item_row" th:text="${orderinfo.hotel_name}"></div>
                     <div class="item_info_3 item_row" >
                         <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
 
@@ -55,7 +55,7 @@
                 </div>
             </div>       
             <div class="booking_item_right">
-                <div class="booking_item_op_button">退房</div>
+                <div class="booking_item_op_button" onclick="'javascript:deleRoom(orderinfo)'">退房</div>
             </div>
             <div class="booking_item_right_tab"></div>
         </div>
@@ -93,5 +93,18 @@
         <!-- 颜色根据每个页面背景具体分析默认为黑色 -->
         <div class="hidebar"></div>
     </div><!--左侧导航结束-->
+    <script>
+        function deleRoom(orderinfo)
+        {
+            $.ajax(
+                {
+                    type: "POST",
+                    data: {orderinfo: orderinfo},
+                    url: "/deleteRoom"
+                }
+            )
+        }
+    </script>
+
 </body>
 </html>

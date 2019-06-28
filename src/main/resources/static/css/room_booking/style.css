@@ -1,0 +1,98 @@
+.room_booking_item{
+    width: 80vw;
+    min-width: 900px;
+    margin: 30px auto;
+    border: 2px solid rgb(0,0,0);
+}
+
+.room_booking_item_title{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.room_booking_item_info{
+    display: flex;
+    border-top: 1px solid rgba(105,105,105,0.5);
+}
+
+.room_booking_item_info_list{
+    flex: 1;
+    min-width: 120px;
+}
+
+.list_0{
+    flex: 2!important;
+}
+
+
+.room_booking_item_info_list_title{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0 10px 10px;
+    background-color: rgb(245,245,245);
+}
+
+.room_booking_item_info_list_content{
+    padding: 10px;
+    height: 200px;
+    border-top: 1px solid rgba(105,105,105,0.5);
+    border-right: 1px solid rgba(105,105,105,0.5);
+}
+
+.list_0 .list_content_pic{
+    margin: 0!important;
+    display: block;
+    height: 100%;
+    border: none!important;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.list_1 .room_booking_item_info_list_content{
+    font-size: 14px; 
+}
+
+.list_1 .list_content_item{
+    padding-left: 20px;
+    height: 20px;
+    margin: 5px;
+}
+
+.list_2 .list_content_text{
+    margin-top: 10px; 
+    font-size: 12px;
+}
+
+.list_3 .list_content_text div{
+    width: 60%;
+    margin: 10px auto;
+    color: rgb(221, 69, 69);
+    font-size: 32px;
+} 
+
+.list_4 input{
+    font-size: 24px;
+    display: block;
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px 15px;
+}
+
+.list_5 .list_content_btn{
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 14px;
+    width: 70%;
+    height: 36px;
+    margin: 10px auto;
+    color: rgb(255,255,255);
+    background: rgb(29, 170, 235);
+    cursor: pointer;
+}
+
+.list_5 .list_content_btn:active{
+    background: rgb(29, 94, 148);
+}

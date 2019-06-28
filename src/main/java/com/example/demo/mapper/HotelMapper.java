@@ -8,7 +8,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface HotelMapper {
     List<Hotel> selectByDateAndCity(@Param("city")String city, @Param("checkin_time")Date checkin_time, @Param("leave_time")Date leave_time);
     /**

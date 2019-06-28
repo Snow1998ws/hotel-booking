@@ -8,5 +8,11 @@ jQuery(document).ready(function($){
         msg_a4: 'history_booking.html',
         msg_a5: 'user_info_change.html'
     }
+    });
+    new Vue({
+        el: 'head',
+        data: {
+            path_1: '../',
+        }
     })
 });
