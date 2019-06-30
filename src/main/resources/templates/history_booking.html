@@ -24,29 +24,7 @@
 
     <!-- 删除订单测试用 -->
     <script type="text/javascript" src="js/booking_item/cancel.js"></script>
-    <script>
-        function viewOrderinfo()
-        {
-            info = {
-                "infos": $('.booking_item_content').val()
-            };
-            alert("到这里了");
-            $.ajax(
-                {
-                    type: "POST",
-                    url: "/viewOrder_info",
-                    dataType: 'json',
-                    data: info,
-                    success: function (msg) {//ajax请求成功后触发的方
-                            window.location.href = msg;
-                            alert("ch")
-                    }
-                }
-
-            );
-            return false;
-        }
-    </script>
+    <script type="text/javascript" src="js/present_booking/op2.js"></script>
 </head>
 <body>
 
@@ -74,16 +52,16 @@
                     <div class="item_info_3 item_row">
                         <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
                         <div><span class="price_now" th:text="${bef_info.price}"></span><span class="price_pre"  th:text="${bef_info.discount}"></span>折</div>
-                    </div>    
+                    </div>
                 </div>
-            </div>       
+            </div>
             <div class="booking_item_right">
-                <div class="booking_item_op_button" onclick="viewOrderinfo()"><a>查看</a></div>
+                <div class="booking_item_op_button" th:name="${bef_info.order_id}">查看</div>
             </div>
             <div class="booking_item_right_tab"></div>
         </div>
         </div>
-    </div>  
+    </div>
 
 
     <!-- 底部 -->

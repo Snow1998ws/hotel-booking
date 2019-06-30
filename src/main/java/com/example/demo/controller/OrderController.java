@@ -82,7 +82,7 @@ public class OrderController
             order_infos.add(order_info);
         }
         model.addAttribute("order_bef_info",order_infos);
-        return "history_booking.html";
+        return "history_booking";
     }
     @RequestMapping("/Order_Not_pay")
     public String Order_Not_pay(HttpServletRequest request,Model model)
@@ -142,22 +142,17 @@ public class OrderController
         return "payment";
     }
 
-    @PostMapping("/viewOrder_info")
+    @RequestMapping("/viewOrder_info")
     @ResponseBody
     public String viewOrder_info(HttpServletRequest request,Model model)
     {
-        HttpSession session=request.getSession();
-        ArrayList tmp=(ArrayList)session.getAttribute("infos");
-        //System.out.println(tmp.getClass());
-        Order_info info=(Order_info)tmp.get(0);
-        int order_id=info.getOrder_id();
-        Orders order=ordersService.findOrdersByOrder_id(order_id);
-        int room_id=order.getoRoomId();
-        Room room=roomService.findRoomByRoomid(room_id);
-        int hotel_id=room.getrHotelId();
-        Hotel hotel=hotelService.findHotelById(hotel_id);
-        model.addAttribute("hotel",hotel);
-        return "hotel_info.html";
+
+        String id=request.getParameter("infoss");
+        Orders order=ordersService.findOrdersByOrder_id(Integer.valueOf(id));
+        Integer roomid=order.getoRoomId();
+        Room room=roomService.findRoomByRoomid(roomid);
+        String hotel_id=room.getrHotelId().toString();
+        return hotel_id;
     }
 
 }
