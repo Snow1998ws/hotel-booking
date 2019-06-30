@@ -78,6 +78,7 @@ a:hover,a:link,a:active.a:visited{
     margin: 100px auto 0;
     border-top: 1px solid rgba(105,105,105,0.5);
     display: flex;
+    background: rgba(255,255,255,0.5);
 }
 
 .web_logo{

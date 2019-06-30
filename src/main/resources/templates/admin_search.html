@@ -1,0 +1,83 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 公有 -->
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/public_js/message.js"></script>
+    <link rel="stylesheet" href="css/public_effect/common.css">
+    <!--本页-->
+    <link rel='stylesheet' href='css/admin_search/style.css'>
+    <script type="text/javascript" src="js/admin_search/search.js"></script>
+    <!-- 标题 -->
+    <link rel="stylesheet" href="css/title/style.css">
+</head>
+<body>
+    <!-- 标题 -->
+    <div class="title">
+        <div class="Titem1">
+            <a href="/home"><div class="web_logo"></div></a>
+        </div>
+    </div>
+    <!-- 标题结束 -->
+
+    <div class="admin_search_content">
+        <div class="admin_search_bar">
+            <div class="admin_search_bar_0">
+                <select class="admin_search_bar_select">
+                    <option value="0">用户</option>
+                    <option value="1">酒店</option>
+                    <option value="2">订单</option>
+                </select>
+            </div>
+            <div class="admin_search_bar_1">
+                <input class="admin_search_bar_input" type="text" placeholder="输入搜索内容...">
+            </div>
+            <div class="admin_search_bar_2">
+                <div class="admin_search_bar_btn">搜索</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin_search_result">
+        <div class="result_item">
+            <div class="result_info">
+                <span class="result_info_name">ID:</span><div class="result_info_item">12</div>
+                <span class="result_info_name">名称:</span><div class="result_info_item">123</div>
+                <span class="result_info_name" style="display: none;">ID:</span><div class="result_info_item" style="display: none;">123</div>
+            </div>
+            <div class="result_op"><div class="result_btn">管理</div></div>
+        </div>
+        <div class="result_item">
+            <div class="result_info">
+                <span class="result_info_name">ID:</span><div class="result_info_item">12</div>
+                <span class="result_info_name">名称:</span><div class="result_info_item">123</div>
+                <span class="result_info_name" style="display: none;">ID:</span><div class="result_info_item" style="display: none;">123</div>
+            </div>
+            <div class="result_op"><div class="result_btn">管理</div></div>
+        </div>
+        <div class="result_item">
+            <div class="result_info">
+                <span class="result_info_name">ID:</span><div class="result_info_item">12</div>
+                <span class="result_info_name">名称:</span><div class="result_info_item">123</div>
+                <span class="result_info_name">ID:</span><div class="result_info_item">123</div>
+            </div>
+            <div class="result_op"><div class="result_btn">管理</div></div>
+        </div>
+    </div>
+    
+
+
+
+    <!-- 底部 -->
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+.admin_search_content{
+    width: 60%;
+    min-width: 600px;
+    margin: 50px auto;
+    height: 60px;
+    border: 1px solid rgb(0,0,0);
+    background: rgb(255,255,255);
+}
+
+.admin_search_bar{
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    display: flex;   
+}
+
+.admin_search_bar_0{
+    width: 100px;
+    height: 100%;
+    border-right:1px solid rgba(0,0,0,0.3); 
+}
+
+.admin_search_bar_select{
+    width: 90%;
+    height: 30px;
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 1%;
+}
+
+.admin_search_bar_1{
+    flex: 1;
+    height: 100%;
+}
+
+.admin_search_bar_input{
+    width: 94%;
+    height: 30px;
+    display: block;
+    position: relative;
+    top: 5px;
+    left: 3%;
+    padding: 0 10px;
+}
+
+.admin_search_bar_2{
+    width: 100px;
+    height: 100%;
+    border-left:1px solid rgba(0,0,0,0.3); 
+}
+
+.admin_search_bar_btn{
+    width: 60%;
+    height: 20px;
+    padding: 5px;
+    position: relative;
+    top: 5px;
+    left: 10%;
+    background: rgb(214, 52, 52);
+    color: rgb(255,255,255);
+    text-align: center;
+    cursor: pointer;
+}
+
+.admin_search_bar_btn:active{
+    background: rgb(187, 11, 11);
+}
+
+.admin_search_result{
+    width: 60%;
+    min-width: 600px;
+    min-height: 60%;
+    margin: 50px auto;
+    border-top: 3px solid rgb(0,0,0); 
+    background: rgb(255,255,255);
+}
+
+.result_item{
+    width: 90%;
+    height: 30px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    border: 1px solid rgba(0,0,0,0.7);
+}
+
+.result_op{
+    width: 80px;
+    border-left: solid 1px rgba(0,0,0,0.3);
+}
+
+.result_btn{
+    width: 80%;
+    height: 20px;
+    padding: 5px;
+    position: relative;
+    left: 10%;
+    background: rgb(31, 166, 219);
+    color: rgb(255,255,255);
+    text-align: center;
+    cursor: pointer;
+}
+
+.result_btn:active{
+    background: rgb(53, 123, 151);
+}
+
+.result_info{
+    display: flex;
+    flex: 1;
+}
+
+.result_info_item{
+    flex: 1;
+}
+
+.result_info_name{
+    font-weight: 600;
+    padding: 5px; 
+    border-left: solid 1px rgba(0,0,0,0.3);
+}
+
+.result_info_item{
+    padding: 5px; 
+}
