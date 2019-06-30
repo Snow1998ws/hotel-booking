@@ -4,10 +4,11 @@
    padding: 5vh 0;
    min-width: 600px;
    min-height: 400px;
-   position: absolute;
-   top: -100vh;
+   position: fixed;
+   top: -150vh;
    left: 0;
    background-color: rgba(225,225,225,0.9);
+    z-index: 95;
 }
 #container {
     width: 90%;

@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Hotel;
+import com.example.demo.domain.Room;
 import com.example.demo.service.HotelService;
+import com.example.demo.service.RoomService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -22,9 +25,16 @@ public class hotelController {
 
     @Autowired
     private HotelService hotelService;
+    @Autowired
+    private RoomService roomService;
 
-    @RequestMapping("/roombook")
-    public String roomBook() {
+    @RequestMapping("/roombook/{h_id}/{checkin_time}/{leave_time}")
+    public String roomBook(@PathVariable("h_id")Integer h_id,
+                           @PathVariable("checkin_time")String checkin_time,
+                           @PathVariable("leave_time") String leave_time,
+                           Model model) {
+        List<Room> rooms = roomService.findRoomsByHotelId(h_id);
+        model.addAttribute("rooms", rooms);
         return "room_booking";
     }
 
@@ -64,5 +74,4 @@ public class hotelController {
     public List<Hotel> findHotel(Hotel hotel) {
         return hotelService.findHotelSelective(hotel);
     }
-
 }

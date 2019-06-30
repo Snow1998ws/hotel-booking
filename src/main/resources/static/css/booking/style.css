@@ -14,6 +14,7 @@
     padding: 0 20px;
     border: rgb(221, 97, 89) 1px solid;
     background: rgb(255,255,255);
+    z-index: 10;
 }
 
 .booking_simple_info{

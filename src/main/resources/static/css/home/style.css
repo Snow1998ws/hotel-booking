@@ -11,20 +11,21 @@
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .intro_pic:nth-child(4){
-    background-image: url(../../img/hotel/hotel_001.jpg);
+    background-image: url(../../img/hotel/bg_001.jpg);
     opacity: 0;
 }
 
 .intro_pic:nth-child(5){
-    background-image: url(../../img/hotel/hotel_002.jpg);
+    background-image: url(../../img/hotel/bg_002.jpg);
     opacity: 0;
 }
 
 .intro_pic:nth-child(6){
-    background-image: url(../../img/hotel/hotel_003.jpg);
+    background-image: url(../../img/hotel/bg_004.jpg);
     opacity: 1;
 }
 
@@ -89,7 +90,7 @@
 .show{
     transform: scale(0.7,0.7);
     position: relative;
-    left: -20px;
+    left: -90px;
 }
 
 /* 城市下拉 */

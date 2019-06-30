@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var map = new AMap.Map('container', {
     resizeEnable: true, //是否监控地图容器尺寸变化
-    zoom: 11, //初始地图级别
+    zoom: 100 //初始地图级别
     });
 
     var geocoder,marker,latlng;
@@ -18,7 +18,7 @@ $(document).ready(function(){
         }
         marker.setPosition(latlng);
     }
-    
+
     map.on('click',function(e){
         latlng = e.latlng;
         regeoCode();
@@ -54,9 +54,9 @@ $(document).ready(function(){
     $(".map_cancel").on("click", function(){
         $(".map_content").animate({top:'-100vh'},1000);
     });
-    $(".map_icon").on("click", function(){
-        $(".map_content").animate({top:'0vh'},1000);
-    });
+    // $(".map_icon").on("click", function(){
+    //     $(".map_content").animate({top:'0vh'},1000);
+    // });
 
     function mapSet(lat, lng){
         $('.map_lat_input').val(lat);

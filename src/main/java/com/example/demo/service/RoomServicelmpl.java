@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Orders;
 import com.example.demo.domain.Room;
+import com.example.demo.domain.RoomExample;
 import com.example.demo.mapper.RoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,14 @@ public class RoomServicelmpl implements RoomService{
 
     @Autowired
     private RoomMapper roomMapper;
+
+    @Override
+    public List<Room> findRoomsByHotelId(Integer id) {
+        RoomExample roomExample = new RoomExample();
+        RoomExample.Criteria criteria = roomExample.createCriteria();
+        criteria.andRHotelIdEqualTo(id);
+        return roomMapper.selectByExample(roomExample);
+    }
 
     @Override
     public Room findRoomByRoomid(Integer id)

@@ -48,8 +48,8 @@
     <!-- 标题结束 -->
     
     <!-- 有剩余房 -->
-    <div class="room_booking_item">
-        <div class="room_booking_item_title">6床女性宿舍间的1张床位 (Bed in 6-Bed Female Dormitory Room)</div>
+    <div class="room_booking_item" th:each="room: ${rooms}">
+        <div class="room_booking_item_title" th:text="*{}">6床女性宿舍间的1张床位 (Bed in 6-Bed Female Dormitory Room)</div>
         <div class="room_booking_item_info">
             <div class="room_booking_item_info_list list_0">
                 <div class="room_booking_item_info_list_title">房型</div>
