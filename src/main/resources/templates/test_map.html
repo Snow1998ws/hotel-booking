@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+<title>jQuery高德地图地理位置搜索定位地址特效插件</title>
+<meta name="keywords" content="jQuery,高德地图,地理位置,搜索,定位,地址,特效插件" />
+<meta name="description" content="jQuery高德地图地理位置搜索定位地址特效插件下载。根据IP自动地位地图，自定义初始城市。" /> 
+<meta name="author" content="js代码(www.jsdaima.com)" />
+<meta name="copyright" content="js代码(www.jsdaima.com)" />
+<link rel="stylesheet" type="text/css" href="css/map/style.css">
+<link rel="stylesheet" type="text/css" href="css/public_effect/common.css">
+<!--地图api调用-->
+<script src="https://webapi.amap.com/maps?v=1.4.14&key=4d81136d607c68fb6c906599c0bd1de1&plugin=AMap.Autocomplete,AMap.Geocoder"></script>
+
+<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+<script type="text/javascript" src="js/underscore-min.js" ></script>
+<script type="text/javascript" src="js/backbone-min.js" ></script>
+<script type="text/javascript" src='js/map/prety-json.js'></script>
+<script type="text/javascript" src='js/map/input.js'></script>
+
+<style>
+html,
+body,
+
+#input-info span{
+	display:block;
+	font-size:15px;
+	line-height:30px;
+}	
+</style>
+</head>
+
+<body>
+<div class="map_icon"></div>
+<div class="map_content">
+	<div id="container"></div>
+	<div class="map_info">
+		<input class='map_lat_input map_input' type="text" value='' placeholder="经度（-180，180）">
+		<input class='map_lng_input map_input' type="text" value='' placeholder="纬度（-90，90）">
+		<div class="map_btn">搜索</div>
+	</div>
+	<div class="map_cancel"></div>
+</div>
+</body>
+</html>
