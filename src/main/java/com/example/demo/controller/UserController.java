@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
 import javax.servlet.http.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -36,8 +37,11 @@ public class UserController {
 
     @RequestMapping("/home")
     public String homePage(Model model) {
-        List<Hotel> hotels = findHotel();
-        model.addAttribute("hotels", hotels);
+        List<Hotel> hotels = findHotel(), new_hotels = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            new_hotels.add(hotels.get(i));
+        }
+        model.addAttribute("hotels", new_hotels);
         return "home";
     }
 

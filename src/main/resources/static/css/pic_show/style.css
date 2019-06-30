@@ -27,7 +27,7 @@
     background-position:center;
     margin-right: 15px;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.7);
+    border: 0px solid rgba(0,0,0,0.7);
     transition: all 0.3s;
 }
 

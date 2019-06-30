@@ -1,5 +1,7 @@
 * {
-    font-family: 'Microsoft Yahei';
+    font-family: 'PingFang-SC';
+    color: #484848 ;
+    font-weight: 800 !important;
 }
 html body{
     background-color: rgba(16, 14, 4, 0.03);

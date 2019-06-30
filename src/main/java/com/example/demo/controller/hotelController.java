@@ -4,6 +4,7 @@ import com.example.demo.domain.Hotel;
 import com.example.demo.domain.Room;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.RoomService;
+import com.zaxxer.hikari.util.SuspendResumeLock;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,9 +33,16 @@ public class hotelController {
     public String roomBook(@PathVariable("h_id")Integer h_id,
                            @PathVariable("checkin_time")String checkin_time,
                            @PathVariable("leave_time") String leave_time,
-                           Model model) {
-        List<Room> rooms = roomService.findRoomsByHotelId(h_id);
-        model.addAttribute("rooms", rooms);
+                           Model model) throws ParseException{
+        List<Room> rooms_empty = roomService.findRoomsByDateAndHotelId(checkin_time, leave_time, h_id);
+        List<Room> rooms_full = roomService.findRoomsByDateAndHotelId2(checkin_time, leave_time, h_id);
+        model.addAttribute("rooms_empty", rooms_empty);
+        model.addAttribute("rooms_full", rooms_full);
+        return "room_booking";
+    }
+
+    @RequestMapping("/roombook")
+    public String roomBook() {
         return "room_booking";
     }
 

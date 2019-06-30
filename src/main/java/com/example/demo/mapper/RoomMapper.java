@@ -70,6 +70,14 @@ public interface RoomMapper {
      *
      * @mbg.generated Wed Jun 26 19:59:20 CST 2019
      */
+    List<Room> selectByDateAndHotelId(@Param("checkin_time") String checkin_time,
+                                      @Param("leave_time") String leave_time,
+                                      @Param("hotel_id") Integer hotel_id);
+
+    List<Room> selectByDateAndHotelId2(@Param("checkin_time") String checkin_time,
+                                      @Param("leave_time") String leave_time,
+                                      @Param("hotel_id") Integer hotel_id);
+
     int updateByExampleSelective(@Param("record") Room record, @Param("example") RoomExample example);
 
     /**

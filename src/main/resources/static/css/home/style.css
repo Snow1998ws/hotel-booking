@@ -4,28 +4,32 @@
     height: 75vh;
     min-height: 480px;
 }
-
+.font_style {
+    font-family: 'PingFang-SC'!important;
+    color: #484848 !important;
+    font-weight: 800 !important;
+}
 .intro_pic{
     position: absolute;
     height: 100%;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    /*background-position: center;*/
 }
 
 .intro_pic:nth-child(4){
-    background-image: url(../../img/hotel/bg_001.jpg);
+    background-image: url(../../img/hotel/bg_004.jpg);
     opacity: 0;
 }
 
 .intro_pic:nth-child(5){
-    background-image: url(../../img/hotel/bg_002.jpg);
+    background-image: url(../../img/hotel/bg_005.jpg);
     opacity: 0;
 }
 
 .intro_pic:nth-child(6){
-    background-image: url(../../img/hotel/bg_004.jpg);
+    background-image: url(../../img/hotel/bg_006.jpg);
     opacity: 1;
 }
 

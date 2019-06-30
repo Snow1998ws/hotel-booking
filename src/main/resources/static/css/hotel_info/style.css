@@ -4,7 +4,11 @@
     padding-bottom: 15px;
     border-bottom: rgba(105,105,105,0.5) 1px solid;  
 }
-
+.font_style {
+    font-family: 'PingFang-SC'!important;
+    color: #484848 !important;
+    font-weight: 800 !important;
+}
 .right_intro{
     width: 55vw;
     min-width: 400px;
