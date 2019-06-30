@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery实现多功能多样式酒店星级评分评价</title>
+    <meta name="keywords" content="jQuery,多功能,多样式,酒店星级评分" />
+    <meta name="description" content="jQuery实现多功能多样式酒店星级评分" /> 
+    <meta name="author" content="hotel booking" />
+    <meta name="copyright" content="hotel booking" />
+    <link rel="stylesheet" href="css/lq-score.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/lq-score.min.js"></script>
+    <script>
+        /*
+        属性参数介绍：
+            $tipEle--------提示元素，请传入jquery对象
+            fontSize-------大小，字符串类型
+            isReScore------是否允许重新评分
+            tips-----------提示，可以是default默认消息，可以传模板字符串，也可以传长度为5的数组
+            zeroTip--------无分数提示，字符串类型
+            score----------分数，小数、整数都可以
+            callBack-------评分回调，会返回分数和插件元素李，例：function(score,ele){}
+            content--------内容
+            defultColor----默认颜色(未选中的颜色)
+            selectColor----选中后的颜色，可以传单个字符串，也可以传长度为5的数组
+        */
+        $(function () {
+            //demo1
+            $("#demo1").lqScore();
+            //demo2
+            $("#demo2").lqScore({
+                callBack: function (score, ele) {
+                    alert(score);
+                }
+            });
+            //demo3
+            $("#demo3").lqScore({
+                $tipEle: $("#tip3"), //提示必须要指定显示的元素，显示样式由你自己定义，如果你不擅长css，可以使用demo中的样式
+                tips: ["不推荐", "一般", "不错", "很棒", "极力推荐！"],
+                zeroTip: "未评分"
+            });
+            //demo4
+            $("#demo4").lqScore({
+                $tipEle: $("#tip4"),
+                tips: "default",
+                score: 3.5
+                //如果需要设置后还能评分，请添加[isReScore:true]属性
+            });
+            //demo5
+            $("#demo5").lqScore({
+                content: "♀" //可以传图标
+            });
+            //demo6
+            $("#demo6").lqScore({
+                fontSize: "35px"
+            });
+            //demo7
+            $("#demo7").lqScore({
+                //此处修改为单颜色，若需要修改为多颜色，请传入长度为5的数组
+                selectColor: "#8eb9f5",
+            });
+            //demo8
+            $("#demo8").lqScore({
+                isReScore: true//允许重新评分
+            });
+            //demo9
+            $("#demo9").lqScore({
+                $tipEle: $("#tip9"),
+                tips: "default" //默认提示
+            });
+            //demo10
+            $("#demo10").lqScore({
+                $tipEle: $("#tip10"),
+                tips: "我是{{lq-score}}" //  {{lq-score}}这是一个模板，分数值会将其替换
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        <div><p>相信我，<b>使用真的很简单：</b></p></div>
+        <div><p class="note">注：以下demo的效果都能组合使用</p></div>
+        <br/>
+        <br/>
+        <!------------------------demo1-------------------------->
+        <div>
+            <p><b>demo1：</b>最简单的例子</p>
+            <div class="myapp-score">
+                <div id="demo1"></div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo2-------------------------->
+        <div>
+                <p><b>demo2：</b>有回调函数</p>
+                <div class="myapp-score">
+                    <div id="demo2"></div>
+                </div>
+            </div>
+            <!------------------------------------------------------->
+            <hr />
+        <!------------------------demo2-------------------------->
+        <div>
+            <p><b>demo3：</b>带有提示信息</p>
+            <div class="myapp-score">
+                <div id="demo3">
+                </div>
+                <div class="myapp-tip">
+                    <span id="tip3" class="lq-score-tip"></span>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo3-------------------------->
+        <div>
+            <p><b>demo4：</b>设置分值&nbsp;&nbsp;&nbsp;<span class="note">注：可以在设置后触发回调</span></p>
+            <div class="myapp-score">
+                <div id="demo4">
+                </div>
+                <div class="myapp-tip">
+                    <span id="tip4" class="lq-score-tip"></span>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo4-------------------------->
+        <div>
+            <p><b>demo5：</b>修改显示内容&nbsp;&nbsp;&nbsp;<span class="note">注：可以直接显示字符，也可以搭配各种图标库使用</span></p>
+            <p class="note">有些特殊字符在ie浏览器下会有不同的样子，最好使用图标库</p>
+            <div class="myapp-score">
+                <div id="demo5">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo5-------------------------->
+        <div>
+            <p><b>demo6：</b>修改大小</p>
+            <div class="myapp-score">
+                <div id="demo6">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo6-------------------------->
+        <div>
+            <p><b>demo7：</b>修改颜色&nbsp;&nbsp;&nbsp;<span class="note">此demo修改为单颜色，若需要修改为多颜色，请传入长度为5的数组</span></p>
+            <div class="myapp-score">
+                <div id="demo7">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo7-------------------------->
+        <div>
+            <p><b>demo8：</b>允许重新评分&nbsp;&nbsp;&nbsp;<span class="note">注：每次评分都会回调</span></p>
+            <div class="myapp-score">
+                <div id="demo8">
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo8-------------------------->
+        <div>
+            <p><b>demo9：</b>默认提示</p>
+            <div class="myapp-score">
+                <div id="demo9">
+                </div>
+                <div class="myapp-tip">
+                    <span id="tip9" class="lq-score-tip"></span>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+        <hr />
+        <!------------------------demo9-------------------------->
+        <div>
+            <p><b>demo10：</b>模板提示（通过模板可以自定义带有分数的提示）</p>
+            <div class="myapp-score">
+                <div id="demo10">
+                </div>
+                <div class="myapp-tip">
+                    <span id="tip10" class="lq-score-tip"></span>
+                </div>
+            </div>
+        </div>
+        <!------------------------------------------------------->
+    </div>
+</body>
+
+</html>

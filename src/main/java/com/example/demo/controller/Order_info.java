@@ -9,8 +9,10 @@ public class Order_info
     public void setOrder_id(Integer order_id) {
         this.order_id = order_id;
     }
+    public Order_info(Object ob)
+    {
 
-
+    }
 
     public Integer getOrder_id() {
         return order_id;

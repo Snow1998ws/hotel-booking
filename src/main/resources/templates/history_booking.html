@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -24,7 +24,29 @@
 
     <!-- 删除订单测试用 -->
     <script type="text/javascript" src="js/booking_item/cancel.js"></script>
+    <script>
+        function viewOrderinfo()
+        {
+            info = {
+                "infos": $('.booking_item_content').val()
+            };
+            alert("到这里了");
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "/viewOrder_info",
+                    dataType: 'json',
+                    data: info,
+                    success: function (msg) {//ajax请求成功后触发的方
+                            window.location.href = msg;
+                            alert("ch")
+                    }
+                }
 
+            );
+            return false;
+        }
+    </script>
 </head>
 <body>
 
@@ -56,7 +78,7 @@
                 </div>
             </div>       
             <div class="booking_item_right">
-                <div class="booking_item_op_button">查看</div>
+                <div class="booking_item_op_button" onclick="viewOrderinfo()"><a>查看</a></div>
             </div>
             <div class="booking_item_right_tab"></div>
         </div>

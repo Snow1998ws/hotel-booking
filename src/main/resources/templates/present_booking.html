@@ -24,7 +24,30 @@
 
     <!-- 删除订单测试用 -->
     <script type="text/javascript" src="js/booking_item/cancel.js"></script>
+    <script>
+        function deleRoom()
+        {
 
+            infoss = {
+                "infos": $('.booking_item_content').val()
+            };
+            alert("到这里了");
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "/deleteRoom",
+                    dataType: 'json',
+                    data: infoss,
+                    success: function (order_id) {//ajax请求成功后触发的方法
+                        var th=$("#order_id");
+                        alert(th);
+                        th.parentNode.removeChild(th);
+                        alert(order_id)
+                    }
+                }
+            );
+        }
+    </script>
 </head>
 <body>
     <!-- 标题 -->
@@ -36,8 +59,8 @@
     <!-- 标题结束 -->
 
     <!-- 一个模块 -->
-    <div class="booking_item_content" th:each="orderinfo:${order_info}">
-        <div class="booking_item_top">
+    <div class="booking_item_content"  th:each="orderinfo:${order_info}">
+        <div class="booking_item_top" th:id="${orderinfo.order_id}">
         <div class="booking_item_main">
             <div class="booking_item_left_tab"></div>
             <div class="booking_item_left">
@@ -55,7 +78,7 @@
                 </div>
             </div>       
             <div class="booking_item_right">
-                <div class="booking_item_op_button" onclick="'javascript:deleRoom(orderinfo)'">退房</div>
+                <div class="booking_item_op_button" onclick="deleRoom()" >退房</div>
             </div>
             <div class="booking_item_right_tab"></div>
         </div>
@@ -93,18 +116,7 @@
         <!-- 颜色根据每个页面背景具体分析默认为黑色 -->
         <div class="hidebar"></div>
     </div><!--左侧导航结束-->
-    <script>
-        function deleRoom(orderinfo)
-        {
-            $.ajax(
-                {
-                    type: "POST",
-                    data: {orderinfo: orderinfo},
-                    url: "/deleteRoom"
-                }
-            )
-        }
-    </script>
+
 
 </body>
 </html>
