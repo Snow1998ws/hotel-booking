@@ -1,6 +1,7 @@
 .room_booking_item{
     width: 80vw;
     min-width: 900px;
+    height: auto;
     margin: 30px auto;
     border: 2px solid rgb(0,0,0);
 }
@@ -95,4 +96,73 @@
 
 .list_5 .list_content_btn:active{
     background: rgb(29, 94, 148);
+}
+
+.booking_check{
+    width: 100%;
+    min-width: 600px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    background: rgb(255,255,255);
+    padding: 30px 0;
+    overflow: auto;
+}
+
+.booking_check_list{
+    width: 60%;
+    margin: 50px auto 0;
+    height: 30px;
+    display: flex; 
+    position: relative;
+    left: 2%;
+}
+
+.booking_check_div{
+    flex: 1;
+}
+
+.booking_check_name{
+    display: block;
+    margin: 5px;
+    font-weight: 600;
+    width: 90%;
+    text-align: left;
+}
+
+.booking_check_input{
+    width: 85%;
+    padding: 5px 10px;
+}
+
+.booking_check_btn{
+    width: 80px;
+    height: 20px;
+    padding: 15px 5px;
+    margin: 15vh auto;
+    text-align: center;
+    color: rgb(255,255,255);
+    background: rgb(29, 170, 235);
+    cursor: pointer;
+}
+
+.booking_check_btn:active{
+    background: rgb(29, 94, 148);
+}
+
+.booking_check_cancel{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background-image:  url(../../img/icon/cancel.png);
+    background-size: contain;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.booking_check_cancel:hover{
+    transform: scale(1.5,1.5);
 }

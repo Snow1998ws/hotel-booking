@@ -92,7 +92,6 @@
     <!-- 广告图 -->
     <div class="intro">
         <form id="searchBar">
-            <div class="div_search chose_num">人数：<input name="num" type="number"  placeholder="1-20" min="1" max="20" ></div>
             <div class="div_search chose_position">入住地点：
                 <input name="city" type="text" id="search_city" placeholder="输入地名" readonly="readonly">
                 <div class="search">
@@ -112,6 +111,7 @@
                     </div>
                 </div>
             </div>
+            <div class="div_search chose_price">最高价：￥<input name="price" type="text"  placeholder="输入价格" oninput = "value=value.replace(/[^\d]/g,'')"></div>
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
             <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
@@ -137,6 +137,13 @@
         </div>
     </div>
     <!-- 酒店概览结束 -->
+
+    <div class="jump_content">
+        <div class="jump_icon jump_left" title='上一页'></div>
+        <input class="jump_num" type="number" min="1">
+        <div class="jump_btn">跳转</div>
+        <div class="jump_icon jump_right" title='下一页'></div>
+    </div>
 
 
     <div class="related_service">

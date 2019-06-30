@@ -20,8 +20,6 @@ a:hover,a:link,a:active.a:visited{
     top: 0;
 }
 
-
-
 .right{
     right: 0px;
     transform:rotate(180deg);
@@ -57,7 +55,6 @@ a:hover,a:link,a:active.a:visited{
 
 .icon_triangle{
     background-image: url(../../img/icon/arrow.png);
-    
 }
 
 
@@ -94,4 +91,47 @@ a:hover,a:link,a:active.a:visited{
     text-align: center;
     font-weight: 600;
     padding: 12px;
+}
+
+.jump_content{
+    width: 360px;
+    height: 30px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.jump_num{
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+}
+
+.jump_btn{
+    text-align: center;
+    width: 60px;
+    height: 20px;
+    padding: 5px;
+    color: rgb(255,255,255);
+    background: rgb(29, 170, 235);
+    cursor: pointer;
+}
+
+.jump_btn:active{
+    background: rgb(29, 94, 148);
+}
+
+.jump_icon{
+    width: 30px;
+    height: 30px;
+    background-image: url(../../img/icon/arrow.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+}
+
+.jump_right{
+    transform:rotate(180deg);
 }
