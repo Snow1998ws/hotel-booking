@@ -59,17 +59,17 @@
     font-weight: 600;
 }
 
-#searchBar .chose_num{
+#searchBar .chose_price{
     flex: 1;
 }
 
 #searchBar .chose_position{
     position: relative;
-    flex:2;
+    flex:1;
 }
 
 #searchBar .chose_date{
-    flex:2;
+    flex:1;
 }
 
 #searchBar .search_button{
