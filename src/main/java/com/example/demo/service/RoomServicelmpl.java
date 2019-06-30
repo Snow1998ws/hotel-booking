@@ -18,6 +18,16 @@ public class RoomServicelmpl implements RoomService{
     private RoomMapper roomMapper;
 
     @Override
+    public  List<Room> findRoomsByDateAndHotelId(String checkin_time, String leave_time, Integer hotel_id) {
+        return roomMapper.selectByDateAndHotelId(checkin_time, leave_time, hotel_id);
+    }
+
+    @Override
+    public  List<Room> findRoomsByDateAndHotelId2(String checkin_time, String leave_time, Integer hotel_id) {
+        return roomMapper.selectByDateAndHotelId2(checkin_time, leave_time, hotel_id);
+    }
+
+    @Override
     public List<Room> findRoomsByHotelId(Integer id) {
         RoomExample roomExample = new RoomExample();
         RoomExample.Criteria criteria = roomExample.createCriteria();

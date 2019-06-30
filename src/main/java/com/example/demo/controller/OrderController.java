@@ -3,21 +3,14 @@ package com.example.demo.controller;
 import com.example.demo.domain.Hotel;
 import com.example.demo.domain.Orders;
 import com.example.demo.domain.Room;
-import com.example.demo.domain.RoomType;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
-import com.example.demo.service.RoomTypeService;
-import org.apache.ibatis.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -114,21 +107,23 @@ public class OrderController
         return "wait_for_pay_booking.html";
     }
 
-    @PostMapping("/deleteRoom")
+    @RequestMapping("/deleteRoom")
     @ResponseBody
     public String deleteRoom(HttpServletRequest request, Model model)
     {
-        HttpSession session=request.getSession();
-        ArrayList tmp=(ArrayList)session.getAttribute("info");
-        //System.out.println(tmp.getClass());
-        Order_info info=(Order_info)tmp.get(0);
-        Integer order_id=info.getOrder_id();
-        Orders order=ordersService.findOrdersByOrder_id(order_id);
+        String id=request.getParameter("infoss");
+
+//        HttpSession session=request.getSession();
+//        ArrayList tmp=(ArrayList)session.getAttribute("info");
+//        //System.out.println(tmp.getClass());
+//        Order_info info=(Order_info)tmp.get(Integer.valueOf(id));
+//        Integer order_id=info.getOrder_id();
+        Orders order=ordersService.findOrdersByOrder_id(Integer.valueOf(id));
         order.setIspay("o");//代表退款
         ordersService.deleteOrderByid(order);
 
         //model.addAttribute("order_bef_info",order_infos);
-        return order_id.toString();
+        return id;
     }
 
     @RequestMapping("/payRoom")
