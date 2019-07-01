@@ -26,25 +26,6 @@ public class hotelController {
 
     @Autowired
     private HotelService hotelService;
-    @Autowired
-    private RoomService roomService;
-
-    @RequestMapping("/roombook/{h_id}/{checkin_time}/{leave_time}")
-    public String roomBook(@PathVariable("h_id")Integer h_id,
-                           @PathVariable("checkin_time")String checkin_time,
-                           @PathVariable("leave_time") String leave_time,
-                           Model model) throws ParseException{
-        List<Room> rooms_empty = roomService.findRoomsByDateAndHotelId(checkin_time, leave_time, h_id);
-        List<Room> rooms_full = roomService.findRoomsByDateAndHotelId2(checkin_time, leave_time, h_id);
-        model.addAttribute("rooms_empty", rooms_empty);
-        model.addAttribute("rooms_full", rooms_full);
-        return "room_booking";
-    }
-
-    @RequestMapping("/roombook")
-    public String roomBook() {
-        return "room_booking";
-    }
 
     @RequestMapping(value = "/hotelinfo/{hotel_id}")
     public String hotelInfo(@PathVariable("hotel_id") int id, Model model) throws ParseException {
@@ -53,24 +34,27 @@ public class hotelController {
         return "hotel_info";
     }
 
-    @RequestMapping(value = "/hotelsearch/{h_city}")
+    @RequestMapping(value = "/hotelsearch/{h_city}/{h_price}")
     @ResponseBody
-    public List<Hotel> hotelSearch(@PathVariable("h_city") String city, Model model) {
-        System.out.println(city);
+    public List<Hotel> hotelSearch(@PathVariable("h_city") String city,
+                                   @PathVariable("h_price") Integer price, Model model) {
+        System.out.println(city + " " + price);
         Hotel hotel = new Hotel();
         hotel.sethCity(city);
+        hotel.sethRates(price);
         List<Hotel> hotels = findHotel(hotel);
         return hotels;
     }
 
-    @RequestMapping(value = "/hotelsearch/{h_city}/{checkin_time}/{leave_time}")
+    @RequestMapping(value = "/hotelsearch/{h_city}/{h_price}/{checkin_time}/{leave_time}")
     @ResponseBody
     public List<Hotel> hotelSearch(@PathVariable("h_city") String city,
+                                   @PathVariable("h_price") Integer price,
                                    @PathVariable("checkin_time") String checkin_time,
                                    @PathVariable("leave_time") String leave_time,
                                    Model model) throws ParseException {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Hotel> hotels = hotelService.findHotelByDateAndCity(city,
+        List<Hotel> hotels = hotelService.findHotelByDateAndCityAndRates(city, price,
                 dateformat.parse(checkin_time), dateformat.parse(leave_time));
         return hotels;
     }

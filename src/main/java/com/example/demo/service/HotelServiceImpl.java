@@ -29,14 +29,17 @@ public class HotelServiceImpl implements HotelService{
     }
 
     @Override
-    public List<Hotel> findHotelByDateAndCity(String city, Date checkin_time, Date leave_time) {
-        return hotelMapper.selectByDateAndCity(city, checkin_time, leave_time);
+    public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer price, Date checkin_time, Date leave_time) {
+        return hotelMapper.selectByDateAndCityAndRates(city, price, checkin_time, leave_time);
     }
 
     @Override
     public List<Hotel> findHotelSelective(Hotel hotel) {
         HotelExample hotelExample = new HotelExample();
         HotelExample.Criteria criteria = hotelExample.createCriteria();
+        hotelExample.setOrderByClause("h_rates");
+        if (hotel.gethRates() != null)
+            criteria.andHRatesLessThan(hotel.gethRates());
         if (hotel.gethCity() != null)
             criteria.andHCityLike(hotel.gethCity());
         if (hotel.gethName() != null)

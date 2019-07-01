@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface HotelService {
     List<Hotel> findHotelSelective(Hotel hotel);
-    List<Hotel> findHotelByDateAndCity(String city, Date checkin_time, Date leave_time);
+    List<Hotel> findHotelByDateAndCityAndRates(String city, Integer price, Date checkin_time, Date leave_time);
     List<Hotel> findHotel();
     Hotel findHotelById(int id);
     List<Hotel> findHotelsByRooms(List<Room> rooms);

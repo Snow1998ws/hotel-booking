@@ -38,11 +38,13 @@
         function searchHotel() {
             var checkin_time = $("#calendar").val(), leave_time = $("#calendar2").val(), url;
             if (checkin_time == "" || leave_time == "")
-                url = "/hotelsearch/" + $('#search_city').val();
+                url = "/hotelsearch/" + $('#search_city').val() + "/" + $("#search_price").val();
             else
-                url = "/hotelsearch/" + $('#search_city').val() + "/" + checkin_time + "/" + leave_time;
+                url = "/hotelsearch/" + $('#search_city').val() + "/" + $("#search_price").val() +
+                    "/" + checkin_time + "/" + leave_time;
             // alert(url);
             $(".item_block_big").empty();
+            $(".jump_content").empty();
             info = {
                 "city": $('#search_city').val()
             };
@@ -96,7 +98,7 @@
     <div class="intro">
         <form id="searchBar">
             <div class="div_search chose_position">入住地点：
-                <input name="city" type="text" id="search_city" placeholder="输入地名" readonly="readonly">
+                <input name="city" type="text" id="search_city" placeholder="输入地名" value="成都" readonly="readonly">
                 <div class="search">
                     <div class="citySelect">
                         <span class="cityName"></span>
@@ -114,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <div class="div_search chose_price">最高价：￥<input name="price" type="text" id="search_price" placeholder="输入价格" oninput = "value=value.replace(/[^\d]/g,'')"></div>
+            <div class="div_search chose_price">价格：￥<input name="price" type="text" id="search_price" placeholder="输入价格" value="200" oninput = "value=value.replace(/[^\d]/g,'')"></div>
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
             <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
@@ -142,7 +144,7 @@
     <!-- 酒店概览结束 -->
 
     <div class="jump_content">
-        <a href=""><div class="jump_icon jump_left" title='上一页' th:unless="${current_page <= 1}"></div></a>
+        <a th:href="'/home_page=' + ${current_page - 1}"><div class="jump_icon jump_left" title='上一页' th:unless="${current_page <= 1}"></div></a>
         <input class="jump_num" type="number" th:value="${current_page}" min="1">
         <div class="jump_btn" onclick="jump_page()">跳转</div>
         <a th:href="'/home_page=' + ${current_page + 1}"><div class="jump_icon jump_right" title='下一页' th:unless="${current_page >= total_page}"></div></a>
