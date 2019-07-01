@@ -27,20 +27,22 @@
 }
 
 .title .title_search{
-    width: 230px;
-    height: 32px;
-    padding: 0 10px;
-    font-size: 14px;
-    border: none;
+    width: 260px;
+    height: 44px;
+    padding: 0 10px 0 42px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 2px solid rgb(0,0,0);
+    border-radius: 5px;
 }
 
 .title .title_search_icon{
     position: relative;
     width: 30px;
     height: 30px;
-    left: -31px;
-    top: 1px;
-    background-image: url(../../img/icon/search.jpg);
+    left: -255px;
+    top: 5px;
+    background-image: url(../../img/icon/search.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

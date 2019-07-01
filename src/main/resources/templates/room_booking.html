@@ -40,7 +40,11 @@
     <!-- 标题 -->
     <div class="title">
         <div class="Titem1">
-            <a href="home.html"><div class="web_logo"></div></a>
+            <a href="/home"><div class="web_logo"></div></a>
+            <div class="title_search_div">
+                <input class="title_search" type="search" placeholder="搜索...">
+                <div class="title_search_icon"></div>
+            </div>
         </div>
         <div class="Titem2" th:unless="${session.user_id != null}">
             <a href="javascript:;" style="color: rgb(0,0,0)">登录/注册</a>

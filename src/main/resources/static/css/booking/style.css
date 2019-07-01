@@ -113,7 +113,7 @@
 }
 
 .show{
-    transform: scale(0.7,0.7);
+    transform: scale(0.5,0.5);
     position: relative;
-    left: -20px;
+    left: -25px;
 }
