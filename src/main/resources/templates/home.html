@@ -74,6 +74,11 @@
             return false;
         };
         function jump_page() {
+            var totalpage = [[${total_page}]];
+            if (totalpage < $(".jump_num").val()) {
+                alert("超过跳转的最大页数!");
+                return false;
+            }
             window.location.href = "/home_page=" + $(".jump_num").val();
         }
     </script>
