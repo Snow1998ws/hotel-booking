@@ -1,69 +1,48 @@
+.hotel_info_pic{
+    width: 100%;
+    height: 300px;
+    margin: 15px auto;
+}
+
+.pic_item{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(50%);
+    transition: all 0.3s;
+}
+
+.pic_item{
+    transform: scale(1.1,1.1);
+    filter: grayscale(100%);
+}
+
 .right_title{
-    font-size: 20px;
+    font-size: 40px;
     font-weight: 600;
     padding-bottom: 15px;
     border-bottom: rgba(105,105,105,0.5) 1px solid;  
 }
-.font_style {
-    font-family: 'PingFang-SC'!important;
-    color: #484848 !important;
-    font-weight: 800 !important;
-}
+
 .right_intro{
     width: 55vw;
     min-width: 400px;
     margin: 30px 0 0 3vw;
 }
 
-.right_pic{
-    width: 100%;
-    height: 30vw;
-    min-height: 250px;
-    margin: 15px 0;
-    position: relative;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-image: url(../../img/hotel/hotel_001.jpg); */
-}
-
-.hotel_info_pic{
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: absolute;
-}
-
-.hotel_info_pic:nth-of-type(1){
-    background-image: url(../../img/hotel/hotel_002.jpg);
-    opacity: 0;
-}
-.hotel_info_pic:nth-of-type(2){
-    background-image: url(../../img/hotel/hotel_003.jpg);
-    opacity: 0;
-}
-.hotel_info_pic:nth-of-type(3){
-    background-image: url(../../img/hotel/hotel_001.jpg);
-    opacity: 0;
-}
-.hotel_info_pic:nth-of-type(4){
-    background-image: url(../../img/hotel/hotel_003.jpg);
-    opacity: 0;
-}
-.hotel_info_pic:nth-of-type(5){
-    background-image: url(../../img/hotel/hotel_001.jpg);
-    opacity: 1;
-}
-
 .right_text{
     width: 100%;
     padding-top: 15px;
-    border-top: rgba(105,105,105,0.5) 1px solid;
-    font-size: 16px;
+    margin: 30px auto; 
 }
 
-.right_text p{
+.right_text input{
     text-indent:40px;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    height: 200px;
+    border: none;
 }

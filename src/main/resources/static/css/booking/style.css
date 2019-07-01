@@ -5,11 +5,11 @@
 }
 
 .booking_div{
-    position: fixed;
+    position: absolute;
     max-width: calc(var(--max_width));
     width: calc(var(--width));
     min-width: calc(var(--min_width));
-    top: 80px;
+    top: 500px;
     right: 3vw;
     padding: 0 20px;
     border: rgb(221, 97, 89) 1px solid;

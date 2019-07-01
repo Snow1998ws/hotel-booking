@@ -174,3 +174,23 @@ a:hover,a:link,a:active.a:visited{
 .jump_right{
     transform:rotate(180deg);
 }
+
+.dis_flex{
+    display: flex;
+}
+
+.flex_1{
+    flex: 1;
+}
+
+.overflow_hidden{
+    overflow: hidden;
+}
+
+.height_100{
+    height: 100%;
+}
+
+.height_50{
+    height: 50%;
+}
