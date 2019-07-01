@@ -87,6 +87,7 @@ public class UserController {
             }
             /* ------------------------------- 将用户信息存储进session --------------------------- */
             User user_find = users.get(0);
+            int perm=user_find.getPerm();
             HttpSession session = request.getSession();
             session.setAttribute("user_id", user.getUserId());
             session.setAttribute("psd", user.getPsd());
@@ -109,7 +110,10 @@ public class UserController {
 //            Cookie cookie = new Cookie("last" , time);
 //            cookie.setMaxAge(60 * 60 * 24 * 7);
 //            response.addCookie(cookie);
-            return "redirect:/home";
+            if(perm==1)
+                return "redirect:/home";
+            else
+                return "admin_search.html";
         } catch (Exception e) {
             e.printStackTrace();
             return "数据库查询错误";
@@ -132,6 +136,34 @@ public class UserController {
         }
     }
 
+
+    @PostMapping("/admin_search")
+    @ResponseBody
+    public List<String> admin_search(HttpServletRequest request,Model model)
+    {
+        String list=request.getParameter("list");
+        String content=request.getParameter("content");
+        List<String> res=new ArrayList<>();
+        if("0".equals(list))
+        {
+            List<User> users=userService.findUserByContent(content);
+            for(int i=0;i<users.size();i++)
+            {
+                res.add(users.get(i).getUserId());
+                res.add(users.get(i).getUserName());
+            }
+            return res;
+        }
+        else if("1".equals(list))
+        {
+
+        }
+        else
+        {
+
+        }
+        return res;
+    }
 
     public List<User> findUser() {
         return userService.findUser();
