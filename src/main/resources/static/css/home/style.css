@@ -90,13 +90,6 @@
     background-color: rgb(202, 61, 51);
 }
 
-/* 评分 */
-.show{
-    transform: scale(0.7,0.7);
-    position: relative;
-    left: -90px;
-}
-
 /* 城市下拉 */
 .search{
     top: 16px;

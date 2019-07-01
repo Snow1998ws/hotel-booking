@@ -88,10 +88,3 @@
     min-width: 400px!important;
     margin: 0 auto;
 }
-
-/* 修改星级大小 */
-.show{
-    transform: scale(0.7,0.7);
-    position: relative;
-    left: -20px;
-}
