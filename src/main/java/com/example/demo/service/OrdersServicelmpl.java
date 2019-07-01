@@ -39,7 +39,13 @@ public class OrdersServicelmpl implements OrdersService{
         criteria.andOUserIdEqualTo(id);
         Date date=new Date();
         criteria.andLeaveTimeLessThan(date);
-        return ordersMapper.selectByExample(ordersExample);
+        List<Orders> orders=ordersMapper.selectByExample(ordersExample);
+        OrdersExample ordersExample1=new OrdersExample();
+        OrdersExample.Criteria criteria11=ordersExample1.createCriteria();
+        criteria11.andIspayEqualTo("o");
+        List<Orders> orders1=ordersMapper.selectByExample(ordersExample1);
+        orders.addAll(orders1);
+        return orders;
     }
     @Override
     public  List<Orders> findNotPay_orderByid(String id)

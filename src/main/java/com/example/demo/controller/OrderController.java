@@ -131,15 +131,15 @@ public class OrderController
     @RequestMapping("/payRoom")
     public String payRoom(HttpServletRequest request,Model model)
     {
-        HttpSession session=request.getSession();
-        ArrayList tmp=(ArrayList)session.getAttribute("info");
-        //System.out.println(tmp.getClass());
-        Order_info info=(Order_info)tmp.get(0);
-        int order_id=info.getOrder_id();
-        Orders order=ordersService.findOrdersByOrder_id(order_id);
-        order.setIspay("o");//代表退款
-        ordersService.deleteOrderByid(order);
-        return "payment";
+//        HttpSession session=request.getSession();
+//        ArrayList tmp=(ArrayList)session.getAttribute("info");
+//        //System.out.println(tmp.getClass());
+//        Order_info info=(Order_info)tmp.get(0);
+//        int order_id=info.getOrder_id();
+//        Orders order=ordersService.findOrdersByOrder_id(order_id);
+//        order.setIspay("o");//代表退款
+//        ordersService.deleteOrderByid(order);
+        return "payment.html";
     }
 
     @RequestMapping("/viewOrder_info")
