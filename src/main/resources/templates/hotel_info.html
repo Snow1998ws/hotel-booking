@@ -81,7 +81,7 @@
     <div class="right_intro font_style">
         <div class="right_title" th:text="${hotel.hName}"></div>
         <div class="right_text">
-            <input type="textarea" th:value="${hotel.hOverview}" readonly="readonly">
+            <p th:text="${hotel.hOverview}"></p>
         </div>
         <!--地图（流内外切换）-->
         <div class="map_content">
