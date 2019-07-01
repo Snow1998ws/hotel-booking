@@ -40,9 +40,9 @@
             
         }
 
-        function book_btn() {
-            var parentnode = this.parentNode.parentNode.parentNode;
-            alert(parentnode);
+        function book_btn(data) {
+            var parentnode = data.parentNode.parentNode.parentNode;
+            alert(data.innerText);
         }
     </script>
 </head>
@@ -109,7 +109,7 @@
             <div class="room_booking_item_info_list list_5">
                 <div class="room_booking_item_info_list_title">用户首选</div>
                 <div class="room_booking_item_info_list_content">
-                    <div class="list_content_btn" onclick="book_btn()">立即预定</div>
+                    <div class="list_content_btn" onclick="book_btn(this)">立即预定</div>
                 </div>
             </div>
         </div>
