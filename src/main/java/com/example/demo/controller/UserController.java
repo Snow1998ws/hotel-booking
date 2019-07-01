@@ -3,6 +3,7 @@ import com.example.demo.domain.Hotel;
 import com.example.demo.domain.User;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,13 +36,25 @@ public class UserController {
         return "user_info_change";
     }
 
+    @RequestMapping("/home_page={current_page}")
+    public String homePage(@PathVariable("current_page") Integer current_page, Model model) {
+        System.out.println(current_page);
+        List<Hotel> hotels = findHotel();
+        int total_page = (int)Math.ceil((double)hotels.size() / 9);
+        model.addAttribute("hotels", hotels.subList(9 * current_page - 9,
+                9 * current_page > hotels.size() ? hotels.size(): 9 * current_page));
+        model.addAttribute("current_page", current_page);
+        model.addAttribute("total_page", total_page);
+        return "home";
+    }
+
     @RequestMapping("/home")
     public String homePage(Model model) {
-        List<Hotel> hotels = findHotel(), new_hotels = new ArrayList<>();
-        for (int i = 0; i < 9; i++) {
-            new_hotels.add(hotels.get(i));
-        }
-        model.addAttribute("hotels", new_hotels);
+        List<Hotel> hotels = findHotel();
+        int total_page = (int)Math.ceil((double)hotels.size() / 9);
+        model.addAttribute("hotels", hotels.subList(0,9));
+        model.addAttribute("total_page", total_page);
+        model.addAttribute("current_page", 1);
         return "home";
     }
 

@@ -71,6 +71,9 @@
             });
             return false;
         };
+        function jump_page() {
+            window.location.href = "/home_page=" + $(".jump_num").val();
+        }
     </script>
 </head>
 <body>
@@ -88,7 +91,7 @@
         </div>
     </div>
     <!-- 标题结束 -->
-    
+
     <!-- 广告图 -->
     <div class="intro">
         <form id="searchBar">
@@ -100,7 +103,7 @@
                         <i class="iconDown"></i>
                         <i class="line"></i>
                     </div>
-                
+
                     <div class="dropDown">
                         <div class="dropProv">
                             <ul class="dropProvUl dropUl"></ul>
@@ -111,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div class="div_search chose_price">最高价：￥<input name="price" type="text"  placeholder="输入价格" oninput = "value=value.replace(/[^\d]/g,'')"></div>
+            <div class="div_search chose_price">最高价：￥<input name="price" type="text" id="search_price" placeholder="输入价格" oninput = "value=value.replace(/[^\d]/g,'')"></div>
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
             <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
@@ -139,10 +142,10 @@
     <!-- 酒店概览结束 -->
 
     <div class="jump_content">
-        <div class="jump_icon jump_left" title='上一页'></div>
-        <input class="jump_num" type="number" min="1">
-        <div class="jump_btn">跳转</div>
-        <div class="jump_icon jump_right" title='下一页'></div>
+        <a href=""><div class="jump_icon jump_left" title='上一页' th:unless="${current_page <= 1}"></div></a>
+        <input class="jump_num" type="number" th:value="${current_page}" min="1">
+        <div class="jump_btn" onclick="jump_page()">跳转</div>
+        <a th:href="'/home_page=' + ${current_page + 1}"><div class="jump_icon jump_right" title='下一页' th:unless="${current_page >= total_page}"></div></a>
     </div>
 
 
@@ -224,7 +227,7 @@
                 <a class="cd-forget" href="#">忘记密码</a>
             </nav>
         </div>
-        <div class="cd-user-modal"> 
+        <div class="cd-user-modal">
             <div class="cd-user-modal-container">
                 <ul class="cd-switcher">
                     <li><a href="#0">用户登录</a></li>
@@ -238,24 +241,23 @@
                             <label class="image-replace cd-username" for="signin-username">用户名</label>
                             <input class="full-width has-padding has-border" id="signin-username" name="userId" type="text" maxlength="15" placeholder="输入用户名">
                         </p>
-    
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signin-password">密码</label>
                             <input class="full-width has-padding has-border" id="signin-password" name="psd" type="password" maxlength="15" placeholder="输入密码">
                             <p class="check-back hidden">用户名或者密码不正确</p>
                         </p>
-    
+
                         <p class="fieldset">
                             <input type="checkbox" id="remember-me" checked>
                             <label for="remember-me">记住登录状态</label>
                         </p>
-    
+
                         <p class="fieldset">
                             <input class="full-width2" type="submit" value="登 录">
                         </p>
                     </form>
                 </div>
-    
+
                 <div id="cd-signup"> <!-- 注册表单 -->
                     <form class="cd-form" th:method="POST" th:action="@{/signup}">
                         <p class="fieldset">
@@ -263,30 +265,29 @@
                             <input class="full-width has-padding has-border" name="userId" id="signup-username" type="text" maxlength="15" placeholder="输入用户名"/>
                             <p class="check-back hidden">用户名格式不规范</p>
                         </p>
-    
+
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password1">密码</label>
                             <input class="full-width has-padding has-border" name="psd"  id="signup-password1" type="password" maxlength="15" placeholder="输入6-15位密码"/>
                             <p class="check-back hidden">密码格式不规范</p>
                         </p>
-    
+
                         <p class="fieldset">
                             <label class="image-replace cd-password" for="signup-password2">再次确认密码</label>
                             <input class="full-width has-padding has-border" id="signup-password2" type="password" maxlength="15" placeholder="再次输入密码"/>
                             <p class="check-back hidden">两次密码不一样</p>
                         </p>
-    
+
                         <p class="fieldset">
                             <label class="image-replace cd-email" for="signup-email">邮箱</label>
                             <input class="full-width has-padding has-border" id="signup-email" name="mail" type="email" placeholder="输入mail"/>
                             <p class="check-back hidden">邮箱格式错误</p>
                         </p>
-    
+
                         <p class="fieldset">
                             <input type="checkbox" id="accept-terms">
                             <label for="accept-terms">我已阅读并同意 <a href="#0">用户协议</a></label>
                         </p>
-    
                         <p class="fieldset">
                             <input class="full-width2" type="submit" value="注册新用户">
                         </p>
@@ -294,7 +295,7 @@
                 </div>
                 <a href="#0" class="cd-close-form">关闭</a>
             </div>
-        </div> 
+        </div>
     </div>
 
 
