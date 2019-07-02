@@ -63,6 +63,12 @@
     flex: 1;
 }
 
+#searchBar .chose_price select{
+    border: none;
+    outline: none;
+    width: 80px;
+}
+
 #searchBar .chose_position{
     position: relative;
     flex:1;
