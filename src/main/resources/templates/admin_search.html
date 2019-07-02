@@ -12,7 +12,55 @@
     <!--本页-->
     <link rel='stylesheet' href='css/admin_search/style.css'>
     <script type="text/javascript" src="js/admin_search/search.js"></script>
+    <script type="text/javascript" src="js/admin/AdminManage.js"></script>
     <script type="text/javascript" src="js/admin/adminSearchUser.js"></script>
+<script>
+    // function adminManage() {
+    //     alert("222")
+    //     var tmp1=($(this).prev()).children('.result_info_item').eq(0);
+    //     var tmp1=$(this).attr("id");
+    //     alert((tmp1));
+    //
+    //     $.ajax(
+    //         {
+    //             type: "POST",
+    //             url: "/adminManage",
+    //             dataType:'json',
+    //             data:{"foss":$(this).prev().children('.result_info_item').eq(0).text()} ,
+    //             success: function (res)
+    //             {
+    //                 alert("333")
+    //                 var tmp=$(".admin_search_bar_select  option:selected").attr('value');
+    //                 alert(tmp);
+    //                 if(tmp=="0")
+    //                 {
+    //                     window.location.href="/adminUser/"+res;
+    //                 }
+    //                 else if(res=="1")
+    //                 {
+    //                     window.location.href="/adminHotel/"+res;
+    //                 }
+    //                 else
+    //                 {
+    //                     window.location.href="/adminOrder/"+res;
+    //                 }
+    //             },
+    //             error:function (msg) {
+    //                 alert("错误");
+    //                 var tmp=$(".admin_search_bar_select  option:selected").attr('value');
+    //                 alert(tmp1);
+    //                 if(tmp=="0")
+    //                 {
+    //                     alert("adminUser/"+tmp1)
+    //                     window.location.href="adminUser/"+tmp1;
+    //                 }
+    //             }
+    //         }
+    //     );
+    // }
+</script>
+
+
     <!-- 标题 -->
     <link rel="stylesheet" href="css/title/style.css">
 </head>
