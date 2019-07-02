@@ -7,19 +7,20 @@
 .pic_item{
     width: 100%;
     height: 100%;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: grayscale(50%);
+    filter: grayscale(30%);
     transition: all 0.3s;
 }
 
-.pic_item{
+.pic_item:hover{
     transform: scale(1.1,1.1);
-    filter: grayscale(100%);
+    filter: grayscale(0%);
 }
 
 .right_title{
+    margin-top: 20px;
     font-size: 40px;
     font-weight: 600;
     padding-bottom: 15px;
@@ -38,11 +39,10 @@
     margin: 30px auto; 
 }
 
-.right_text input{
+.right_text p{
     text-indent:40px;
     font-size: 16px;
     padding: 10px;
     width: 100%;
-    height: 200px;
     border: none;
 }
