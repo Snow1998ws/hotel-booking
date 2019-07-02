@@ -20,7 +20,7 @@ function admin_search() {
                     add_htmls +="<span class='result_info_name'>ID:</span><div class='result_info_item'>"+res[i]+"</div>";
                     add_htmls +="<span class='result_info_name'>名称:</span><div class='result_info_item' >"+res[i+1]+"</div>";
                     add_htmls +="<span class='result_info_name' style='display: none;'>ID:</span><div class='result_info_item' style='display: none;'>123</div>";
-                    add_htmls +="</div><div class='result_op'><div class='result_btn'>管理</div></div></div>";
+                    add_htmls +="</div><div class='result_op'  ><div class='result_btn' >管理</div></div></div>";
                 }
                 $(".admin_search_result").html(add_htmls);
             },

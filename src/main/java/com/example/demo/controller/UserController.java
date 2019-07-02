@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
 import javax.servlet.http.*;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -176,6 +179,37 @@ public class UserController {
             }
         }
         return res;
+    }
+
+    @PostMapping("/adminManage")
+    @ResponseBody
+    public String adminManage(HttpServletRequest request , Model model)
+    {
+        String id=request.getParameter("foss");
+        return id;
+    }
+
+    @RequestMapping(value = "/adminUser/{res}")
+    public String adminUser(@PathVariable("res") String id, Model model) throws ParseException
+    {
+        User user=userService.findUserById(id);
+        model.addAttribute("user1",user);
+        return "admin_user";
+    }
+
+    @RequestMapping(value = "/adminHotel/{res}")
+    public String adminHotel(@PathVariable("res") int id, Model model) throws ParseException
+    {
+        Hotel hotel=hotelService.findHotelById(id);
+        model.addAttribute("hotel",hotel);
+        return "admin_hotel";
+    }
+    @RequestMapping(value = "/adminOrder/{res}")
+    public String adminOrder(@PathVariable("res") int id, Model model) throws ParseException
+    {
+        Orders orders=ordersService.findOrdersByOrder_id(id);
+        model.addAttribute("order",orders);
+        return "admin_booking";
     }
 
     public List<User> findUser() {
