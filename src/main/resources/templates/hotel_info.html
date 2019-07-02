@@ -263,7 +263,7 @@
     $(document).ready(function() {
         var map = new AMap.Map('container', {
             resizeEnable: true, //是否监控地图容器尺寸变化
-            zoom: 11, //初始地图级别
+            zoom: 20, //初始地图级别
         });
 
         var geocoder,marker,latlng;
@@ -271,7 +271,7 @@
             if(!geocoder){
                 geocoder = new AMap.Geocoder({
                     city: "010", //城市设为北京，默认：“全国”
-                    radius: 100 //范围，默认：500
+                    radius: 2000 //范围，默认：500
                 });
             }
             if(!marker){
@@ -296,7 +296,7 @@
             }
             let lng = $('.map_lng_input').val();
             let val_lng = parseFloat(lng);
-            if(val_lng <= -90 || val_lng >= 90){
+            if(val_lng <= -180 || val_lng >= 180){
                 flag_error = 1;
                 $('.map_lat_input').val("非法纬度");
             }
@@ -322,6 +322,10 @@
             $('.map_lng_input').val(lng);
             mapTo();
         }
+
+        var longtitude = [[${hotel.hLongtitude}]], latitude = [[${hotel.hLatitude}]];
+        mapSet(longtitude, latitude);
+        $(".map_content").animate({top: '0vh'}, 1000);
 
         $(".map_icon").on("click", function () {
             var longtitude = [[${hotel.hLongtitude}]], latitude = [[${hotel.hLatitude}]];

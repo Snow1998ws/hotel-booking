@@ -1,5 +1,7 @@
 package com.example.demo.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Orders {
@@ -19,6 +21,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkinTime;
 
     /**
@@ -28,6 +31,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date leaveTime;
 
     /**
@@ -55,6 +59,7 @@ public class Orders {
      *
      * @mbg.generated Thu Jun 27 14:31:50 CST 2019
      */
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private Date arrive;
 
     /**

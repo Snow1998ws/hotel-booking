@@ -14,12 +14,34 @@ public class OrdersServicelmpl implements OrdersService{
     @Autowired
     private OrdersMapper ordersMapper;
 
+    @Override
+    public void saveOrder(Orders order){
+        ordersMapper.insertSelective(order);
+    }
 
+    @Override
+    public List<Orders> findOrdersByContent(String content)
+    {
+        OrdersExample ordersExample=new OrdersExample();
+        ordersExample.or().andIspayEqualTo(content);
+        if(isInt(content))
+        {
+            ordersExample.or().andDiscountEqualTo(Integer.valueOf(content));
+            ordersExample.or().andORoomIdEqualTo(Integer.valueOf(content));
+            ordersExample.or().andOrderIdEqualTo(Integer.valueOf(content));
+            ordersExample.or().andPeopleEqualTo(Integer.valueOf(content));
+            ordersExample.or().andTotalpriceBetween(Integer.valueOf(content)-100,Integer.valueOf(content)+10);
+        }
+
+        ordersExample.or().andOUserIdEqualTo(content);
+        return ordersMapper.selectByExample(ordersExample);
+    }
     @Override
     public Orders findOrdersByOrder_id(Integer id)
     {
         return ordersMapper.selectByPrimaryKey(id);
     }
+
     @Override
     public List<Orders> findPre_ordersByid(String id)
     {
@@ -60,5 +82,16 @@ public class OrdersServicelmpl implements OrdersService{
     public void deleteOrderByid(Orders orders)
     {
         ordersMapper.updateByPrimaryKey(orders);
+    }
+    public boolean isInt(String s)
+    {
+        for(int i=0;i<s.length();i++)
+        {
+            if(!Character.isDigit(s.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

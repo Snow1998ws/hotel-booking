@@ -166,3 +166,7 @@
 .booking_check_cancel:hover{
     transform: scale(1.5,1.5);
 }
+
+ input[readonly]{
+     background-color: #F0F0F0;
+ }

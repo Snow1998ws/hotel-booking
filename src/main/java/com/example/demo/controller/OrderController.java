@@ -9,14 +9,18 @@ import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
 import com.example.demo.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -30,6 +34,21 @@ public class OrderController
     private RoomService roomService;
     @Autowired
     private RoomTypeService roomTypeService;
+
+    @PostMapping("/addOrder")
+    @ResponseBody
+    public Map<String, Object> addOrder(Orders order) {
+        ordersService.saveOrder(order);
+        Map<String, Object> map = new HashMap<>();
+        map.put("result", "预定成功!");
+        return map;
+    }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder, WebRequest request) {
+//        DateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//    }
 
     @RequestMapping("/order_pre_info")
     public String orderpresent_info(HttpServletRequest request, Model model)

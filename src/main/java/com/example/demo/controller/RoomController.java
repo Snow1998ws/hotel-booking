@@ -26,6 +26,8 @@ public class RoomController {
         List<Room> rooms_full = roomService.findRoomsByDateAndHotelId2(checkin_time, leave_time, h_id);
         model.addAttribute("rooms_empty", rooms_empty);
         model.addAttribute("rooms_full", rooms_full);
+        model.addAttribute("checkin_time", checkin_time);
+        model.addAttribute("leave_time", leave_time);
         return "room_booking";
     }
 
