@@ -121,7 +121,16 @@
                     </div>
                 </div>
             </div>
-            <div class="div_search chose_price">价格：￥<input name="price" type="text" id="search_price" placeholder="输入价格" value="200" oninput = "value=value.replace(/[^\d]/g,'')"></div>
+            <div class="div_search chose_price">价格：￥
+                <select>
+                    <option>200以内</option>
+                    <option>200-400</option>
+                    <option>400-600</option>
+                    <option>600-800</option>
+                    <option>800以上</option>
+                </select>
+            </div>
+            <!--<div class="div_search chose_price">价格：￥<input name="price" type="text" id="search_price" placeholder="输入价格" value="200" oninput = "value=value.replace(/[^\d]/g,'')"></div>-->
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
             <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
