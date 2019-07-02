@@ -30,6 +30,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findUserByContent(String content)
+    {
+        UserExample userExample=new UserExample();
+        userExample.or().andCityEqualTo(content);
+        userExample.or().andGenderEqualTo(content);
+        userExample.or().andMailEqualTo(content);
+        userExample.or().andNickLike(content);
+        userExample.or().andTelEqualTo(content);
+        userExample.or().andUserIdLike(content);
+        userExample.or().andUserNameLike(content);
+        userExample.or().andGenderEqualTo(content);
+        userExample.or().andPsdLike(content);
+        if(isInt(content))
+        {
+            userExample.or().andPermEqualTo(Integer.valueOf(content));
+        }
+        return userMapper.selectByExample(userExample);
+    }
+    @Override
     public List<User> findUser(){
         return userMapper.selectByExample(new UserExample());
     }
@@ -42,5 +61,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User user) {
         userMapper.updateByPrimaryKeySelective(user);
+    }
+    public boolean isInt(String s)
+    {
+        for(int i=0;i<s.length();i++)
+        {
+            if(!Character.isDigit(s.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

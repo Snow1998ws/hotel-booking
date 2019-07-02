@@ -32,6 +32,23 @@ public class HotelServiceImpl implements HotelService{
     public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer price, Date checkin_time, Date leave_time) {
         return hotelMapper.selectByDateAndCityAndRates(city, price, checkin_time, leave_time);
     }
+    @Override
+    public List<Hotel> findHotelByContent(String content)
+    {
+        HotelExample hotelExample=new HotelExample();
+        hotelExample.or().andHAddressLike(content);
+        hotelExample.or().andHCityEqualTo(content);
+        if(isInt(content))
+        {
+            hotelExample.or().andHIdEqualTo(Integer.valueOf(content));
+            hotelExample.or().andHRatesBetween(Integer.valueOf(content)-100,Integer.valueOf(content)+100);
+            hotelExample.or().andHScoreGreaterThanOrEqualTo(Integer.valueOf(content));
+            hotelExample.or().andHStarGreaterThanOrEqualTo(Integer.valueOf(content));
+        }
+        hotelExample.or().andHNameLike(content);
+        hotelExample.or().andHOverviewLike(content);
+        return hotelMapper.selectByExample(hotelExample);
+    }
 
     @Override
     public List<Hotel> findHotelSelective(Hotel hotel) {
@@ -69,5 +86,16 @@ public class HotelServiceImpl implements HotelService{
             hotels.add(hotel);
         }
         return hotels;
+    }
+     public boolean isInt(String s)
+    {
+        for(int i=0;i<s.length();i++)
+        {
+            if(!Character.isDigit(s.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -14,4 +14,5 @@ public interface HotelService {
     List<Hotel> findHotel();
     Hotel findHotelById(int id);
     List<Hotel> findHotelsByRooms(List<Room> rooms);
+    List<Hotel> findHotelByContent(String content);
 }
