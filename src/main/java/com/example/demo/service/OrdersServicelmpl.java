@@ -14,12 +14,17 @@ public class OrdersServicelmpl implements OrdersService{
     @Autowired
     private OrdersMapper ordersMapper;
 
+    @Override
+    public void saveOrder(Orders order){
+        ordersMapper.insertSelective(order);
+    }
 
     @Override
     public Orders findOrdersByOrder_id(Integer id)
     {
         return ordersMapper.selectByPrimaryKey(id);
     }
+
     @Override
     public List<Orders> findPre_ordersByid(String id)
     {

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../../css/room_booking/style.css">
     <link rel="stylesheet" href="../../../css/noroom_booking/style.css">
     <script type="text/javascript" src="../../../js/room_booking/hide.js"></script>
+    <script type="text/javascript" src="../../../js/room_booking/booking.js"></script>
     <!-- 标题 -->
     <link rel="stylesheet" href="../../../css/title/style.css">
     <!--导航栏-->
@@ -35,16 +36,6 @@
     <!-- 城市选择 -->
     <link rel="stylesheet" href="../../../css/select_city/citySelect.css">
     <script type="text/javascript" src="../../../js/select_city/citySelect.js"></script>
-    <script>
-        function book_ensure() {
-            
-        }
-
-        function book_btn(data) {
-            var parentnode = data.parentNode.parentNode.parentNode;
-            alert(data.innerText);
-        }
-    </script>
 </head>
 <body>
     <!-- 标题 -->
@@ -63,7 +54,7 @@
     <!-- 标题结束 -->
     
     <!-- 有剩余房 -->
-    <div class="room_booking_item" th:each="room: ${rooms_empty}" th:id="'room_' + *{room.roomId}">
+    <div class="room_booking_item" th:each="room: ${rooms_empty}" th:id="*{room.roomId}">
         <div class="room_booking_item_title" th:text="*{room.roomType.typeName}"></div>
         <div class="room_booking_item_info">
             <div class="room_booking_item_info_list list_0">
@@ -94,7 +85,7 @@
                 <div class="room_booking_item_info_list_title">今日房价</div>
                 <div class="room_booking_item_info_list_content">
                     <div class="list_content_text">
-                        <div>
+                        <div class="room_price">
                             <span style="font-size: 18px">RMB</span><span th:text="*{room.rPrice}"></span>
                         </div>
                     </div>
@@ -109,7 +100,7 @@
             <div class="room_booking_item_info_list list_5">
                 <div class="room_booking_item_info_list_title">用户首选</div>
                 <div class="room_booking_item_info_list_content">
-                    <div class="list_content_btn" onclick="book_btn(this)">立即预定</div>
+                    <div class="list_content_btn" onclick="book_btn()">立即预定</div>
                 </div>
             </div>
         </div>
@@ -135,7 +126,11 @@
     <!-- 确认订单（流外） -->
     <div class="booking_check">
         <div class="booking_check_list">
-            <div class="booking_check_div"><span class="booking_check_name">姓名:</span><input class="booking_check_input" type="text" readonly="readonly"></div>
+            <div class="booking_check_div"><span class="booking_check_name">订购账号:</span><input id="userId" class="booking_check_input" type="text" th:value="${session.user_id}" readonly="readonly"></div>
+            <div class="booking_check_div"><span class="booking_check_name">预计到达时间:</span><input id="arrive_time" class="booking_check_input" type="time"></div>
+        </div>
+        <div class="booking_check_list">
+            <div class="booking_check_div"><span class="booking_check_name">姓名:</span><input class="booking_check_input" type="text"></div>
             <div class="booking_check_div"><span class="booking_check_name">人数:</span><input id="booking_people" class="booking_check_input" type="text"></div>
         </div>
         <div class="booking_check_list">
@@ -147,8 +142,8 @@
             <div class="booking_check_div"><span class="booking_check_name">价格:</span><input id="booking_price" class="booking_check_input" type="text" readonly="readonly"></div>
         </div>
         <div class="booking_check_list">
-            <div class="booking_check_div"><span class="booking_check_name">入住时间:</span><input class="booking_check_input" type="text" readonly="readonly" th:value="${checkin_time}"></div>
-            <div class="booking_check_div"><span class="booking_check_name">退房时间:</span><input class="booking_check_input" type="text" readonly="readonly" th:value="${leave_time}"></div>
+            <div class="booking_check_div"><span class="booking_check_name">入住时间:</span><input id="checkin_time" class="booking_check_input" type="text" readonly="readonly" th:value="${checkin_time}"></div>
+            <div class="booking_check_div"><span class="booking_check_name">退房时间:</span><input id="leave_time" class="booking_check_input" type="text" readonly="readonly" th:value="${leave_time}"></div>
         </div>
         <div class="booking_check_btn">确认信息</div>
         <div class="booking_check_cancel"></div>

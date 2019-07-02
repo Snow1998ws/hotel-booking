@@ -27,6 +27,7 @@ public class hotelController {
     @Autowired
     private HotelService hotelService;
 
+
     @RequestMapping(value = "/hotelinfo/{hotel_id}")
     public String hotelInfo(@PathVariable("hotel_id") int id, Model model) throws ParseException {
         Hotel hotel = findHotelById(id);

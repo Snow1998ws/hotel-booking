@@ -1,4 +1,8 @@
-* {font-family: 'Microsoft Yahei';}
+* {
+    font-family: 'PingFang-SC';
+    color: #484848 ;
+    font-weight: 800 !important;
+}
 .main_nav {
   width: 30vw;
   min-width: 380px;
