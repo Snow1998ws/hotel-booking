@@ -19,5 +19,10 @@ spring:
 logging:
   level:
      com.example.demo.mapper : debug
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
 
 

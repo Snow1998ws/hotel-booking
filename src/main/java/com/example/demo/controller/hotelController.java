@@ -35,27 +35,26 @@ public class hotelController {
         return "hotel_info";
     }
 
-    @RequestMapping(value = "/hotelsearch/{h_city}/{h_price}")
+    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}")
     @ResponseBody
     public List<Hotel> hotelSearch(@PathVariable("h_city") String city,
-                                   @PathVariable("h_price") Integer price, Model model) {
-        System.out.println(city + " " + price);
+                                   @PathVariable("low") Integer low, @PathVariable("high")Integer high, Model model) {
         Hotel hotel = new Hotel();
         hotel.sethCity(city);
-        hotel.sethRates(price);
-        List<Hotel> hotels = findHotel(hotel);
+        List<Hotel> hotels = hotelService.findHotelSelective(hotel, low, high);
         return hotels;
     }
 
-    @RequestMapping(value = "/hotelsearch/{h_city}/{h_price}/{checkin_time}/{leave_time}")
+    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}/{checkin_time}/{leave_time}")
     @ResponseBody
     public List<Hotel> hotelSearch(@PathVariable("h_city") String city,
-                                   @PathVariable("h_price") Integer price,
+                                   @PathVariable("h_price") Integer low,
+                                   @PathVariable("high") Integer high,
                                    @PathVariable("checkin_time") String checkin_time,
                                    @PathVariable("leave_time") String leave_time,
                                    Model model) throws ParseException {
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-        List<Hotel> hotels = hotelService.findHotelByDateAndCityAndRates(city, price,
+        List<Hotel> hotels = hotelService.findHotelByDateAndCityAndRates(city, low, high,
                 dateformat.parse(checkin_time), dateformat.parse(leave_time));
         return hotels;
     }
@@ -64,7 +63,4 @@ public class hotelController {
         return hotelService.findHotelById(id);
     }
 
-    public List<Hotel> findHotel(Hotel hotel) {
-        return hotelService.findHotelSelective(hotel);
-    }
 }

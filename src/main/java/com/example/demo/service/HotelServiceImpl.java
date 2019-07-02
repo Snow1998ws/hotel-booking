@@ -6,12 +6,14 @@ import com.example.demo.domain.Room;
 import com.example.demo.mapper.HotelMapper;
 import com.example.demo.mapper.OrdersMapper;
 import com.example.demo.mapper.RoomMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.zaxxer.hikari.util.SuspendResumeLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class HotelServiceImpl implements HotelService{
@@ -29,8 +31,18 @@ public class HotelServiceImpl implements HotelService{
     }
 
     @Override
-    public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer price, Date checkin_time, Date leave_time) {
-        return hotelMapper.selectByDateAndCityAndRates(city, price, checkin_time, leave_time);
+    public Map<String, Object> findHotel(int page, int rows) {
+        Page pages = PageHelper.startPage(page, rows);
+        List<Hotel> list = hotelMapper.selectByExample(new HotelExample());
+        PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(list);
+        Map<String, Object> map = new HashMap<>();
+        map.put("pageinfo", pageInfo);
+        return map;
+    }
+
+    @Override
+    public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer low, Integer high,  Date checkin_time, Date leave_time) {
+        return hotelMapper.selectByDateAndCityAndRates(city, low, high, checkin_time, leave_time);
     }
     @Override
     public List<Hotel> findHotelByContent(String content)
@@ -51,12 +63,11 @@ public class HotelServiceImpl implements HotelService{
     }
 
     @Override
-    public List<Hotel> findHotelSelective(Hotel hotel) {
+    public List<Hotel> findHotelSelective(Hotel hotel, Integer low, Integer high) {
         HotelExample hotelExample = new HotelExample();
         HotelExample.Criteria criteria = hotelExample.createCriteria();
         hotelExample.setOrderByClause("h_rates");
-        if (hotel.gethRates() != null)
-            criteria.andHRatesLessThan(hotel.gethRates());
+        criteria.andHRatesBetween(low, high);
         if (hotel.gethCity() != null)
             criteria.andHCityLike(hotel.gethCity());
         if (hotel.gethName() != null)
@@ -88,7 +99,7 @@ public class HotelServiceImpl implements HotelService{
         return hotels;
     }
      public boolean isInt(String s)
-    {
+     {
         for(int i=0;i<s.length();i++)
         {
             if(!Character.isDigit(s.charAt(i)))

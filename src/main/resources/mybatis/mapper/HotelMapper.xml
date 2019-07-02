@@ -135,7 +135,7 @@
     <select id="selectByDateAndCityAndRates" resultMap="BaseResultMap">
         select distinct
         <include refid="Base_Column_List" />
-        from hotel, room where r_hotel_id = h_id and h_city = #{city} and h_rates &lt; #{price} and room_id not in (select DISTINCT o_room_id from orders where not(#{checkin_time} >= leave_time or #{leave_time} &lt;= checkin_time))
+        from hotel, room where r_hotel_id = h_id and h_city = #{city} and h_rates between #{low} and #{high} and room_id not in (select DISTINCT o_room_id from orders where not(#{checkin_time} >= leave_time or #{leave_time} &lt;= checkin_time))
     </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

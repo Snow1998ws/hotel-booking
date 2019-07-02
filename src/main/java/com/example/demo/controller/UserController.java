@@ -5,6 +5,7 @@ import com.example.demo.domain.User;
 import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.UserService;
+import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import javax.jws.WebParam;
 import javax.servlet.http.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -40,25 +42,29 @@ public class UserController {
         return "user_info_change";
     }
 
-    @RequestMapping("/home_page={current_page}")
-    public String homePage(@PathVariable("current_page") Integer current_page, Model model) {
-        System.out.println(current_page);
-        List<Hotel> hotels = findHotel();
-        int total_page = (int)Math.ceil((double)hotels.size() / 9);
-        model.addAttribute("hotels", hotels.subList(9 * current_page - 9,
-                9 * current_page > hotels.size() ? hotels.size(): 9 * current_page));
-        model.addAttribute("current_page", current_page);
-        model.addAttribute("total_page", total_page);
-        return "home";
+    @GetMapping("/hotellist")
+    @ResponseBody
+    public Map<String, Object> homePage(@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum) {
+        Map<String, Object> map = hotelService.findHotel(pageNum, 9);
+//        List<Hotel> hotels = findHotel();
+//        int total_page = (int)Math.ceil((double)hotels./size() / 9)
+//        model.addAttribute("hotels", hotels.subList(9 * current_page - 9,
+//                9 * current_page > hotels.size() ? hotels.size(): 9 * current_page));
+//        model.addAttribute("hotels", hotels);
+//        model.addAttribute("current_page", current_page);
+//        model.addAttribute("total_page", total_page);
+        return map;
     }
 
     @RequestMapping("/home")
     public String homePage(Model model) {
-        List<Hotel> hotels = findHotel();
-        int total_page = (int)Math.ceil((double)hotels.size() / 9);
-        model.addAttribute("hotels", hotels.subList(0,9));
-        model.addAttribute("total_page", total_page);
-        model.addAttribute("current_page", 1);
+//        List<Hotel> hotels = findHotel();
+//        List<Hotel> hotels = hotelService.findHotel(1, 9);
+//        int total_page = (int)Math.ceil((double)hotels.size() / 9);
+//        model.addAttribute("hotels", hotels.subList(0,9));
+//        model.addAttribute("hotels", hotels);
+//        model.addAttribute("total_page", total_page);
+//        model.addAttribute("current_page", 1);
         return "home";
     }
 
@@ -202,9 +208,6 @@ public class UserController {
         return hotelService.findHotel();
     }
 
-    public List<Hotel> findHotel(Hotel hotel) {
-        return hotelService.findHotelSelective(hotel);
-    }
 
 
 }
