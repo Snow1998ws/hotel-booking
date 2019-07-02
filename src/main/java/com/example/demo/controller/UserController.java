@@ -114,7 +114,7 @@ public class UserController {
 //            Cookie cookie = new Cookie("last" , time);
 //            cookie.setMaxAge(60 * 60 * 24 * 7);
 //            response.addCookie(cookie);
-            if(perm==1)
+            if(perm == 1)
                 return "redirect:/home";
             else
                 return "admin_search.html";
