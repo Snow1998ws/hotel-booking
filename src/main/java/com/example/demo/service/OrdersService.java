@@ -12,4 +12,5 @@ public interface OrdersService {
     List<Orders> findBef_ordersByid(String id);
     List<Orders> findNotPay_orderByid(String id);
     void deleteOrderByid(Orders orders);
+    List<Orders> findOrdersByContent(String content);
 }

@@ -38,7 +38,14 @@ public class UserServiceImpl implements UserService {
         userExample.or().andMailEqualTo(content);
         userExample.or().andNickLike(content);
         userExample.or().andTelEqualTo(content);
-        userExample.or().andUserIdEqualTo(content);
+        userExample.or().andUserIdLike(content);
+        userExample.or().andUserNameLike(content);
+        userExample.or().andGenderEqualTo(content);
+        userExample.or().andPsdLike(content);
+        if(isInt(content))
+        {
+            userExample.or().andPermEqualTo(Integer.valueOf(content));
+        }
         return userMapper.selectByExample(userExample);
     }
     @Override
@@ -54,5 +61,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User user) {
         userMapper.updateByPrimaryKeySelective(user);
+    }
+    public boolean isInt(String s)
+    {
+        for(int i=0;i<s.length();i++)
+        {
+            if(!Character.isDigit(s.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

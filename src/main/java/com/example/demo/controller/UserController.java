@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 import com.example.demo.domain.Hotel;
+import com.example.demo.domain.Orders;
 import com.example.demo.domain.User;
 import com.example.demo.service.HotelService;
+import com.example.demo.service.OrdersService;
 import com.example.demo.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class UserController {
     @Autowired
     private HotelService hotelService;
 
+    @Autowired
+    private OrdersService ordersService;
     @RequestMapping("/userinfo")
     public String inforPage(HttpServletRequest request, Model model) {
         /* ----------------------- 将用户信息存储进session -------------------- */
@@ -152,15 +156,24 @@ public class UserController {
                 res.add(users.get(i).getUserId());
                 res.add(users.get(i).getUserName());
             }
-            return res;
         }
         else if("1".equals(list))
         {
-
+            List<Hotel> hotels=hotelService.findHotelByContent(content);
+            for (int i=0;i<hotels.size();i++)
+            {
+                res.add(hotels.get(i).gethId().toString());
+                res.add(hotels.get(i).gethName());
+            }
         }
         else
         {
-
+            List<Orders> orders=ordersService.findOrdersByContent(content);
+            for(int i=0;i<orders.size();i++)
+            {
+                res.add(orders.get(i).getOrderId().toString());
+                res.add(orders.get(i).getoRoomId().toString());
+            }
         }
         return res;
     }
