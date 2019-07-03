@@ -26,12 +26,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @Autowired
     private HotelService hotelService;
-
     @Autowired
     private OrdersService ordersService;
+
     @RequestMapping("/userinfo")
     public String inforPage(HttpServletRequest request, Model model) {
         /* ----------------------- 将用户信息存储进session -------------------- */
@@ -48,26 +47,17 @@ public class UserController {
     @ResponseBody
     public Map<String, Object> homePage(@RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum) {
         Map<String, Object> map = hotelService.findHotel(pageNum, 9);
-//        List<Hotel> hotels = findHotel();
-//        int total_page = (int)Math.ceil((double)hotels./size() / 9)
-//        model.addAttribute("hotels", hotels.subList(9 * current_page - 9,
-//                9 * current_page > hotels.size() ? hotels.size(): 9 * current_page));
-//        model.addAttribute("hotels", hotels);
-//        model.addAttribute("current_page", current_page);
-//        model.addAttribute("total_page", total_page);
         return map;
     }
 
     @RequestMapping("/home")
     public String homePage(Model model) {
-//        List<Hotel> hotels = findHotel();
-//        List<Hotel> hotels = hotelService.findHotel(1, 9);
-//        int total_page = (int)Math.ceil((double)hotels.size() / 9);
-//        model.addAttribute("hotels", hotels.subList(0,9));
-//        model.addAttribute("hotels", hotels);
-//        model.addAttribute("total_page", total_page);
-//        model.addAttribute("current_page", 1);
         return "home";
+    }
+
+    @RequestMapping("/admin_search")
+    public String adminPage(Model model) {
+        return "admin_search";
     }
 
     /*  ------------------------------------ 用户登出 ------------------------------------------   */
@@ -103,29 +93,11 @@ public class UserController {
             HttpSession session = request.getSession();
             session.setAttribute("user_id", user.getUserId());
             session.setAttribute("psd", user.getPsd());
-
-            String result = "用户 "+ user.getUserId() + " 已登录";
-            /*----------------------------- 获取并更新 cookie -----------------------------------*/
-//            Cookie[] cookies = request.getCookies();
-//            if (cookies != null) {
-//                for (Cookie cookie: cookies) {
-//                    if("last".equals(cookie.getName())) {
-//                        long time = Long.parseLong(cookie.getValue());
-//                        Date date = new Date();
-//                        date.setTime(time);
-//                        result += "\n 上一次访问时间是:" + date.toLocaleString();
-//                    }
-//                }
-//            }
-//            System.out.println(result);
-//            String time = System.currentTimeMillis()+"";
-//            Cookie cookie = new Cookie("last" , time);
-//            cookie.setMaxAge(60 * 60 * 24 * 7);
-//            response.addCookie(cookie);
+            session.setAttribute("perm", perm);
             if(perm == 1)
                 return "redirect:/home";
             else
-                return "admin_search.html";
+                return "redirect:/admin_search";
         } catch (Exception e) {
             e.printStackTrace();
             return "数据库查询错误";
@@ -139,9 +111,13 @@ public class UserController {
             HttpSession session = request.getSession();
             if ("0".equals(user.getGender())) user.setGender("m");
             else user.setGender("f");
-            user.setUserId((String)session.getAttribute("user_id"));
             updateUser(user);
-            return "redirect:/home";
+            Integer perm = (Integer)session.getAttribute("perm");
+            System.out.println(perm);
+            if (perm == 1)
+                return "redirect:/home";
+            else
+                return "redirect:/admin_search";
         } catch (Exception e) {
             e.printStackTrace();
             return "错误";
@@ -195,22 +171,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "/adminUser/{res}")
-    public String adminUser(@PathVariable("res") String id, Model model) throws ParseException
+    public String adminUser(@PathVariable("res") String id, Model model)
     {
         User user=userService.findUserById(id);
-        model.addAttribute("user1",user);
+        model.addAttribute("user",user);
         return "admin_user";
     }
 
     @RequestMapping(value = "/adminHotel/{res}")
-    public String adminHotel(@PathVariable("res") int id, Model model) throws ParseException
+    public String adminHotel(@PathVariable("res") int id, Model model)
     {
         Hotel hotel=hotelService.findHotelById(id);
         model.addAttribute("hotel",hotel);
         return "admin_hotel";
     }
     @RequestMapping(value = "/adminOrder/{res}")
-    public String adminOrder(@PathVariable("res") int id, Model model) throws ParseException
+    public String adminOrder(@PathVariable("res") int id, Model model)
     {
         Orders orders=ordersService.findOrdersByOrder_id(id);
         model.addAttribute("order",orders);

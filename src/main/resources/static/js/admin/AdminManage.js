@@ -4,7 +4,6 @@ $(document).ready(function(){
 });
 function adminManage() {
     var tmp1=($(this).prev()).children('.result_info_item').eq(0).text();
-    alert("222");
     $.ajax(
         {
             type: "POST",
@@ -12,9 +11,7 @@ function adminManage() {
             dataType: 'json',
             data: {"foss": $(this).prev().children('.result_info_item').eq(0).text()},
             success: function (res) {
-                alert("333")
                 var tmp = $(".admin_search_bar_select  option:selected").attr('value');
-                alert(tmp);
                 if (tmp == "0") {
                     window.location.href = "/adminUser/" + res;
                 }
@@ -26,9 +23,7 @@ function adminManage() {
                 }
             },
             error: function (msg) {
-                alert("错误");
                 var tmp = $(".admin_search_bar_select  option:selected").attr('value');
-                alert(tmp1);
                 if (tmp == "0") {
                     window.location.href = "adminUser/" + tmp1;
                 }

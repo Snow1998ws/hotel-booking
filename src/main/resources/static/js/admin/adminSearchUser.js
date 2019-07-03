@@ -11,10 +11,9 @@ function admin_search() {
             dataType: 'json',
             data: {list: $(".admin_search_bar_select  option:selected").attr('value'),content:$('.admin_search_bar_input').val()},
             success: function (res)
-            {//ajax请求成功后触发的方法
-                // alert(res.length);
+            {
                 var add_htmls="";
-                for(i=0;i<res.length;i+=2)
+                for(i=0;i<res.length;i+=1)
                 {
                     add_htmls +="<div class='result_item'><div class='result_info'>\n";
                     add_htmls +="<span class='result_info_name'>ID:</span><div class='result_info_item'>"+res[i]+"</div>";
