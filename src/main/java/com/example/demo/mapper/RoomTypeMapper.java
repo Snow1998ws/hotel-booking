@@ -5,7 +5,6 @@ import com.example.demo.domain.RoomTypeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Repository
 public interface RoomTypeMapper {
