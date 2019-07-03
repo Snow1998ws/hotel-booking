@@ -40,10 +40,21 @@ public class HotelServiceImpl implements HotelService{
         return map;
     }
 
+//    @Override
+//    public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer low, Integer high,  String checkin_time, String leave_time) {
+//        return hotelMapper.selectByDateAndCityAndRates(city, low, high, checkin_time, leave_time);
+//    }
+
     @Override
-    public List<Hotel> findHotelByDateAndCityAndRates(String city, Integer low, Integer high,  Date checkin_time, Date leave_time) {
-        return hotelMapper.selectByDateAndCityAndRates(city, low, high, checkin_time, leave_time);
+    public Map<String, Object> findHotelByDateAndCityAndRates(String city, Integer low, Integer high,  String checkin_time, String leave_time, int page, int rows) {
+        Page pages = PageHelper.startPage(page, rows);
+        List<Hotel> list = hotelMapper.selectByDateAndCityAndRates(city, low, high, checkin_time, leave_time);
+        PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(list);
+        Map<String, Object> map = new HashMap<>();
+        map.put("pageinfo", pageInfo);
+        return map;
     }
+
     @Override
     public List<Hotel> findHotelByContent(String content)
     {

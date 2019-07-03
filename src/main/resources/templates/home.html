@@ -35,16 +35,6 @@
     <link rel="stylesheet" href="css/select_city/citySelect.css">
     <script type="text/javascript" src="js/select_city/citySelect.js"></script>
     <script type="text/javascript" src="js/page_home/home.js"></script>
-    <script>
-        function jump_page() {
-            var totalpage = [[${total_page}]];
-            if (totalpage < $(".jump_num").val()) {
-                alert("超过跳转的最大页数!");
-                return false;
-            }
-            window.location.href = "/home_page=" + $(".jump_num").val();
-        }
-    </script>
 </head>
 <body>
     <!-- 标题 -->
@@ -85,7 +75,8 @@
                 </div>
             </div>
             <div class="div_search chose_price">价格：￥
-                <select id="select_price">
+                <select id="select_price" value="">
+                    <option value="-1"></option>
                     <option value="0">200以内</option>
                     <option value="1">200-400</option>
                     <option value="2">400-600</option>
@@ -96,7 +87,7 @@
             <!--<div class="div_search chose_price">价格：￥<input name="price" type="text" id="search_price" placeholder="输入价格" value="200" oninput = "value=value.replace(/[^\d]/g,'')"></div>-->
             <div class="div_search chose_date">入住日期：<input name="date1" type="text" placeholder="选择日期" readonly="readonly" id="calendar"></div>
             <div class="div_search chose_date">退房日期：<input name="date2" type="text" placeholder="选择日期" readonly="readonly" id="calendar2" onClick="laydate()"></div>
-            <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel()"></div>
+            <div><input class="search_button" type="text" style="width: 70px" value="搜索" onclick="searchHotel(1)"></div>
         </form>
         <div class="right black_tab"><div class="icon icon_triangle"></div></div>
         <div class="left black_tab"><div class="icon icon_triangle"></div></div>
@@ -120,12 +111,6 @@
     </div>
     <!-- 酒店概览结束 -->
 
-    <!--<div class="jump_content">-->
-        <!--<a th:href="'/home_page=' + ${current_page - 1}"><div class="jump_icon jump_left" title='上一页' th:unless="${current_page <= 1}"></div></a>-->
-        <!--<input class="jump_num" type="number" th:value="${current_page}" min="1">-->
-        <!--<div class="jump_btn" onclick="jump_page()">跳转</div>-->
-        <!--<a th:href="'/home_page=' + ${current_page + 1}"><div class="jump_icon jump_right" title='下一页'></div></a>-->
-    <!--</div>-->
     <div class="jump_content">
         <a onclick="jump_last()"><div class="jump_icon jump_left" title='上一页'></div></a>
         <input class="jump_num" type="number" min="1" value="1">

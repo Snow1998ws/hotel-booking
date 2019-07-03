@@ -38,3 +38,4 @@ function book_btn() {
     $("#booking_price").attr("value", price);
     room_id = $(this).parents('.room_booking_item').attr('id');
 }
+

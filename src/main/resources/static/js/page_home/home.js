@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
     hotel_page(1);
-    var current_page, total_page;
+    var current_page, total_page, search_flag = false, search_url;
     var $btn_jump_last = $('#jump_last');
     var $btn_jump_next = $('#jump_next');
 
@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
     $btn_jump_next.on('click', jump_next);
 });
 function hotel_page(pageNum) {
+    search_flag = false;
     $.ajax({
         type: "get",
         url: "/hotellist/?pageNum=" + pageNum,
@@ -35,46 +36,32 @@ function hotel_page(pageNum) {
         }
     })
 }
-function jump_last() {
-    if (current_page <= 1)
-        return false;
-    hotel_page(current_page - 1);
-    $(".jump_num").attr("value", current_page - 1);
-}
-function jump_next() {
-    if (current_page >= total_page)
-        return false;
-    hotel_page(current_page + 1);
-    $(".jump_num").attr("value", current_page + 1);
 
-}
-function searchHotel() {
-    var val = parseInt($("#select_price").val()), low, high;
-    if (val < 4) {
-        low = 200 * val;
-        high = 200 * (val + 1);
+function searchHotel(pageNum) {
+    search_flag = true;
+    $(".jump_num").attr("value", pageNum);
+    var val = parseInt($("#select_price").val()), checkin_time = $("#calendar").val(),
+        leave_time = $("#calendar2").val(), url, low, high;
+    if (val < 0) {
+        low = 0; high = 10000;
+    } else if (val < 4) {
+        low = 200 * val; high = 200 * (val + 1);
     } else {
-        low = 800;
-        high = 10000;
+        low = 800; high = 10000;
     }
-    var checkin_time = $("#calendar").val(), leave_time = $("#calendar2").val(), url;
     if (checkin_time == "" || leave_time == "")
-        url = "/hotelsearch/" + $('#search_city').val() + "/" + low + "/" + high;
+        url = "/hotelsearch?city=" + $('#search_city').val() + "&low=" + low + "&high=" + high + "&pageNum=" + pageNum;
     else
-        url = "/hotelsearch/" + $('#search_city').val() + "/" + low + "/" + high +
-            "/" + checkin_time + "/" + leave_time;
-    $(".item_block_big").empty();
-    $(".jump_content").empty();
-    info = {
-        "city": $('#search_city').val()
-    };
+        url = "/hotelsearch?city=" + $('#search_city').val() + "&low=" + low + "&high=" + high +
+               "&checkin_time=" + checkin_time + "&leave_time=" + leave_time + "&pageNum=" + pageNum;
     $.ajax({
-        type: "post",
+        type: "get",
         url: url,
-        data: info,
+        data: {},
         dataType: 'json',
-        success: function (hotels) {
+        success: function (data) {
             var add_htmls = "";
+            hotels = data.pageinfo.list;
             for (i in hotels) {
                 add_htmls += "<div class='item_block_small item_row'>\n";
                 add_htmls += "<a href='/hotelinfo/" + hotels[i].hId + "' ";
@@ -89,7 +76,40 @@ function searchHotel() {
                 add_htmls += "<div><span class='price_now'>￥" + hotels[i].hRates + "</span>每晚</div>\n</div></div>";
             }
             $(".item_block_big").html(add_htmls);
+            current_page = pageNum;
+            total_page = data.pageinfo.pages;
         }
     });
     return false;
-};
+}
+
+function jump_last() {
+    if (current_page <= 1)
+        return false;
+    if (search_flag)
+        searchHotel(current_page - 1);
+    else
+        hotel_page(current_page - 1);
+    $(".jump_num").attr("value", current_page - 1);
+}
+function jump_next() {
+    if (current_page >= total_page)
+        return false;
+    if (search_flag)
+        searchHotel(current_page + 1);
+    else
+        hotel_page(current_page + 1);
+    $(".jump_num").attr("value", current_page + 1);
+}
+
+function jump_page() {
+    if (total_page < $(".jump_num").val()) {
+        alert("超过跳转的最大页数!");
+        $(".jump_num").attr("value", 1)
+        return false;
+    }
+    if (search_flag)
+        searchHotel($(".jump_num").val());
+    else
+        hotel_page($(".jump_num").val());
+}

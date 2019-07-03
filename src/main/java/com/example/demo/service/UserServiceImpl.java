@@ -36,12 +36,12 @@ public class UserServiceImpl implements UserService {
         userExample.or().andCityEqualTo(content);
         userExample.or().andGenderEqualTo(content);
         userExample.or().andMailEqualTo(content);
-        userExample.or().andNickLike(content);
+        userExample.or().andNickLike("%" + content + "%");
         userExample.or().andTelEqualTo(content);
-        userExample.or().andUserIdLike(content);
-        userExample.or().andUserNameLike(content);
+        userExample.or().andUserIdLike("%" + content + "%");
+        userExample.or().andUserNameLike("%" + content + "%");
         userExample.or().andGenderEqualTo(content);
-        userExample.or().andPsdLike(content);
+        userExample.or().andPsdLike("%" + content + "%");
         if(isInt(content))
         {
             userExample.or().andPermEqualTo(Integer.valueOf(content));

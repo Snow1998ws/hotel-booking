@@ -11,7 +11,8 @@ import java.util.Map;
 @Service
 public interface HotelService {
     List<Hotel> findHotelSelective(Hotel hotel, Integer low, Integer high);
-    List<Hotel> findHotelByDateAndCityAndRates(String city, Integer low, Integer high, Date checkin_time, Date leave_time);
+    Map<String, Object> findHotelByDateAndCityAndRates(String city, Integer low, Integer high, String checkin_time, String leave_time, int page, int rows);
+//    List<Hotel> findHotelByDateAndCityAndRates(String city, Integer low, Integer high, String checkin_time, String leave_time);
     List<Hotel> findHotel();
     Map<String, Object> findHotel(int page, int rows);
     Hotel findHotelById(int id);
