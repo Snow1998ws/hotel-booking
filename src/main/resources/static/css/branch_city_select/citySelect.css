@@ -34,7 +34,7 @@ html body{
     position:absolute;
     top:15px;
     right:7px;
-    background-image: url("../img/icon/icons.png");
+    background-image: url("..static/img/icon/icons.png");
     background-repeat: no-repeat;
     background-position: 0 -2044px;
     cursor:pointer;
