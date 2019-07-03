@@ -178,6 +178,7 @@ public class UserController {
         return "admin_user";
     }
 
+
     @RequestMapping(value = "/adminHotel/{res}")
     public String adminHotel(@PathVariable("res") int id, Model model)
     {

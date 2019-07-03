@@ -13,7 +13,7 @@ function admin_search() {
             success: function (res)
             {
                 var add_htmls="";
-                for(i=0;i<res.length;i+=1)
+                for(i=0;i<res.length;i+=2)
                 {
                     add_htmls +="<div class='result_item'><div class='result_info'>\n";
                     add_htmls +="<span class='result_info_name'>ID:</span><div class='result_info_item'>"+res[i]+"</div>";

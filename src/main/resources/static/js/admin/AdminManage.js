@@ -15,7 +15,7 @@ function adminManage() {
                 if (tmp == "0") {
                     window.location.href = "/adminUser/" + res;
                 }
-                else if (res == "1") {
+                else if (tmp == "1") {
                     window.location.href = "/adminHotel/" + res;
                 }
                 else {
@@ -23,10 +23,8 @@ function adminManage() {
                 }
             },
             error: function (msg) {
+                alert("error occur")
                 var tmp = $(".admin_search_bar_select  option:selected").attr('value');
-                if (tmp == "0") {
-                    window.location.href = "adminUser/" + tmp1;
-                }
             }
         }
     );
