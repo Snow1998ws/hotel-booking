@@ -124,6 +124,14 @@ public class UserController {
         }
     }
 
+    @PostMapping("/delete_user")
+    @ResponseBody
+    public String deletUser(@RequestParam("userId")String user_id) {
+        System.out.println(user_id);
+        ordersService.deleteOrderByUserId(user_id);
+        userService.deleteUserById(user_id);
+        return "删除成功!";
+    }
 
     @PostMapping("/admin_search")
     @ResponseBody
@@ -216,8 +224,6 @@ public class UserController {
     public List<Hotel> findHotel() {
         return hotelService.findHotel();
     }
-
-
 
 }
 

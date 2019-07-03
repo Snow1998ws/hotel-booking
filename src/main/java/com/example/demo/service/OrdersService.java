@@ -13,5 +13,6 @@ public interface OrdersService {
     List<Orders> findNotPay_orderByid(String id);
     void saveOrder(Orders order);
     void deleteOrderByid(Orders orders);
+    void deleteOrderByUserId(String user_id);
     List<Orders> findOrdersByContent(String content);
 }

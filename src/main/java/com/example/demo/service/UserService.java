@@ -10,5 +10,6 @@ public interface UserService {
     List<User> findUser();
     List<User> findUserByContent(String content);
     void updateUser(User user);
+    void deleteUserById(String user_id);
     void saveUser(User user);
 }

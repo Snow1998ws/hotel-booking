@@ -1,7 +1,21 @@
 $(document).ready(function(){
-    $('body').on('click','.result_op' ,adminManage);
+    $('body').on('click','.manage' ,adminManage);
+    $('body').on('click', '.delete', userDelete);
     // $op_button.on("click",adminManage);
 });
+function userDelete() {
+    var tmp = $(this).parents('.result_item').find('.result_id').text();
+    $(this).parents('.result_item').remove();
+    $.ajax({
+        type: "POST",
+        url: "/delete_user?userId=" + tmp,
+        dataType: 'json',
+        data: {},
+        success: function (data) {
+            alert(data);
+        }
+    })
+}
 function adminManage() {
     var tmp1=($(this).prev()).children('.result_info_item').eq(0).text();
     $.ajax(
