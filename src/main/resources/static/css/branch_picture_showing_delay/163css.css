@@ -1,0 +1,271 @@
+@charset "utf-8";
+/* CSS Document */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, img, dl, dt, dd, table, th, td, blockquote, fieldset, div, strong, label, em {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul, ol, li {
+	list-style: none;
+}
+input, button {
+	margin: 0;
+	font-size: 12px;
+	vertical-align: middle;
+}
+body {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 0 auto;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+b, em, i {
+	font-style: normal;
+	font-weight: normal;
+}
+h1, h2, h3, h4 {
+	font-size: 14px;
+	font-style: normal;
+}
+h5 {
+	font-size: 12px;
+}
+h6 {
+	font-size: 12px;
+	font-weight: normal;
+}
+a {
+	text-decoration: none;
+}
+.box-163css {
+	WIDTH: 740px;
+	margin: 0 auto;
+	text-align: left;
+}
+.fl {
+	FLOAT: left
+}
+.fr {
+	FLOAT: right
+}
+.flash_box {
+	MARGIN-BOTTOM: 15px
+}
+#cflash {
+	FLOAT: right;
+	WIDTH: 320px;
+	POSITION: relative
+}
+#cflash_box {
+	FONT-SIZE: 0px;
+	Z-INDEX: 1;
+	OVERFLOW: hidden;
+	LINE-HEIGHT: 0;
+	POSITION: relative;
+	HEIGHT: 428px
+}
+#cflash_box LI {
+	DISPLAY: block;
+	LEFT: 0px;
+	OVERFLOW: hidden;
+	TOP: 0px
+}
+#cflash_index {
+	Z-INDEX: 99;
+	RIGHT: 10px;
+	FLOAT: right;
+	COLOR: #aaaaaa;
+	BOTTOM: 8px;
+	POSITION: absolute;
+	HEIGHT: 17px
+}
+.cflash_li {
+	BORDER-RIGHT: #eaeaea 1px solid;
+	BORDER-TOP: #eaeaea 1px solid;
+	DISPLAY: block;
+	FONT-SIZE: 12px;
+	FLOAT: left;
+	MARGIN-LEFT: 1px;
+	BORDER-LEFT: #eaeaea 1px solid;
+	WIDTH: 20px;
+	CURSOR: pointer;
+	LINE-HEIGHT: 14px;
+	BORDER-BOTTOM: #eaeaea 1px solid;
+	HEIGHT: 15px;
+	BACKGROUND-COLOR: #fff;
+	TEXT-ALIGN: center
+}
+.cflash_on {
+	BORDER-LEFT: #ca0808 1px solid;
+	COLOR: #fff;
+	BACKGROUND-COLOR: #ca0808
+}
+.cad_box {
+	FLOAT: left;
+	WIDTH: 401px
+}
+.cad_box DT {
+	CLEAR: left;
+	HEIGHT: 170px
+}
+.cad_box DD {
+	PADDING-BOTTOM: 19px
+}
+.cad1 {
+	WIDTH: 181px;
+	TEXT-ALIGN: left
+}
+.cad2 {
+	TEXT-ALIGN: right
+}
+.xinpin {
+	PADDING-BOTTOM: 20px;
+	HEIGHT: 227px
+}
+.xinpin DT {
+	FLOAT: left;
+	WIDTH: 58px;
+	HEIGHT: 227px
+}
+.xinpin DD {
+	BORDER-RIGHT: #eaeaea 1px solid;
+	BORDER-TOP: #eaeaea 1px solid;
+	FLOAT: left;
+	BORDER-LEFT: #eaeaea 1px;
+	WIDTH: 681px;
+	BORDER-BOTTOM: #eaeaea 1px solid;
+	HEIGHT: 225px
+}
+.xinpin DD UL {
+	MARGIN-TOP: 20px
+}
+.new_ul {
+	PADDING-RIGHT: 20px;
+	DISPLAY: block;
+	PADDING-LEFT: 20px;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	MARGIN-LEFT: -1px;
+	WIDTH: 131px;
+	PADDING-TOP: 0px;
+	HEIGHT: auto;
+	TEXT-ALIGN: center
+}
+.new_ul LI {
+	WIDTH: 130px;
+	TEXT-ALIGN: left
+}
+.new_ul SPAN {
+	FONT-SIZE: 12px;
+	COLOR: #c90809;
+	LINE-HEIGHT: 22px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.new_ul LI A {
+	LINE-HEIGHT: 18px
+}
+.new_img {
+	PADDING-BOTTOM: 6px;
+	POSITION: relative
+}
+.dis_num {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	LEFT: 0px;
+	WIDTH: 47px;
+	COLOR: #fff;
+	FONT-FAMILY: Microsoft YaHei;
+	POSITION: absolute;
+	TOP: 20px;
+	TEXT-ALIGN: center
+}
+.new_tip IMG {
+	RIGHT: 0px;
+	POSITION: absolute;
+	TOP: 0px
+}
+.cat {
+	MARGIN-BOTTOM: 15px;
+	PADDING-TOP: 5px;
+	HEIGHT: 370px
+}
+.cat DT {
+	LINE-HEIGHT: 31px;
+	BORDER-BOTTOM: #eaeaea 1px solid;
+	HEIGHT: 31px
+}
+.ct_title {
+	DISPLAY: block;
+	FLOAT: left;
+	WIDTH: 270px;
+	PADDING-TOP: 4px
+}
+.cat DT A {
+	COLOR: #999
+}
+.cat DT A:link {
+	COLOR: #999
+}
+.cat DT A:visited {
+	COLOR: #999
+}
+.cat DT A:hover {
+	COLOR: #c90809
+}
+.ct_tag {
+	OVERFLOW: hidden;
+	WIDTH: 430px;
+	HEIGHT: 24px
+}
+.cat DT SPAN {
+	WIDTH: 40px
+}
+.cat DD {
+	PADDING-RIGHT: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-BOTTOM: 20px;
+	PADDING-TOP: 20px;
+	HEIGHT: auto
+}
+.cat_left {
+	WIDTH: 249px
+}
+.cat_right {
+	WIDTH: 491px
+}
+.cat_ul {
+	PADDING-RIGHT: 20px;
+	DISPLAY: block;
+	PADDING-LEFT: 20px;
+	FLOAT: left;
+	PADDING-BOTTOM: 0px;
+	WIDTH: 140px;
+	PADDING-TOP: 0px;
+	HEIGHT: 210px;
+	TEXT-ALIGN: center
+}
+.cat_ul LI {
+	WIDTH: 140px;
+	TEXT-ALIGN: left
+}
+.cat_ul SPAN {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #c90809;
+	LINE-HEIGHT: 22px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.cat_ul LI A {
+	LINE-HEIGHT: 18px
+}
+.cat_img {
+	PADDING-BOTTOM: 6px;
+	POSITION: relative
+}
+.cat_list {
+	HEIGHT: 207px
+}
