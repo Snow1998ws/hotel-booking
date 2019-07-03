@@ -24,5 +24,47 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countSql
+    alipay.gateway-url=https://openapi.alipaydev.com/gateway.do
+pay:
+  alipay:
+    gatewayUrl: https://openapi.alipaydev.com/gateway.do
+    appid: 2019070165748294
+    appPrivateKey:MIIEpAIBAAKCAQEAspqSPZYzpitd4yko/EfkzgEWQsJUO5rHQREbq7EZmZI9iFTy
+    XACdAAQTM8ESXQ/OJEtgUd7HjJDVZmAbD/Zh7iALCo5NLdqaB+Wjw4uqp+gsFuNl
+    8/VUH13W23+wy2zuZ03z54CxBMGLa4ElQ0F0gx+nzXDsTQCBpw08uzOCE1MUkrh/
+    vnTS5mR9va6F88DWoPnkZFW4fXiQmSoobE1uolpdGryutOe5ZIgpL6N6V3eW4krg
+    DyAiY0S5hvTMQlXu5BO+NrMzhYNtBRURBHWsp4wz1x1qdjazrpbvJzrtB3MCIkB3
+    SEQvmEAPdUDxvQ44+PsU18TYjZHvFUe6tKQyKwIDAQABAoIBAQCMDty5gQ0VtRJW
+    LhPe6n4J8h5D0eJ+L10rsD/TvvjFTkIEpCC+dxinR4rLXg+JfPh5y8ZHzX0MxRMj
+    yh/Ov7aCJwyhhYAOgkuh/7oRgXgdXdsdQ8vSqMMEKfFwhczdaZn21tF67JdklGZB
+    sq/G8xBsNym+2Fvl8oy5tI64eqb5gTDDBn4yOETPwiD8QoL4M9ib1z+J8rQeCOoL
+    owDfFFemWDc4/3tZPm136qSvtq2DbsofZ+VKgXamNs+wzAkRzHdr0kLRpA10swwr
+    0WNAWmHy7woXzwNey0JO9/L1U+Yu/EPEudRcv2rNE2yyHb5ZcI02LkBYvZpQVcH3
+    mH/yfdrZAoGBANpkzdtCKYbUgz7c3pnbyjHk4AtjOXyeIWT/TFuPRN1TA/KbK+uI
+    Tf3oFZPqpNlPKXw2yQRE/X0JMTdvnZ2HI0wiNt5f78ra6sFZZNCy1JVG4sxJSJvf
+    4wnVuZTK5KGVoSq31Mk9GYCgL7lAXHoVTpL5mWTsCE/nDnbGAvjKeDk/AoGBANFb
+    wKUMwdrmu5lLn0EqE3sRgn3G+SVUJmiiGuhI3az3m+Lkte9/nmLiJg774ie9Ni57
+    +fFBtLHRBUHimcmCNb4yiN9w339batWCNQFm/tyAwDahFASPSknNk2/c/ioTcrx3
+    o0ejAq0xd1/eE9dsYL92gp2M1Z50HPmM+oeR2IAVAoGBAI/fNJYrAfxm54d0Ldki
+    KBOyeb5GwcpMyick4IK44V8En2clvktN4kNQr1Zgj/Tw552C4e5EHNJQSfIBP85V
+    BnXTXF4myWvTyC9T2sx54v3sUuDNrl2xonoKKFXTS8b/MctYi39/Ftvbq1TZB5MN
+    klPUxq7rp5Yr2yV30OFhUM41AoGAM7ZyM1KfX662j/r572KxRSjiDqdjSzEp+5Zv
+    BwlYmCzhOH494lanjM1HkVPuXNqD05+T8V/Fflae8dNDIV8kX0KkRGzhB9hQ30Q2
+    S45hTZ4P3G6VPzsVon1A+dSgg0wifyMeFcfSFW2uiuOUCxYeH6zqPnhXG7ian5mP
+    GIWR8LECgYBgyxrpsw4y7e3f1dlT/LMSccSxlowjgySJd3FWdlEyLG0kQnIDMH09
+    c/UD0qebFcreV9qjJ5HWGB1hZx45GyZnLIkOfZuY+NjWHH9DwoFtGhEMLDzdrhoO
+    jWjmFOWtOHtbVVT+bvoD+CiBheHYFYuSG2RjCthfGAVkoku0WO0D9Q==
+
+    alipayPublicKey:
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAspqSPZYzpitd4yko/Efk
+      zgEWQsJUO5rHQREbq7EZmZI9iFTyXACdAAQTM8ESXQ/OJEtgUd7HjJDVZmAbD/Zh
+      7iALCo5NLdqaB+Wjw4uqp+gsFuNl8/VUH13W23+wy2zuZ03z54CxBMGLa4ElQ0F0
+      gx+nzXDsTQCBpw08uzOCE1MUkrh/vnTS5mR9va6F88DWoPnkZFW4fXiQmSoobE1u
+      olpdGryutOe5ZIgpL6N6V3eW4krgDyAiY0S5hvTMQlXu5BO+NrMzhYNtBRURBHWs
+      p4wz1x1qdjazrpbvJzrtB3MCIkB3SEQvmEAPdUDxvQ44+PsU18TYjZHvFUe6tKQy
+      KwIDAQAB
+
+    returnUrl: http://yxep7y.natappfree.cc/alipay/return
+    notifyUrl: http://yxep7y.natappfree.cc/alipay/notify
 
 
