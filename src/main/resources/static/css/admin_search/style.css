@@ -67,6 +67,23 @@
     background: rgb(187, 11, 11);
 }
 
+.admin_search_bar_add_btn{
+    width: 60%;
+    height: 20px;
+    padding: 5px;
+    position: relative;
+    top: 40px;
+    left: 10%;
+    background: rgb(31, 166, 219);
+    color: rgb(255,255,255);
+    text-align: center;
+    cursor: pointer;
+}
+
+.admin_search_bar_add_btn:active{
+    background: rgb(53, 123, 151);
+}
+
 .admin_search_result{
     width: 60%;
     min-width: 600px;

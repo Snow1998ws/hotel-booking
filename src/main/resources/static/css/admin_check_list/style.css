@@ -50,14 +50,17 @@
 }
 
 .check_btn{
-    height: 20px;
-    padding: 15px 5px;
+    width: 120px;
+    height: 40px;
+    padding: 5px;
     text-align: center;
     color: rgb(255,255,255);
     background: rgb(29, 170, 235);
     cursor: pointer;
+    border: none;
 }
 
 .check_btn:active{
     background: rgb(29, 94, 148);
+    border: none;
 }
