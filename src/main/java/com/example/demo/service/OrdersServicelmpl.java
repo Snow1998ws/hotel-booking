@@ -4,6 +4,7 @@ import com.example.demo.domain.Orders;
 import com.example.demo.domain.OrdersExample;
 import com.example.demo.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,6 +19,16 @@ public class OrdersServicelmpl implements OrdersService{
     public void saveOrder(Orders order){
         ordersMapper.insertSelective(order);
     }
+
+    @Override
+    public void deleteOrderByUserId(String user_id) {
+        Orders order = new Orders();
+        OrdersExample ordersExample=new OrdersExample();
+        OrdersExample.Criteria criteria=ordersExample.createCriteria();
+        criteria.andOUserIdEqualTo(user_id);
+        ordersMapper.deleteByExample(ordersExample);
+    }
+
 
     @Override
     public List<Orders> findOrdersByContent(String content)

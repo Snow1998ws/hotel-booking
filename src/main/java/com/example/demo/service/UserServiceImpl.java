@@ -13,6 +13,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    public void deleteUserById(String user_id) {
+        userMapper.deleteByPrimaryKey(user_id);
+    }
+
+    @Override
     public List<User> findUserByIdAndPsd(User user) {
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
