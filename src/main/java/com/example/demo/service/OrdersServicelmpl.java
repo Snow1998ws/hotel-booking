@@ -29,6 +29,11 @@ public class OrdersServicelmpl implements OrdersService{
         ordersMapper.deleteByExample(ordersExample);
     }
 
+    @Override
+    public void UpdateOrder(Orders orders)
+    {
+        ordersMapper.updateByPrimaryKeySelective(orders);
+    }
 
     @Override
     public List<Orders> findOrdersByContent(String content)

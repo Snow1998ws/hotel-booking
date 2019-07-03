@@ -25,33 +25,33 @@
     <!-- 标题结束 -->
 
     <!-- 管理信息确认 -->
-    <div class="check_content" method="post" action="/updateinfo">
+    <div class="check_content" method="post" action="/updateHotelinfo">
         <div class="check_list">
             <div class="check_div"><span class="check_name">酒店ID：</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hId}"></div>
-            <div class="check_div"><span class="check_name">酒店名:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hName}"></div>
+            <div class="check_div"><span class="check_name">酒店名:</span><input class="check_input" type="text"  th:value="${hotel.hName}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店地址:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hAddress}"></div>
-            <div class="check_div"><span class="check_name">酒店星级:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hStar}"></div>
+            <div class="check_div"><span class="check_name">酒店地址:</span><input class="check_input" type="text"  th:value="${hotel.hAddress}"></div>
+            <div class="check_div"><span class="check_name">酒店星级:</span><input class="check_input" type="text"  th:value="${hotel.hStar}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店经度:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hLongtitude}"></div>
-            <div class="check_div"><span class="check_name">酒店纬度:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hLatitude}"></div>
+            <div class="check_div"><span class="check_name">酒店经度:</span><input class="check_input" type="text"  th:value="${hotel.hLongtitude}"></div>
+            <div class="check_div"><span class="check_name">酒店纬度:</span><input class="check_input" type="text"  th:value="${hotel.hLatitude}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店均价:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hRates}"></div>
-            <div class="check_div"><span class="check_name">酒店评分:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hScore}"></div>
+            <div class="check_div"><span class="check_name">酒店均价:</span><input class="check_input" type="text"  th:value="${hotel.hRates}"></div>
+            <div class="check_div"><span class="check_name">酒店评分:</span><input class="check_input" type="text"  th:value="${hotel.hScore}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店图片1:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hPhoto1}"></div>
-            <div class="check_div"><span class="check_name">酒店图片2:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hPhoto2}"></div>
+            <div class="check_div"><span class="check_name">酒店图片1:</span><input class="check_input" type="text"  th:value="${hotel.hPhoto1}"></div>
+            <div class="check_div"><span class="check_name">酒店图片2:</span><input class="check_input" type="text"  th:value="${hotel.hPhoto2}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店图片3:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hPhoto3}"></div>
-            <div class="check_div"><span class="check_name">酒店图片4:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hPhoto4}"></div>
+            <div class="check_div"><span class="check_name">酒店图片3:</span><input class="check_input" type="text"  th:value="${hotel.hPhoto3}"></div>
+            <div class="check_div"><span class="check_name">酒店图片4:</span><input class="check_input" type="text"  th:value="${hotel.hPhoto4}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">酒店图片5:</span><input class="check_input" type="text" readonly="readonly" th:value="${hotel.hPhoto5}"></div>
+            <div class="check_div"><span class="check_name">酒店图片5:</span><input class="check_input" type="text"  th:value="${hotel.hPhoto5}"></div>
         </div>
         <div class="check_list">
             <div class="check_div"><span class="check_name">酒店概述:</span><textarea class="check_textarea" th:text="${hotel.hOverview}"></textarea></div>

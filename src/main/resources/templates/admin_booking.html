@@ -25,26 +25,26 @@
     <!-- 标题结束 -->
 
     <!-- 管理信息确认 -->
-    <div class="check_content" method="post" action="/updateinfo">
+    <div class="check_content" method="post" action="/updateOrderinfo">
         <div class="check_list">
             <div class="check_div"><span class="check_name">订单ID：</span><input class="check_input" type="text" readonly="readonly" th:value="${order.orderId}"></div>
-            <div class="check_div"><span class="check_name">是否支付:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.ispay}"></div>
+            <div class="check_div"><span class="check_name">是否支付:</span><input class="check_input" type="text"  th:value="${order.ispay}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">下单人ID:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.oUserId}"></div>
-            <div class="check_div"><span class="check_name">酒店房间ID:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.oRoomId}"></div>
+            <div class="check_div"><span class="check_name">下单人ID:</span><input class="check_input" type="text"  th:value="${order.oUserId}"></div>
+            <div class="check_div"><span class="check_name">酒店房间ID:</span><input class="check_input" type="text"  th:value="${order.oRoomId}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">入住时间:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.checkinTime}"></div>
-            <div class="check_div"><span class="check_name">离开时间:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.leaveTime}"></div>
+            <div class="check_div"><span class="check_name">入住时间:</span><input class="check_input" type="text"  th:value="${order.checkinTime}"></div>
+            <div class="check_div"><span class="check_name">离开时间:</span><input class="check_input" type="text"  th:value="${order.leaveTime}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">订单全价:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.totalprice}"></div>
-            <div class="check_div"><span class="check_name">订单折扣:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.discount}"></div>
+            <div class="check_div"><span class="check_name">订单全价:</span><input class="check_input" type="text"  th:value="${order.totalprice}"></div>
+            <div class="check_div"><span class="check_name">订单折扣:</span><input class="check_input" type="text"  th:value="${order.discount}"></div>
         </div>
         <div class="check_list">
-            <div class="check_div"><span class="check_name">到达时间:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.arrive}"></div>
-            <div class="check_div"><span class="check_name">总计人数:</span><input class="check_input" type="text" readonly="readonly" th:value="${order.people}"></div>
+            <div class="check_div"><span class="check_name">到达时间:</span><input class="check_input" type="text"  th:value="${order.arrive}"></div>
+            <div class="check_div"><span class="check_name">总计人数:</span><input class="check_input" type="text"  th:value="${order.people}"></div>
         </div>
         <div class="check_op">
             <div class="check_btn">重置信息</div>

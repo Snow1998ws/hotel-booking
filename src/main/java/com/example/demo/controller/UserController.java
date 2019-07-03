@@ -123,7 +123,32 @@ public class UserController {
             return "错误";
         }
     }
-
+    @RequestMapping("/updateHotelinfo")
+    public String updateInfo(Hotel hotel, HttpServletRequest request)
+    {
+        try {
+            hotelService.UpdateHotel(hotel);
+            return "redirect:/admin_search";
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return "错误";
+        }
+    }
+    @RequestMapping("/updateOrderinfo")
+    public String updateInfo(Orders orders, HttpServletRequest request)
+    {
+        try {
+            ordersService.UpdateOrder(orders);
+            return "redirect:/admin_search";
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return "错误";
+        }
+    }
     @PostMapping("/delete_user")
     @ResponseBody
     public String deletUser(@RequestParam("userId")String user_id) {

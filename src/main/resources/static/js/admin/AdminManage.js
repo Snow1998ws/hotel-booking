@@ -37,8 +37,11 @@ function adminManage() {
                 }
             },
             error: function (msg) {
-                alert("error occur")
                 var tmp = $(".admin_search_bar_select  option:selected").attr('value');
+                if (tmp == "0") {
+                    window.location.href = "/adminUser/" + tmp1;
+                }
+
             }
         }
     );

@@ -18,4 +18,5 @@ public interface HotelService {
     Hotel findHotelById(int id);
     List<Hotel> findHotelsByRooms(List<Room> rooms);
     List<Hotel> findHotelByContent(String content);
+    void UpdateHotel(Hotel hotel);
 }

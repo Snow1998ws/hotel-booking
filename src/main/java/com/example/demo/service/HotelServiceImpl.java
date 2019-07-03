@@ -59,7 +59,7 @@ public class HotelServiceImpl implements HotelService{
     public List<Hotel> findHotelByContent(String content)
     {
         HotelExample hotelExample=new HotelExample();
-        hotelExample.or().andHAddressLike(content);
+        hotelExample.or().andHAddressLike("%"+content+"%");
         hotelExample.or().andHCityEqualTo(content);
         if(isInt(content))
         {
@@ -68,9 +68,15 @@ public class HotelServiceImpl implements HotelService{
             hotelExample.or().andHScoreGreaterThanOrEqualTo(Integer.valueOf(content));
             hotelExample.or().andHStarGreaterThanOrEqualTo(Integer.valueOf(content));
         }
-        hotelExample.or().andHNameLike(content);
-        hotelExample.or().andHOverviewLike(content);
+        hotelExample.or().andHNameLike("%"+content+"%");
+        hotelExample.or().andHOverviewLike("%"+content+"%");
         return hotelMapper.selectByExample(hotelExample);
+    }
+
+    @Override
+    public void UpdateHotel(Hotel hotel)
+    {
+        hotelMapper.updateByPrimaryKeySelective(hotel);
     }
 
     @Override

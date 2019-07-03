@@ -15,4 +15,5 @@ public interface OrdersService {
     void deleteOrderByid(Orders orders);
     void deleteOrderByUserId(String user_id);
     List<Orders> findOrdersByContent(String content);
+    void UpdateOrder(Orders orders);
 }
