@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.Hotel;
 import com.example.demo.domain.Room;
 import com.example.demo.service.HotelService;
+import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
 import com.zaxxer.hikari.util.SuspendResumeLock;
 import org.apache.ibatis.annotations.Param;
@@ -26,6 +27,10 @@ public class hotelController {
     @Autowired
     private HotelService hotelService;
 
+    @Autowired
+    private OrdersService ordersService;
+    @Autowired
+    private RoomService roomService;
 
     @RequestMapping(value = "/hotelinfo/{hotel_id}")
     public String hotelInfo(@PathVariable("hotel_id") int id, Model model) throws ParseException {
@@ -42,6 +47,23 @@ public class hotelController {
         hotel.sethCity(city);
         List<Hotel> hotels = hotelService.findHotelSelective(hotel, low, high);
         return hotels;
+    }
+
+    @PostMapping("/delete_hotel")
+    @ResponseBody
+    public String deletUser(@RequestParam("hotelId")String hotelid) {
+        System.out.println(hotelid);
+        List<Room> rooms=roomService.findRoomsByHotelId(Integer.valueOf(hotelid));
+
+        for(int i=0;i<rooms.size();i++)
+        {
+            ordersService.deleteOrderByRooms(rooms.get(i));
+            roomService.deleteRoomByRooms(rooms.get(i));
+
+        }
+        hotelService.deleteHotelById(Integer.valueOf(hotelid));
+
+        return "删除成功!";
     }
 
     @GetMapping(value = "/hotelsearch")

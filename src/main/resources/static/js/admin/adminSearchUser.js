@@ -1,6 +1,9 @@
 jQuery(document).ready(function($){
     $op_button =$('.admin_search_bar_btn');
     $op_button.on("click",admin_search);
+
+    $op_button1=$('.admin_search_bar_add_btn');
+    $op_button1.on("click",adminAdd());
 });
 
 function admin_search() {
@@ -29,4 +32,8 @@ function admin_search() {
             }
         }
     );
+}
+function adminAdd()
+{
+
 }

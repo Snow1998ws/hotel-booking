@@ -79,6 +79,12 @@ public class HotelServiceImpl implements HotelService{
         hotelMapper.updateByPrimaryKeySelective(hotel);
     }
 
+
+    @Override
+    public void deleteHotelById(int hotelid)
+    {
+        hotelMapper.deleteByPrimaryKey(hotelid);
+    }
     @Override
     public List<Hotel> findHotelSelective(Hotel hotel, Integer low, Integer high) {
         HotelExample hotelExample = new HotelExample();

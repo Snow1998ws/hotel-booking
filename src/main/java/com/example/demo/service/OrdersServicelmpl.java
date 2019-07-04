@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Orders;
 import com.example.demo.domain.OrdersExample;
+import com.example.demo.domain.Room;
 import com.example.demo.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -27,6 +28,28 @@ public class OrdersServicelmpl implements OrdersService{
         OrdersExample.Criteria criteria=ordersExample.createCriteria();
         criteria.andOUserIdEqualTo(user_id);
         ordersMapper.deleteByExample(ordersExample);
+    }
+    @Override
+    public void deleteOrderByOrderId(int id)
+    {
+        ordersMapper.deleteByPrimaryKey(id);
+    }
+    @Override
+    public void deleteOrderByRooms(Room rooms)
+    {
+            int room_id=rooms.getRoomId();
+            deleteOrderByRoomsId(room_id);
+    }
+    @Override
+    public void deleteOrderByRoomsId(int room_id)
+    {
+        OrdersExample ordersExample=new OrdersExample();
+        ordersExample.or().andORoomIdEqualTo(room_id);
+        List<Orders> orders=ordersMapper.selectByExample(ordersExample);
+        for(int i=0;i<orders.size();i++)
+        {
+            deleteOrderByid(orders.get(i));
+        }
     }
 
     @Override

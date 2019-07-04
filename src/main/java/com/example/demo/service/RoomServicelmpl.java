@@ -17,6 +17,12 @@ public class RoomServicelmpl implements RoomService{
     @Autowired
     private RoomMapper roomMapper;
 
+
+    @Override
+    public void deleteRoomByRooms(Room room)
+    {
+        roomMapper.deleteByPrimaryKey(room.getRoomId());
+    }
     @Override
     public  List<Room> findRoomsByDateAndHotelId(String checkin_time, String leave_time, Integer hotel_id) {
         return roomMapper.selectByDateAndHotelId(checkin_time, leave_time, hotel_id);

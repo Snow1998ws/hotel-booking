@@ -158,6 +158,14 @@ public class UserController {
         return "删除成功!";
     }
 
+    @PostMapping("/delete_order")
+    @ResponseBody
+    public String delete_order(@RequestParam("orderId")String orderId) {
+        System.out.println(orderId);
+        ordersService.deleteOrderByOrderId(Integer.valueOf(orderId));
+        return "删除成功!";
+    }
+
     @PostMapping("/admin_search")
     @ResponseBody
     public List<String> admin_search(HttpServletRequest request,Model model)

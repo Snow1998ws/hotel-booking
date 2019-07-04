@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.Orders;
+import com.example.demo.domain.Room;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,4 +17,7 @@ public interface OrdersService {
     void deleteOrderByUserId(String user_id);
     List<Orders> findOrdersByContent(String content);
     void UpdateOrder(Orders orders);
+    void deleteOrderByOrderId(int id);
+    void deleteOrderByRooms(Room rooms);
+    void deleteOrderByRoomsId(int room_id);
 }

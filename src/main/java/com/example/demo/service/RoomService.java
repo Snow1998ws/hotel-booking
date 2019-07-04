@@ -14,4 +14,5 @@ public interface RoomService {
     List<Room> findRoomsByOrders(List<Orders> orders);
     List<Room> findRoomsByDateAndHotelId(String checkin_time, String leave_time, Integer hotel_id);
     List<Room> findRoomsByDateAndHotelId2(String checkin_time, String leave_time, Integer hotel_id);
+    void deleteRoomByRooms(Room room);
 }

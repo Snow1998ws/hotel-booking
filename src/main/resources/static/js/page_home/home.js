@@ -19,7 +19,7 @@ function hotel_page(pageNum) {
             var hotels = data.pageinfo.list;
             for (i in hotels) {
                 add_htmls += "<div class='item_block_small item_row'>\n";
-                add_htmls += "<a href='/hotelinfo/" + hotels[i].hId + "' ";
+                add_htmls += "<a alt='../../img/icon/web_logo.png' href='/hotelinfo/" + hotels[i].hId + "' ";
                 add_htmls += "path='" + hotels[i].hPhoto1;
                 add_htmls += "' style='background-image: url(" + hotels[i].hPhoto1 + ");' ";
                 add_htmls += "class='preview'></a>\n";
