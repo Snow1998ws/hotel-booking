@@ -129,7 +129,11 @@
 }
 
 .result_info_item{
+    font-size: 12px;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .result_info_name{

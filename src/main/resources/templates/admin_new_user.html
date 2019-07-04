@@ -1,0 +1,60 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户信息管理</title>
+    <!-- 公有 -->
+    <link rel="stylesheet" href="../css/public_effect/common.css">
+    <!--本页-->
+    <!-- 标题 -->
+    <link rel="stylesheet" href="../css/title/style.css">
+    <!-- 管理信息列表 -->
+    <link rel="stylesheet" href="../css/admin_check_list/style.css">
+    <script type="text/javascript" src="../js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <script type="text/javascript" src="../js/public_js/message.js"></script>
+    <script type="text/javascript" src="../js/admin/adminOp.js"></script>
+</head>
+<body>
+    <!-- 标题 -->
+    <div class="title">
+        <div class="Titem1">
+            <a href="/home"><div class="web_logo"></div></a>
+        </div>
+    </div>
+    <!-- 标题结束 -->
+
+    <!-- 管理信息确认 -->
+    <form class="check_content" method="post" action="/updateinfo">
+        <div class="check_list">
+            <div class="check_div"><span class="check_name">用户ID：</span><input class="check_input" type="text" readonly="readonly" name="userId" th:value="${user.userId}"></div>
+            <div class="check_div"><span class="check_name">昵称:</span><input class="check_input" type="text" name="nick" th:value="${user.nick}"></div>
+        </div>
+        <div class="check_list">
+            <div class="check_div"><span class="check_name">密码:</span><input class="check_input" type="text" name="psd" th:value="${user.psd}"></div>
+            <div class="check_div"><span class="check_name">城市:</span><input class="check_input" type="text" name="city" th:value="${user.city}"></div>
+        </div>
+        <div class="check_list">
+            <div class="check_div"><span class="check_name">性别:</span><input class="check_input" type="text" name="gender" th:value="${user.gender}"></div>
+            <div class="check_div"><span class="check_name">生日:</span><input class="check_input" type="text" name="birth" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div>
+        </div>
+
+        <div class="check_list">
+            <div class="check_div"><span class="check_name">电话:</span><input class="check_input" type="text" name="tel" th:value="${user.tel}"></div>
+            <div class="check_div"><span class="check_name">邮箱:</span><input class="check_input" type="text" name="mail" th:value="${user.mail}"></div>
+        </div>
+        <div class="check_op">
+            <input class="check_btn" id="clear" value="重置信息"></input>
+            <input class="check_btn" type="submit" value="确认修改"></input>
+        </div>
+    </form>
+
+    <!-- 底部 -->
+    <div class="page_bottom">
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
+
+</body>
+</html>
