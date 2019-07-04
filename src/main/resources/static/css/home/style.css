@@ -39,7 +39,7 @@
     display: flex;
     left: 12.5vw;
     width: 75vw;
-    min-width: 600px;
+    min-width: 880px;
     z-index: 2;
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 5px;
