@@ -23,7 +23,7 @@
     <script src="js/navigation/navigation.js"></script>
 
     <!-- 删除订单测试用 -->
-    <script type="text/javascript" src="js/booking_item/cancel.js"></script>
+    <!--<script type="text/javascript" src="js/booking_item/cancel.js"></script>-->
     <script type="text/javascript" src="js/present_booking/op1.js"></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
     <!-- 标题结束 -->
 
     <!-- 一个模块 -->
-    <div class="booking_item_content" th:each="Not_payinfo:${order_Not_pay_info}">
+    <div class="booking_item_content" th:each="Not_payinfo:${order_Not_pay_info}" th:id="${Not_payinfo.order_id}">
         <div class="booking_item_top">
         <div class="booking_item_main">
             <div class="booking_item_left_tab"></div>
@@ -58,7 +58,7 @@
                 </div>
             </div>       
             <div class="booking_item_right">
-                <div class="booking_item_op_button" th:name="${Not_payinfo.order_id}">付款</div>
+                <div class="booking_item_op_button" >付款</div>
             </div>
             <div class="booking_item_right_tab"></div>
         </div>
