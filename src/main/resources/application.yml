@@ -4,6 +4,10 @@ mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
   type-aliases-package: com.example.demo.demain
 spring:
+#  mvc:
+#    static-path-pattern: /templates/**,/static/**
+#  resources:
+#    static-locations: classpath:/templates/,classpath:/static/
   datasource:
          url: jdbc:mysql://localhost:3306/hotel_booking?useUnicode=true&characterEncoding=UTF-8&useSSL=false
          username: root
@@ -16,6 +20,7 @@ spring:
       encoding: UTF-8
 #      content-type: text/html
       mode: HTML
+
 logging:
   level:
      com.example.demo.mapper : debug

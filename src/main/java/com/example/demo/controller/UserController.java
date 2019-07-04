@@ -6,6 +6,7 @@ import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.UserService;
 import com.github.pagehelper.Page;
+import net.sf.json.JSONObject;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.jws.WebParam;
 import javax.servlet.http.*;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -233,6 +232,68 @@ public class UserController {
         Orders orders=ordersService.findOrdersByOrder_id(id);
         model.addAttribute("order",orders);
         return "admin_booking";
+    }
+
+    @RequestMapping(value = "/adminadd/{tmp}")
+//    @ResponseBody
+    public String adminadd(@PathVariable("tmp") String id,Model model)
+    {
+//
+        String value=id;
+        System.out.println(value);
+        String res="";
+        if("0".equals(value))
+        {
+            res="admin_new_user.html";
+        }
+        else if("1".equals(value))
+        {
+            res="admin_new_hotel.html";
+        }
+        else if("2".equals(value))
+        {
+            res="admin_new_booking.html";
+        }
+//        Map<String,String> map=new HashMap<>();
+//        map.put("res",res);
+        return res;
+    }
+
+
+    @PostMapping(value = "/addUser")
+    public String addUser(HttpServletRequest request,Model model)
+    {
+        User user=new User();
+        String user_id=request.getParameter("userId");
+        String nick=request.getParameter("nick");
+        String psd=request.getParameter("psd");
+        String city=request.getParameter("city");
+        String gender=request.getParameter("gender");
+        String birth=request.getParameter("birth");
+        String tel=request.getParameter("tel");
+        String mail=request.getParameter("mail");
+        String name=request.getParameter("name");
+        String perm=request.getParameter("perm");
+        user.setUserId(user_id);
+        user.setPsd(psd);
+        user.setGender(gender);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date=format.parse(birth);
+            user.setBirth(date);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        user.setCity(city);
+        user.setMail(mail);
+        user.setNick(nick);
+        user.setTel(tel);
+        user.setPerm(Integer.valueOf(perm));
+        user.setUserName(name);
+        userService.saveUser(user);
+        return "admin_search";
     }
 
     public List<User> findUser() {

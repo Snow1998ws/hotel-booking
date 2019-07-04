@@ -77,6 +77,12 @@ public class hotelController {
         return hotelService.findHotelByDateAndCityAndRates(city, low, high, checkin_time, leave_time, page, 9);
     }
 
+    @PostMapping(value = "/addHotel")
+    public String addHotel(Hotel hotel,HttpServletRequest request,Model model)
+    {
+        hotelService.addHotel(hotel);
+        return "admin_search";
+    }
 //    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}/{checkin_time}/{leave_time}")
 //    @ResponseBody
 //    public List<Hotel> hotelSearch(@PathVariable("h_city") String city,

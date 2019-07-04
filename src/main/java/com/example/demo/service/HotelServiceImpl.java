@@ -54,6 +54,11 @@ public class HotelServiceImpl implements HotelService{
         map.put("pageinfo", pageInfo);
         return map;
     }
+    @Override
+    public void addHotel(Hotel hotel)
+    {
+        hotelMapper.insert(hotel);
+    }
 
     @Override
     public List<Hotel> findHotelByContent(String content)

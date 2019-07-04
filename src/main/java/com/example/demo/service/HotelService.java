@@ -20,4 +20,5 @@ public interface HotelService {
     List<Hotel> findHotelByContent(String content);
     void UpdateHotel(Hotel hotel);
     void deleteHotelById(int hotelid);
+    void addHotel(Hotel hotel);
 }

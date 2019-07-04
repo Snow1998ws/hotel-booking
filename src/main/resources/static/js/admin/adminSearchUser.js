@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
     $op_button.on("click",admin_search);
 
     $op_button1=$('.admin_search_bar_add_btn');
-    $op_button1.on("click",adminAdd());
+    $op_button1.on("click",adminAdd);
 });
 
 function admin_search() {
@@ -28,12 +28,13 @@ function admin_search() {
                 $(".admin_search_result").html(add_htmls);
             },
             error:function (msg) {
-                alert(msg);
+                alert("error");
             }
         }
     );
 }
 function adminAdd()
 {
-
+    var tmp=$(".admin_search_bar_select  option:selected").attr('value');
+    window.location.href="/adminadd/"+tmp;
 }
