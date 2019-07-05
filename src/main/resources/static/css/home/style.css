@@ -67,6 +67,7 @@
     border: none;
     outline: none;
     width: 80px;
+    cursor: pointer;
 }
 
 #searchBar .chose_position{
@@ -76,6 +77,10 @@
 
 #searchBar .chose_date{
     flex:1;
+}
+
+#searchBar .chose_date input{
+    cursor: pointer;
 }
 
 #searchBar .search_button{

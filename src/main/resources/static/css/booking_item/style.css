@@ -1,8 +1,12 @@
 .booking_item_content{
+    position: relative;
+    opacity: 1;
     width: 90%;
     min-width: 600px;
     padding: 15px 0;
-    border: 1px solid rgb(32, 182, 241);
+    border: 2px solid rgb(32, 182, 241);
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgb(55,55,55);
     margin: 20px auto;
 }
 
@@ -25,17 +29,19 @@
 
 .booking_item_left{
     flex: 1;
+    margin: 0 10px;
     background-image: url(../../img/hotel/hotel_001.jpg);
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-right: 1px solid rgba(0,0,0,0.3);
+    
 }
 
 .booking_item_mid{
     flex: 2;
     padding: 0 8px;
-    border-right: 1px solid rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(32, 182, 241, 0.5);
+    border-left: 1px solid rgba(32, 182, 241, 0.5);
 }
 
 .booking_item_right{
@@ -54,11 +60,11 @@
     font-weight: 600;
     font-size: 16px;
     border-radius: 10px;
+    color: rgb(255,255,255);
 }
 
 .booking_item_op_button:active{
     background: rgb(202, 61, 51);
-    color: rgb(255,255,255);
 }
 
 .booking_item_right_tab{
@@ -70,7 +76,7 @@
     background-repeat: no-repeat;
     position: absolute;
     top: -8px;
-    right: 4px;
+    right: 10px;
     cursor: pointer;
     transition: all 0.3s;
 }

@@ -9,7 +9,8 @@
   height: 35vh;
   min-height: 220px;
   margin: 100px auto;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(55,55,55,0.9);
+  border-radius: 10px;
   padding: 10px 10px 20px;
   position: relative;
 }
@@ -263,12 +264,14 @@
 }
 
 .optionUl li{
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(25,25,25,1);
+  border-radius: 10px;
   transition: all 0.5s;
 }
 
 .optionUl li:hover{
-  background-color: rgba(0,0,0,0.7);
+  border-radius: 0px;
+  background-color: rgb(168, 7, 7);
 }
 
 .optionUl li a{
@@ -285,11 +288,6 @@
   font-size: 28px;
   font-weight: 600;
   text-decoration-line: none;
-}
-
-body{
-  background:rgba(0,0,0,0.3) url(../../img/bg/bg_01.jpg) cover;
-  background-blend-mode: darken;
 }
 
 .cd-forget{

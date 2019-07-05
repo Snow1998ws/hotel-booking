@@ -141,6 +141,7 @@ a:hover,a:link,a:active.a:visited{
 }
 
 .jump_num{
+    text-align: center;
     width: 100px;
     height: 30px;
     padding: 5px;
