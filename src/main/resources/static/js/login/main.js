@@ -19,7 +19,7 @@ jQuery(document).ready(function($){
 
 		//正则验证
 		function check_sinup_username(){
-			if($input_signup_username.val().search(/[\u4e00-\u9fa5]/) != -1){
+			if($input_signup_username.val().search(/[\u4e00-\u9fa5]/) != -1 || $input_signup_username.val() == ""){
 				$input_signup_username.addClass("input-error");
 				$input_signup_username.parent().next().removeClass("hidden");
 			}
@@ -29,7 +29,7 @@ jQuery(document).ready(function($){
 			}
 		}
 		function check_sinup_password1(){
-			if($input_signup_password1.val().search(/^.{6,20}$/) == -1){
+			if($input_signup_password1.val().search(/^.{6,20}$/) == -1 || $input_signup_username.val() == ""){
 				$input_signup_password1.addClass("input-error");
 				$input_signup_password1.parent().next().removeClass("hidden");
 			}
@@ -43,13 +43,16 @@ jQuery(document).ready(function($){
 				$input_signup_password2.addClass("input-error");
 				$input_signup_password2.parent().next().removeClass("hidden");
 			}
+			else if($input_signup_password2.val() == ""){
+				$input_signup_password2.addClass("input-error");
+			}
 			else{
 				$input_signup_password2.removeClass("input-error");
 				$input_signup_password2.parent().next().addClass("hidden")
 			}
 		}
 		function check_sinup_email(){
-			if($input_signup_email.val().search(/^.+@.+$/) == -1){
+			if($input_signup_email.val().search(/^.+@.+$/) == -1 || $input_signup_email.val() == ""){
 				$input_signup_email.addClass("input-error");
 				$input_signup_email.parent().next().removeClass("hidden");
 			}
@@ -68,7 +71,11 @@ jQuery(document).ready(function($){
 		function signup_confirm(){
 			var form_confirm = confirm("是否确认提交注册信息")
 			if(form_confirm){
-				if($accept_terms.attr('checked') != true){
+				check_sinup_username();
+				check_sinup_password1();
+				check_sinup_password2();
+				check_sinup_email();
+				if(!$accept_terms.is(":checked")){
 					alert("请同意用户协议");
 					return false;
 				}
