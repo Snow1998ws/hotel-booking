@@ -18,7 +18,7 @@ function cancelOrder() {
 
                 success: function (order_id) {//ajax请求成功后触发的方法
                     var $order = $('#' + order_id);
-                    $order.parents('.booking_item_content').animate({left:'-80vw'},1000);
+                    $order.animate({left:'-80vw', opacity: 0},1000);
                     setTimeout(function(){ $order.remove(); }, 1000);
                 }
             }
