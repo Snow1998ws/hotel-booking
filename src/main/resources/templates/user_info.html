@@ -34,12 +34,12 @@
 <!-- 标题结束 -->
 <div class="change_big_div">
     <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:onsubmit="updateInfo()" th:object="${user}">
-        <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:value="*{userId}"><span class="right_span hidden">该ID已被使用</span></div>
-        <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:value="*{nick}"><span class="right_span hidden">该昵称已被使用</span></div>
+        <div class="change_small_div"><span class="left_span">用户ID：</span><div class="change_text" name="userId" type="text" readonly="readonly" th:text="*{userId}"></div><span class="right_span hidden">该ID已被使用</span></div>
+        <div class="change_small_div"><span class="left_span">昵称：</span><div class="change_text" name="nick" type="text" readonly="readonly" th:text="*{nick}"></div><span class="right_span hidden">该昵称已被使用</span></div>
         <div class="change_small_div"><span class="left_span">性别：</span><div class="change_radio"   readonly="readonly" type="text"  th:text="${gender eq 'f'}? '女' :'男'"></div></div>
-        <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" onClick="laydate()" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"><span class="right_span hidden">请填写生日信息</span></div>
+        <div class="change_small_div"><span class="left_span">生日：</span><div class="change_text" name="birth" type="text" readonly="readonly" onClick="laydate()" th:text="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div><span class="right_span hidden">请填写生日信息</span></div>
         <div class="change_small_div"><span class="left_span">居住地：</span>
-            <input class="change_text" name="city" type="text" readonly="readonly" th:value="*{city}">
+            <div class="change_text" name="city" type="text" readonly="readonly" th:text="*{city}"></div>
             <!-- console.log($("input[name='city']").val()) 供给控制台测试 -->
             <div class="search">
                 <div class="citySelect">
@@ -58,8 +58,8 @@
                 </div>
             </div>
             <span class="right_span hidden">请填写居住地信息</span></div>
-        <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:value="*{tel}" type="text" oninput = "value=value.replace(/[^\d]/g,'')"><span class="right_span hidden">手机号信息错误</span></div>
-        <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:value="*{mail}" type="text" ><span class="right_span hidden">邮箱信息错误</span></div>
+        <div class="change_small_div"><span class="left_span">手机号：</span><div class="change_text" name="tel" readonly="readonly" th:text="*{tel}" type="text" oninput = "value=value.replace(/[^\d]/g,'')"></div><span class="right_span hidden">手机号信息错误</span></div>
+        <div class="change_small_div"><span class="left_span">邮箱号：</span><div class="change_text" name="mail" readonly="readonly" th:text="*{mail}" type="text" ></div><span class="right_span hidden">邮箱信息错误</span></div>
     </form>
 </div>
 
