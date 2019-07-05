@@ -166,5 +166,11 @@ public class OrderController {
         ordersService.deleteOrderByid(order);
         return id;
     }
+    @PostMapping(value = "/addOrder")
+    public String addOrder(Orders orders,Model model)
+    {
+        ordersService.saveOrder(orders);
+        return "admin_search";
+    }
 
 }

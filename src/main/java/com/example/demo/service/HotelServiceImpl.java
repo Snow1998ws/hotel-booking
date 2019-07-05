@@ -57,7 +57,7 @@ public class HotelServiceImpl implements HotelService{
     @Override
     public void addHotel(Hotel hotel)
     {
-        hotelMapper.insert(hotel);
+        hotelMapper.insertSelective(hotel);
     }
 
     @Override

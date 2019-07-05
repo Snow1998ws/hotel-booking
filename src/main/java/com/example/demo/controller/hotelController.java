@@ -78,9 +78,26 @@ public class hotelController {
     }
 
     @PostMapping(value = "/addHotel")
-    public String addHotel(Hotel hotel,HttpServletRequest request,Model model)
+    public String addHotel(HttpServletRequest request,Model model)
     {
-        hotelService.addHotel(hotel);
+        Hotel hotel1=new Hotel();
+        String hId=request.getParameter("hId");
+        hotel1.sethCity(request.getParameter("hcity"));
+        hotel1.sethAddress(request.getParameter("hAddress"));
+        hotel1.sethLatitude(Double.valueOf(request.getParameter("hLatitude")));
+        hotel1.sethScore(Integer.valueOf(request.getParameter("hScore")));
+        hotel1.sethRates(Integer.valueOf(request.getParameter("hRates")));
+        hotel1.sethLongtitude(Double.valueOf(request.getParameter("hLongtitude")));
+        hotel1.sethName(request.getParameter("hname"));
+        hotel1.sethTel(request.getParameter("htel"));
+        hotel1.sethStar(Integer.valueOf(request.getParameter("hStar")));
+        hotel1.sethPhoto1(request.getParameter("hPhoto1"));
+        hotel1.sethPhoto1(request.getParameter("hPhoto2"));
+        hotel1.sethPhoto1(request.getParameter("hPhoto3"));
+        hotel1.sethPhoto1(request.getParameter("hPhoto4"));
+        hotel1.sethPhoto1(request.getParameter("hPhoto5"));
+        hotel1.sethOverview(request.getParameter("hOverview"));
+        hotelService.addHotel(hotel1);
         return "admin_search";
     }
 //    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}/{checkin_time}/{leave_time}")
