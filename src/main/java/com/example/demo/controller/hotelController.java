@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -103,12 +104,26 @@ public class hotelController {
 
     @PostMapping(value = "/homeSearch")
     @ResponseBody
-    public String homeSearch(HttpServletRequest request,Model model)
+    public List<Hotel> homeSearch(HttpServletRequest request)
     {
+        String page=request.getParameter("page");
+        int pageNum=Integer.valueOf(page);
         String parame=request.getParameter("foss");
         List<Hotel> hotels=hotelService.findHotelByContent(parame);
-
-        return "";
+        List<Hotel> hotels1=new ArrayList<>();
+        for(int i=(pageNum-1)*9;i<hotels.size()&&i<pageNum*9;i++)
+        {
+            hotels1.add(hotels.get(i));
+        }
+        Hotel hotel=new Hotel();
+        hotel.sethScore(hotels.size());
+        hotels1.add(hotel);
+        return hotels1;
+    }
+    @RequestMapping(value = "homesearchhref")
+    public String homesearchhref(HttpServletRequest request)
+    {
+        return "home";
     }
 //    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}/{checkin_time}/{leave_time}")
 //    @ResponseBody

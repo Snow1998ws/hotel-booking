@@ -49,6 +49,7 @@ public class HotelServiceImpl implements HotelService{
     public Map<String, Object> findHotelByDateAndCityAndRates(String city, Integer low, Integer high,  String checkin_time, String leave_time, int page, int rows) {
         Page pages = PageHelper.startPage(page, rows);
         List<Hotel> list = hotelMapper.selectByDateAndCityAndRates(city, low, high, checkin_time, leave_time);
+        HotelExample hotelExample=new HotelExample();
         PageInfo<Hotel> pageInfo = new PageInfo<Hotel>(list);
         Map<String, Object> map = new HashMap<>();
         map.put("pageinfo", pageInfo);

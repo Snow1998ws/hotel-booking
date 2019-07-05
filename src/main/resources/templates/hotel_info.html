@@ -37,6 +37,7 @@
     <script type="text/javascript" src="../js/underscore-min.js" ></script>
     <script type="text/javascript" src="../js/backbone-min.js" ></script>
     <script type="text/javascript" src='../js/map/prety-json.js'></script>
+    <script type="text/javascript" src="../js/page_home/homesearch.js"></script>
     <!--<script type="text/javascript" src='../js/map/input.js'></script>-->
     <script>
         function book() {
@@ -147,15 +148,15 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a v-bind:href="msg_a1"><li class="active">个人信息</li></a>
-                        <a v-bind:href="msg_a2"><li>当前订单</li></a>
-                        <a v-bind:href="msg_a3"><li>待支付订单</li></a>
-                        <a v-bind:href="msg_a4"><li>历史订单</li></a>
+                        <a href="/userNowInfo"><li class="active">个人信息</li></a>
+                        <a href="/order_pre_info"><li>当前订单</li></a>
+                        <a href="/Order_Not_pay"><li>待支付订单</li></a>
+                        <a href="/order_bef_info"><li>历史订单</li></a>
                     </ul>
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="/userinfo">修改账号信息</a></li>
                         <li><i class="fas fa-sign-out-alt"></i> 退出</li>
                     </ul>
                 </div>
