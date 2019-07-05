@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
@@ -10,74 +10,63 @@
     <script type="text/javascript" src="js/public_js/message.js"></script>
     <link rel="stylesheet" href="css/public_effect/common.css">
     <!--本页-->
-    <link rel="stylesheet" href="css/user_info/style.css">
-    <!--继承自修改页的样式-->
     <link rel="stylesheet" href="css/user_info_change/style.css">
+    <script src="js/user_info_change/main.js"></script>
     <!-- 标题 -->
     <link rel="stylesheet" href="css/title/style.css">
-     <!--导航栏-->
-     <link rel='stylesheet' href='css/navigation/all.min.css'>
-     <link rel="stylesheet" href="css/navigation/style.css">
-     <script src="js/navigation/navigation.js"></script>
+    <!-- 日历选择 -->
+    <script src="js/calendar/laydate.js"></script>
+    <!-- 城市选择 -->
+    <link rel="stylesheet" href="css/select_city/citySelect.css">
+    <script type="text/javascript" src="js/select_city/citySelect.js"></script>
 </head>
 <body>
-    <!-- 标题 -->
-    <div class="title">
-        <div class="Titem1">
-            <a href="/home"><div class="web_logo"></div></a>
-            <div class="title_search_div">
-                <input class="title_search" type="search" placeholder="搜索...">
-                <div class="title_search_icon"></div>
-            </div>
+<!-- 标题 -->
+<div class="title">
+    <div class="Titem1">
+        <a href="/home"><div class="web_logo"></div></a>
+        <div class="title_search_div">
+            <input class="title_search" type="search" placeholder="搜索...">
+            <div class="title_search_icon"></div>
         </div>
     </div>
-    <!-- 标题结束 -->
-
-    <!-- 用户信息 -->
-    <div class="check_big_div">
-        <form id="change_form">
-            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" value="昵称" type="text" readonly="readonly"></div>
-            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text" name="gender" value="性别" type="text" readonly="readonly"></div>
-            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" value="生日" type="text" readonly="readonly"></div>
-            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" value="居住地" type="text"  readonly="readonly"></div>
-            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" value="手机号" type="text"  readonly="readonly"></div>
-            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" value="邮箱号" type="text"  readonly="readonly"></div>
-            <a href="user_info_change.html" class="change_apply_a">修改信息</a>
-        </form>
-    </div>
-
-    <!-- 底部 -->
-    <div class="page_bottom">
-        <div class="web_logo"></div>
-        <div class="page_bottom_text">四川大学JAVA项目27组</div>
-    </div>
-
-    <!--左侧导航（流外）-->
-   <div id="left_navigation" class="page" th:unless="${session.user_id == null}">
-        <div class="navbar">
-            <div class="user">
-                <div class="user_pic"></div>
-                <div class="user_name" th:text="${session.user_id}"></div>
-            </div>
-            <div class="bar">
-                <div class="options">
-                    <ul>
-                        <a v-bind:href="msg_a1"><li class="active">个人信息</li></a>
-                        <a v-bind:href="msg_a2"><li>当前订单</li></a>
-                        <a v-bind:href="msg_a3"><li>待支付订单</li></a>
-                        <a v-bind:href="msg_a4"><li>历史订单</li></a>
-                    </ul>
+</div>
+<!-- 标题结束 -->
+<div class="change_big_div">
+    <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:onsubmit="updateInfo()" th:object="${user}">
+        <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:value="*{userId}"><span class="right_span hidden">该ID已被使用</span></div>
+        <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:value="*{nick}"><span class="right_span hidden">该昵称已被使用</span></div>
+        <div class="change_small_div"><span class="left_span">性别：</span><div class="change_radio"   readonly="readonly" type="text"  th:text="${gender eq 'f'}? '女' :'男'"></div></div>
+        <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" onClick="laydate()" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"><span class="right_span hidden">请填写生日信息</span></div>
+        <div class="change_small_div"><span class="left_span">居住地：</span>
+            <input class="change_text" name="city" type="text" readonly="readonly" th:value="*{city}">
+            <!-- console.log($("input[name='city']").val()) 供给控制台测试 -->
+            <div class="search">
+                <div class="citySelect">
+                    <span class="cityName"></span>
+                    <i class="iconDown"></i>
+                    <i class="line"></i>
                 </div>
-                <div class="settings">
-                    <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
-                        <li><i class="fas fa-sign-out-alt"></i> 退出</li>
-                    </ul>
+
+                <div class="dropDown">
+                    <div class="dropProv">
+                        <ul class="dropProvUl dropUl"></ul>
+                    </div>
+                    <div class="dropCity">
+                        <ul class="dropCityUl dropUl"></ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- 颜色根据每个页面背景具体分析默认为黑色 -->
-        <div class="hidebar"></div>
-    </div><!--左侧导航结束-->
+            <span class="right_span hidden">请填写居住地信息</span></div>
+        <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:value="*{tel}" type="text" oninput = "value=value.replace(/[^\d]/g,'')"><span class="right_span hidden">手机号信息错误</span></div>
+        <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:value="*{mail}" type="text" ><span class="right_span hidden">邮箱信息错误</span></div>
+    </form>
+</div>
+
+<!-- 底部 -->
+<div class="page_bottom">
+    <div class="web_logo"></div>
+    <div class="page_bottom_text">四川大学JAVA项目27组</div>
+</div>
 </body>
 </html>

@@ -100,6 +100,16 @@ public class hotelController {
         hotelService.addHotel(hotel1);
         return "admin_search";
     }
+
+    @PostMapping(value = "/homeSearch")
+    @ResponseBody
+    public String homeSearch(HttpServletRequest request,Model model)
+    {
+        String parame=request.getParameter("foss");
+        List<Hotel> hotels=hotelService.findHotelByContent(parame);
+
+        return "";
+    }
 //    @RequestMapping(value = "/hotelsearch/{h_city}/{low}/{high}/{checkin_time}/{leave_time}")
 //    @ResponseBody
 //    public List<Hotel> hotelSearch(@PathVariable("h_city") String city,

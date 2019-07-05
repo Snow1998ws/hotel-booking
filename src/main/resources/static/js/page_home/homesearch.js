@@ -1,11 +1,21 @@
 $(document).ready(function()
 {
     $titleSearch=$('.title_search');
-    alert("1234");
     $titleSearch.keydown(function (event) {
         if(event.keyCode == 13){
-            
-            alert("123")
+            var res=$(".title_search").val();
+            alert(res);
+            $.ajax(
+                {
+                    type:"POST",
+                    url:"/homeSearch",
+                    dataType:'json',
+                    data:{foss:res},
+                    success:function (result) {
+
+                    }
+                }
+            );
         }
     })
 });

@@ -41,6 +41,17 @@ public class UserController {
             model.addAttribute("gender", user_find.getGender().equals("m")? 0 : 1);
         return "user_info_change";
     }
+    @RequestMapping("/userNowInfo")
+    public String userNowInfo(HttpServletRequest request, Model model) {
+        /* ----------------------- 将用户信息存储进session -------------------- */
+        HttpSession session = request.getSession();
+        String user_id = (String)session.getAttribute("user_id");
+        User user_find = findUserById(user_id);
+        model.addAttribute("user", user_find);
+        if (user_find.getGender() != null)
+            model.addAttribute("gender", user_find.getGender().equals("m")? 0 : 1);
+        return "user_info";
+    }
 
     @GetMapping("/hotellist")
     @ResponseBody
