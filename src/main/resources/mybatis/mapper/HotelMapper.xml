@@ -171,9 +171,6 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.demo.domain.Hotel">
-    <selectKey keyProperty="hId" order="AFTER" resultType="java.lang.Integer">
-      select uuid_short()
-    </selectKey>
     insert into hotel
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="hName != null">
