@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
-	var $form_modal = $('.cd-user-modal'),
+	var $accept_terms = $('#accept-terms'),
+		$form_modal = $('.cd-user-modal'),
 		$form_login = $form_modal.find('#cd-login'),
 		$form_signup = $form_modal.find('#cd-signup'),
 		$form_modal_tab = $('.cd-switcher'),
@@ -57,11 +58,32 @@ jQuery(document).ready(function($){
 				$input_signup_email.parent().next().addClass("hidden")
 			}
 		}
-
+	
 		$input_signup_username.on('blur',check_sinup_username);
 		$input_signup_password1.on('blur',check_sinup_password1);
 		$input_signup_password2.on('blur',check_sinup_password2);
 		$input_signup_email.on('blur',check_sinup_email);
+
+
+		function signup_confirm(){
+			var form_confirm = confirm("是否确认提交注册信息")
+			if(form_confirm){
+				if($accept_terms.attr('checked') != true){
+					alert("请同意用户协议");
+					return false;
+				}
+				else if($input_signup_username.hasClass("input-error") || $input_signup_password1.hasClass("input-error") || $input_signup_password2.hasClass("input-error") || $input_signup_email.hasClass("input-error")){
+					alert("注册信息不正确");
+					return false;
+				}
+				else return true;
+			}
+			else{
+				return false;
+			}
+		}
+
+		$form_signup.find('.cd-form').on('submit',signup_confirm);
 
 	//弹出窗口
 	$tab_forget.on('click', function(event){
