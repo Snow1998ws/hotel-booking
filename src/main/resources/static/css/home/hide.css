@@ -2,7 +2,7 @@
     position: fixed;
     left: -100vw;
     top: 0;
-    background-color: rgba(255, 255, 255,0.3);
+    background-color: rgba(255, 255, 255,0.5);
     background-image: url(../../img/bg/bg_01.jpg);
     background-size: cover;
     background-blend-mode: lighten;

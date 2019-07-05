@@ -1,3 +1,7 @@
+.booking_content_box{
+    min-height: 80vh;
+}
+
 .booking_item_content{
     position: relative;
     opacity: 1;

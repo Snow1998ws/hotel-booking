@@ -1,22 +1,14 @@
 jQuery(document).ready(function($){
     hotel_page(1);
-    var current_page, total_page,  search_url;
-    var search_flag = 0;
+    var current_page, total_page, search_flag = false, search_url;
     var $btn_jump_last = $('#jump_last');
     var $btn_jump_next = $('#jump_next');
 
-    $titleSearch=$('.title_search');
-    $titleSearch.keydown(function (event) {
-        if(event.keyCode == 13){
-            var pageNum=1;
-            HomeSearch(pageNum);
-        }
-    });
     $btn_jump_last.on('click',jump_last);
     $btn_jump_next.on('click', jump_next);
 });
 function hotel_page(pageNum) {
-    search_flag = 0;
+    search_flag = false;
     $.ajax({
         type: "get",
         url: "/hotellist/?pageNum=" + pageNum,
@@ -46,7 +38,7 @@ function hotel_page(pageNum) {
 }
 
 function searchHotel(pageNum) {
-    search_flag = 1;
+    search_flag = true;
     $(".jump_num").attr("value", pageNum);
     var val = parseInt($("#select_price").val()), checkin_time = $("#calendar").val(),
         leave_time = $("#calendar2").val(), url, low, high;
@@ -94,27 +86,20 @@ function searchHotel(pageNum) {
 function jump_last() {
     if (current_page <= 1)
         return false;
-    if (search_flag==1)
+    if (search_flag)
         searchHotel(current_page - 1);
-    else if(search_flag==0)
+    else
         hotel_page(current_page - 1);
-    else if(search_flag==2)
-        HomeSearch(current_page-1)
     $(".jump_num").attr("value", current_page - 1);
 }
 function jump_next() {
     if (current_page >= total_page)
         return false;
+    if (search_flag)
+        searchHotel(current_page + 1);
     else
-    {
-        if (search_flag==1)
-            searchHotel(current_page + 1);
-        else if(search_flag==0)
-            hotel_page(current_page + 1);
-        else if(search_flag==2)
-            HomeSearch(current_page+1);
-        $(".jump_num").attr("value", current_page + 1);
-    }
+        hotel_page(current_page + 1);
+    $(".jump_num").attr("value", current_page + 1);
 }
 
 function jump_page() {
@@ -123,61 +108,8 @@ function jump_page() {
         $(".jump_num").attr("value", 1)
         return false;
     }
+    if (search_flag)
+        searchHotel($(".jump_num").val());
     else
-    {
-        if (search_flag==1)
-            searchHotel($(".jump_num").val());
-        else if(search_flag==0)
-            hotel_page($(".jump_num").val());
-        else if(search_flag==2)
-        {
-            var tmp=HomeSearch($(".jump_num").val());
-        }
-    }
-}
-
-//上面搜索框的内容
-function HomeSearch(pageNum)
-{
-    search_flag=2;
-    $(".jump_num").attr("value", pageNum);
-    var res=$(".title_search").val();
-    var result=true;
-    $.ajax({
-        type: "post",
-        url: "/homeSearch",
-        data: {foss:res,page:pageNum},
-        dataType: 'json',
-        success: function (hotels) {
-            if(hotels.length<=1)
-            {
-                alert("超过跳转页数范围")
-                result=false;
-            }
-            else
-            {
-                $('.item_block_small').remove();
-                var add_htmls = "";
-                var i=0;
-                for (i=0;i<hotels.length-1;i++) {
-                    add_htmls += "<div class='item_block_small item_row'>\n";
-                    add_htmls += "<a alt='../../img/icon/web_logo.png' href='/hotelinfo/" + hotels[i].hId + "' ";
-                    add_htmls += "path='" + hotels[i].hPhoto1;
-                    add_htmls += "' style='background-image: url(" + hotels[i].hPhoto1 + ");' ";
-                    add_htmls += "class='preview'></a>\n";
-                    add_htmls += "<div class='item_info_1 item_row'>整套房子·2床</div>\n";
-                    add_htmls += "<div class='item_info_2 item_row'>" + hotels[i].hAddress + "</div>\n";
-                    add_htmls += "<div class='item_info_3 item_row'\n>";
-                    add_htmls += "<div class='xzw_starBox'><span class='show'>";
-                    add_htmls += "<span class='score score" + hotels[i].hScore + "'</span></span></div>\n";
-                    add_htmls += "<div><span class='price_now'>￥" + hotels[i].hRates + "</span>每晚</div>\n</div></div>";
-                }
-                $(".item_block_big").html(add_htmls);
-                current_page = pageNum;
-                total_page=hotels[hotels.length-1].hScore;
-            }
-
-        }
-    });
-    return result;
+        hotel_page($(".jump_num").val());
 }
