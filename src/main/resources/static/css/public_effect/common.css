@@ -86,6 +86,17 @@ a:hover,a:link,a:active.a:visited{
 }
 
 .item_info_1{
+    display: flex;
+    justify-content: space-around;
+}
+
+.item_info_1 span:nth-child(1){
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
+.item_info_1 span:nth-child(2){
     font-size: 12px;
     color: rgb(240, 132, 44);
 }

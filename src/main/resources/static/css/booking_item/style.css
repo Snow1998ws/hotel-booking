@@ -6,7 +6,7 @@
     position: relative;
     opacity: 1;
     width: 90%;
-    min-width: 600px;
+    min-width: 1000px;
     padding: 15px 0;
     border: 2px solid rgb(32, 182, 241);
     border-radius: 15px;
@@ -39,7 +39,7 @@
 
 .booking_item_mid{
     flex: 2;
-    padding: 0 8px;
+    padding: 0 4px;
     border-right: 1px solid rgba(32, 182, 241, 0.5);
     border-left: 1px solid rgba(32, 182, 241, 0.5);
 }
