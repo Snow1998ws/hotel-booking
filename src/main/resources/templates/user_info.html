@@ -30,7 +30,7 @@
 <!-- 标题结束 -->
 
     <div class="change_big_div check_big_div">
-        <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:onsubmit="updateInfo()" th:object="${user}">
+        <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:object="${user}">
             <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:text="*{userId}"></div>
             <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:text="*{nick}"></div>
             <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text"   readonly="readonly" type="text"  th:text="${gender eq 'f'}? '女' :'男'"></div>

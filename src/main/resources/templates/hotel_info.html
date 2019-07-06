@@ -41,6 +41,10 @@
     <!--<script type="text/javascript" src='../js/map/input.js'></script>-->
     <script>
         function book() {
+            if(Date.parse($("#calendar").val() )>Date.parse( $("#calendar2").val())){
+                alert("退房时间早于订房时间，请重新确认信息")
+                return false;
+            }
             var val = "/roombook/" + [[${hotel.hId}]] + "/" + $("#calendar").val() + "/" + $("#calendar2").val();
             $("#book_form").attr("action", val);
         }

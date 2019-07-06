@@ -17,6 +17,8 @@ jQuery(document).ready(function($){
 		$input_signup_password2 = $form_signup.find('#signup-password2'),
 		$input_signup_email = $form_signup.find('#signup-email');
 
+		
+
 		//正则验证
 		function check_sinup_username(){
 			if($input_signup_username.val().search(/[\u4e00-\u9fa5]/) != -1 || $input_signup_username.val() == ""){
@@ -68,6 +70,7 @@ jQuery(document).ready(function($){
 		$input_signup_email.on('blur',check_sinup_email);
 
 
+		// 提交前检测
 		function signup_confirm(){
 			var form_confirm = confirm("是否确认提交注册信息")
 			if(form_confirm){

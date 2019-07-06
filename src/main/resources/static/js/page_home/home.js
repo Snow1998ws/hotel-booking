@@ -51,6 +51,10 @@ function searchHotel(pageNum) {
     }
     if (checkin_time == "" || leave_time == "")
         url = "/hotelsearch?city=" + $('#search_city').val() + "&low=" + low + "&high=" + high + "&pageNum=" + pageNum;
+    else if(Date.parse(checkin_time)>Date.parse(leave_time)){
+        alert("退房时间早于订房时间，请重新确认信息")
+        return false;
+    }
     else
         url = "/hotelsearch?city=" + $('#search_city').val() + "&low=" + low + "&high=" + high +
                "&checkin_time=" + checkin_time + "&leave_time=" + leave_time + "&pageNum=" + pageNum;
