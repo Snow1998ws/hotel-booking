@@ -96,16 +96,18 @@ public class OrdersServicelmpl implements OrdersService{
     public List<Orders> findBef_ordersByid(String id)
     {
         OrdersExample ordersExample=new OrdersExample();
-        OrdersExample.Criteria criteria=ordersExample.createCriteria();
-        criteria.andOUserIdEqualTo(id);
         Date date=new Date();
-        criteria.andLeaveTimeLessThan(date);
+        ordersExample.or().andOUserIdEqualTo(id).andIspayEqualTo("o");
+        ordersExample.or().andOUserIdEqualTo(id).andLeaveTimeLessThanOrEqualTo(date);
+//        OrdersExample.Criteria criteria=ordersExample.createCriteria();
+//        OrdersExample.Criteria criteria1=ordersExample.createCriteria();
+//        criteria.andOUserIdEqualTo(id);
+
+//        criteria.andLeaveTimeLessThanOrEqualTo(date);
+//        criteria1.andOUserIdEqualTo(id);
+//        criteria1.andIspayEqualTo("o");
+//        ordersExample.or(criteria1);
         List<Orders> orders=ordersMapper.selectByExample(ordersExample);
-        OrdersExample ordersExample1=new OrdersExample();
-        OrdersExample.Criteria criteria11=ordersExample1.createCriteria();
-        criteria11.andIspayEqualTo("o");
-        List<Orders> orders1=ordersMapper.selectByExample(ordersExample1);
-        orders.addAll(orders1);
         return orders;
     }
     @Override
@@ -115,6 +117,8 @@ public class OrdersServicelmpl implements OrdersService{
         OrdersExample.Criteria criteria=ordersExample.createCriteria();
         criteria.andOUserIdEqualTo(id);
         criteria.andIspayEqualTo("n");
+        Date date=new Date();
+        criteria.andCheckinTimeGreaterThan(date);
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override

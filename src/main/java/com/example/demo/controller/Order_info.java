@@ -1,17 +1,46 @@
 package com.example.demo.controller;
 
+import java.util.Date;
+
 public class Order_info
 {
     private String typename;
     private String hotel_name;
     private Integer price;
     private Integer order_id;
+    private Date date;
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    private String pic;
+
+    public String getPic() {
+        return pic;
+    }
+
     public void setOrder_id(Integer order_id) {
         this.order_id = order_id;
     }
     public Order_info(Object ob)
     {
-
     }
 
     public Integer getOrder_id() {

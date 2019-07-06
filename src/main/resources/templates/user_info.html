@@ -31,13 +31,13 @@
 
     <div class="change_big_div check_big_div">
         <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:object="${user}">
-            <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:text="*{userId}"></div>
-            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:text="*{nick}"></div>
-            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text"   readonly="readonly" type="text"  th:text="${gender eq 'f'}? '女' :'男'"></div>
-            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" th:text="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div>
-            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" readonly="readonly" th:text="*{city}"></div>
-            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:text="*{tel}" type="text" ></div>
-            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:text="*{mail}" type="text" ></div>
+            <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:value="*{userId}"></div>
+            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:value="*{nick}"></div>
+            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text"   readonly="readonly" type="text"  th:value="${gender eq 'f'}? '女' :'男'"></div>
+            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div>
+            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" readonly="readonly" th:value="*{city}"></div>
+            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:value="*{tel}" type="text" ></div>
+            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:value="*{mail}" type="text" ></div>
         </form>
     </div>
 

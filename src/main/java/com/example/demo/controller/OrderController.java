@@ -51,6 +51,8 @@ public class OrderController {
         for(int i=0;i<orders.size();i++)
         {
             Hotel hotel = hotels.get(i);
+            order_info.setDate(orders.get(i).getCheckinTime());
+            order_info.setPic(hotel.gethPhoto1());
             order_info.setHotel_name(hotel.gethAddress());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setTypename(roomTypes.get(i).getTypeName());
@@ -71,7 +73,7 @@ public class OrderController {
     {
         HttpSession session=request.getSession();
         String user_id=(String) session.getAttribute("user_id");
-        Order_info order_info = new Order_info();
+
         List<Order_info> order_infos=new ArrayList<>();
         List<Orders> orders=ordersService.findNotPay_orderByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
@@ -79,7 +81,10 @@ public class OrderController {
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
         for(int i=0;i<orders.size();i++)
         {
+            Order_info order_info = new Order_info();
             Hotel hotel = hotels.get(i);
+            order_info.setPic(hotel.gethPhoto1());
+            order_info.setDate(orders.get(i).getCheckinTime());
             order_info.setHotel_name(hotel.gethAddress());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setTypename(roomTypes.get(i).getTypeName());
@@ -99,7 +104,7 @@ public class OrderController {
     {
         HttpSession session=request.getSession();
         String user_id=(String) session.getAttribute("user_id");
-        Order_info order_info = new Order_info();
+
         List<Order_info> order_infos=new ArrayList<>();
         List<Orders> orders=ordersService.findBef_ordersByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
@@ -107,7 +112,10 @@ public class OrderController {
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
         for(int i=0;i<orders.size();i++)
         {
+            Order_info order_info = new Order_info();
             Hotel hotel = hotels.get(i);
+            order_info.setPic(hotel.gethPhoto1());
+            order_info.setDate(orders.get(i).getCheckinTime());
             order_info.setHotel_name(hotel.gethAddress());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setTypename(roomTypes.get(i).getTypeName());

@@ -46,7 +46,7 @@
         <div class="booking_item_content" th:each="Not_payinfo:${order_Not_pay_info}" th:id="${Not_payinfo.order_id}">
             <div class="booking_item_main">
                 <div class="booking_item_left_tab"></div>
-                <div class="booking_item_left"></div>
+                <div class="booking_item_left" th:style="'background-image:url(' + ${Not_payinfo.pic} + ')'"></div>
                 <div class="booking_item_mid">
                     <div class="booking_simple_info">
                         <div class="item_info_1 item_row" th:text="${Not_payinfo.typename}"></div>
@@ -54,7 +54,8 @@
                         <div class="item_info_3 item_row">
                             <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
                             <div><span class="price_now" th:text="${Not_payinfo.price}"></span><span class="price_pre" th:text="${Not_payinfo.discount}"></span>折</div>
-                        </div>    
+                            <div class="booking_date"><span th:text="${#dates.format(Not_payinfo.date, 'yyyy-MM-dd')}">1991-11-11</span></div>
+                        </div>
                     </div>
                 </div>       
                 <div class="booking_item_right">
@@ -81,7 +82,7 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="/userinfo"><li class="active">个人信息</li></a>
+                        <a href="/userNowInfo"><li class="active">个人信息</li></a>
                         <a href="/order_pre_info"><li>当前订单</li></a>
                         <a href="/Order_Not_pay"><li>待支付订单</li></a>
                         <a href="/order_bef_info"><li>历史订单</li></a>
@@ -89,8 +90,8 @@
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
-                        <li><i class="fas fa-sign-out-alt"></i> 退出</li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="/userinfo">修改账号信息</a></li>
+                        <li><i class="fas fa-sign-out-alt"></i> <a href="/logout">退出</a></li>
                     </ul>
                 </div>
             </div>
