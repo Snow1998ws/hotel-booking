@@ -68,6 +68,7 @@ a:hover,a:link,a:active.a:visited{
 }
 
 .page_bottom{
+    position: relative;
     width: 60%;
     min-width: 500px;
     height: 50px;
@@ -87,11 +88,7 @@ a:hover,a:link,a:active.a:visited{
 
 .item_info_1{
     display: flex;
-    justify-content: space-between;
-}
-
-.item_info_1 span{
-    display: block;
+    justify-content: space-around;
 }
 
 .item_info_1 span:nth-child(1){
@@ -226,4 +223,41 @@ a:hover,a:link,a:active.a:visited{
 
 .height_50{
     height: 50%;
+}
+
+.decoration_1{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    height: 300px;
+    width: 300px;
+    background-image: url(../../img/bg/decoration_1.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.decoration_2{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    height: 300px;
+    width: 300px;
+    background-image: url(../../img/bg/decoration_2.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* 放在bottom里 */
+.decoration_3{
+    position: absolute;
+    bottom: 2px;
+    left: -10%;
+    height: 450px;
+    width: 300px;
+    background-image: url(../../img/bg/decoration_3.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }

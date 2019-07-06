@@ -31,47 +31,55 @@
 
     <div class="change_big_div check_big_div">
         <form id="change_form" th:method="post" th:action="@{/updateinfo}" th:object="${user}">
-            <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:value="*{userId}"></div>
-            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:value="*{nick}"></div>
-            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text"   readonly="readonly" type="text"  th:value="${gender eq 'f'}? '女' :'男'"></div>
-            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" th:value="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div>
-            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" readonly="readonly" th:value="*{city}"></div>
-            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:value="*{tel}" type="text" ></div>
-            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:value="*{mail}" type="text" ></div>
+            <div class="change_small_div"><span class="left_span">用户ID：</span><input class="change_text" name="userId" type="text" readonly="readonly" th:text="*{userId}"></div>
+            <div class="change_small_div"><span class="left_span">昵称：</span><input class="change_text" name="nick" type="text" readonly="readonly" th:text="*{nick}"></div>
+            <div class="change_small_div"><span class="left_span">性别：</span><input class="change_text"   readonly="readonly" type="text"  th:text="${gender eq 'f'}? '女' :'男'"></div>
+            <div class="change_small_div"><span class="left_span">生日：</span><input class="change_text" name="birth" type="text" readonly="readonly" th:text="${#dates.format(user.birth, 'yyyy-MM-dd')}"></div>
+            <div class="change_small_div"><span class="left_span">居住地：</span><input class="change_text" name="city" type="text" readonly="readonly" th:text="*{city}"></div>
+            <div class="change_small_div"><span class="left_span">手机号：</span><input class="change_text" name="tel" readonly="readonly" th:text="*{tel}" type="text" ></div>
+            <div class="change_small_div"><span class="left_span">邮箱号：</span><input class="change_text" name="mail" readonly="readonly" th:text="*{mail}" type="text" ></div>
         </form>
     </div>
 
+
+    <!-- 底部 -->
+    <div class="page_bottom">
+        <!-- 装饰 -->
+        <div class="decoration_3"></div>
+        <div class="web_logo"></div>
+        <div class="page_bottom_text">四川大学JAVA项目27组</div>
+    </div>
+
+
     <!--左侧导航（流外）-->
     <div id="left_navigation" class="page" th:unless="${session.user_id == null}">
-            <div class="navbar">
-                <div class="user">
-                    <div class="user_pic"></div>
-                    <div class="user_name" th:text="${session.user_id}"></div>
+        <div class="navbar">
+            <div class="user">
+                <div class="user_pic"></div>
+                <div class="user_name" th:text="${session.user_id}"></div>
+            </div>
+            <div class="bar">
+                <div class="options">
+                    <ul>
+                        <a href="/userNowInfo"><li class="active">个人信息</li></a>
+                        <a href="/order_pre_info"><li>当前订单</li></a>
+                        <a href="/Order_Not_pay"><li>待支付订单</li></a>
+                        <a href="/order_bef_info"><li>历史订单</li></a>
+                    </ul>
                 </div>
-                <div class="bar">
-                    <div class="options">
-                        <ul>
-                            <a href="/userNowInfo"><li class="active">个人信息</li></a>
-                            <a href="/order_pre_info"><li>当前订单</li></a>
-                            <a href="/Order_Not_pay"><li>待支付订单</li></a>
-                            <a href="/order_bef_info"><li>历史订单</li></a>
-                        </ul>
-                    </div>
-                    <div class="settings">
-                        <ul>
-                            <li class="acc-settings"><i class="fas fa-cog"></i><a href="/userinfo">修改账号信息</a></li>
-                            <li><i class="fas fa-sign-out-alt"></i> <a href="/logout">退出</a></li>
-                        </ul>
-                    </div>
+                <div class="settings">
+                    <ul>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="/userinfo">修改账号信息</a></li>
+                        <li><i class="fas fa-sign-out-alt"></i> <a href="/logout">退出</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="hidebar"></div>
-        </div><!--左侧导航结束-->
+        </div>
+        <div class="hidebar"></div>
+    </div><!--左侧导航结束-->
 
-<!-- 底部 -->
-<div class="page_bottom">
-    <div class="web_logo"></div>
-    <div class="page_bottom_text">四川大学JAVA项目27组</div>
-</div>
+    <!-- 装饰 -->
+    <div class="decoration_1"></div>
+
 </body>
 </html>

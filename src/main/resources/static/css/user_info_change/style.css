@@ -73,14 +73,14 @@ body{
     padding: 5px 15px;
     margin: auto;
     border-radius: 5px;
-    background: rgb(105,105,105);
+    background: rgb(52, 192, 87);
     color: rgb(255,255,255);
-    transition: all 0.3s;
     border: none;
+    cursor: pointer;
 }
 
 .change_complete_div:active{
-    background: rgb(52, 192, 87);
+    background: rgb(59, 105, 71);
     border: none;
 }
 

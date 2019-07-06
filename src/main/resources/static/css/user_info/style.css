@@ -9,3 +9,7 @@
     outline: none;
     text-align: center;
 }
+
+.check_big_div .left_span{
+    text-align: left!important;
+}
