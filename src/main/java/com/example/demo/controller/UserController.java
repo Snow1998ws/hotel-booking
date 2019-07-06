@@ -77,6 +77,11 @@ public class UserController {
     /*  ------------------------------------ 用户注册 ------------------------------------------   */
     @PostMapping("/signup")
     public String signUp(User user, HttpServletRequest request) {
+        User user1=userService.findUserById(user.getUserId());
+        if(user.getUserId()==""||user1.getUserId()!=null)
+        {
+            return "redirect:/home";
+        }
         addUser(user);
         HttpSession session = request.getSession();
         session.setAttribute("user_id", user.getUserId());
