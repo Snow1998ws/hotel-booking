@@ -101,7 +101,6 @@ a:hover,a:link,a:active.a:visited{
 }
 
 .item_info_3{
-    font-size: 14px;
     display: flex;
     justify-content: space-between;
     margin-top: 5px;
@@ -115,6 +114,12 @@ a:hover,a:link,a:active.a:visited{
 .item_info_3 .price_pre{
     text-decoration: line-through;
     margin: 0 5px;
+}
+
+.item_info_3 .booking_date{
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(75, 187, 69)
 }
 
 .web_logo{
