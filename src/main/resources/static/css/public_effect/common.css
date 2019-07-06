@@ -122,6 +122,11 @@ a:hover,a:link,a:active.a:visited{
     color: rgb(75, 187, 69)
 }
 
+.grey_btn{
+    background: rgb(155,155,155)!important;
+    cursor: no-drop!important;
+}
+
 .web_logo{
     width: 40px;
     height: 40px;

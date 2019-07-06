@@ -3,9 +3,9 @@ jQuery(document).ready(function($){
         $part_log = $('.log');
         $cancel = $('.icon_cancel');
 	  $tab_log.on('click', function(event){
-		  $part_log.animate({left:'0'},1000);
+		  $part_log.animate({left:'0'},500);
     });
     $cancel.on('click', function(event){
-		  $part_log.animate({left:'-100vw'},1000);
+		  $part_log.animate({left:'-100vw'},500);
     });
 });

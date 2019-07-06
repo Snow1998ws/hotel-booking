@@ -1,8 +1,5 @@
 $(document).ready(function(){
-    $op_button = $('.booking_item_op_button');
-    $op_button.on("click",readOrder);
-    $cancel_button = $('.booking_item_right_tab');
-    $cancel_button.on("click",cancelOrder);
+    $score = $('.booking_item_op_button')
 });
 
 function cancelOrder() {
