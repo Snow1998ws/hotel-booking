@@ -88,7 +88,7 @@ a:hover,a:link,a:active.a:visited{
 
 .item_info_1{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .item_info_1 span:nth-child(1){
