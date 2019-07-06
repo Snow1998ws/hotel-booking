@@ -1,18 +1,17 @@
 $(document).ready(function(){
-    var $score_page = $('.score_page'),
-        $open_score = $('.open_score'),
+    var $open_score = $('.open_score'),
         $score_cancel = $('.score_cancel');
 
-    function open_score() {   
-        $score_page.animate({right:'0px'},500);
-    }
-    
-    function close_score() {   
-        $score_page.animate({right:'-250px'},300);
-    }
+    // function open_score() {
+    //     $(this).parents('.booking_item_content').find('.score_page').animate({right:'0px'},500);
+    // }
+    //
+    // function close_score() {
+    //     $(this).parents('.score_page').animate({right:'-250px'},300);
+    // }
 
-    $open_score.on('click',open_score);
-    $score_cancel.on('click',close_score);
+    // $open_score.on('click',open_score);
+    // $score_cancel.on('click',close_score);
     
 
     $('.star1').on('click',function(){

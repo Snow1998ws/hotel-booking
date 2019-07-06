@@ -8,18 +8,13 @@ import com.example.demo.service.HotelService;
 import com.example.demo.service.OrdersService;
 import com.example.demo.service.RoomService;
 import com.example.demo.service.RoomTypeService;
-import net.sf.json.util.JSONUtils;
-import org.apache.ibatis.annotations.Property;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -51,6 +46,9 @@ public class OrderController {
         for(int i=0;i<orders.size();i++)
         {
             Hotel hotel = hotels.get(i);
+            order_info.setPaytime(orders.get(i).getOrdertime());
+            order_info.setScore(orders.get(i).getScore());
+            order_info.setName(hotel.gethName());
             order_info.setDate(orders.get(i).getCheckinTime());
             order_info.setPic(hotel.gethPhoto1());
             order_info.setHotel_name(hotel.gethAddress());
@@ -86,6 +84,9 @@ public class OrderController {
             order_info.setPic(hotel.gethPhoto1());
             order_info.setDate(orders.get(i).getCheckinTime());
             order_info.setHotel_name(hotel.gethAddress());
+            order_info.setName(hotel.gethName());
+            order_info.setPaytime(orders.get(i).getOrdertime());
+            order_info.setScore(orders.get(i).getScore());
             order_info.setPrice(orders.get(i).getTotalprice());
             order_info.setTypename(roomTypes.get(i).getTypeName());
             order_info.setOrder_id(orders.get(i).getOrderId());
@@ -115,6 +116,9 @@ public class OrderController {
             Order_info order_info = new Order_info();
             Hotel hotel = hotels.get(i);
             order_info.setPic(hotel.gethPhoto1());
+            order_info.setPaytime(orders.get(i).getOrdertime());
+            order_info.setScore(orders.get(i).getScore());
+            order_info.setName(hotel.gethName());
             order_info.setDate(orders.get(i).getCheckinTime());
             order_info.setHotel_name(hotel.gethAddress());
             order_info.setPrice(orders.get(i).getTotalprice());

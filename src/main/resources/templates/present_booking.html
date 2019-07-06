@@ -51,12 +51,17 @@
                 <div class="booking_item_left" th:style="'background-image:url(' + ${orderinfo.pic} + ')'"></div>
                 <div class="booking_item_mid">
                     <div class="booking_simple_info"    >
-                        <div class="item_info_1 item_row" th:text="${orderinfo.typename}"></div>
+                        <div class="item_info_1 item_row">
+                            <span th:text="${orderinfo.name}"></span>
+                            <span th:text="${orderinfo.typename}"></span>
+
+                        </div>
                         <div class="item_info_2 item_row" th:text="${orderinfo.hotel_name}"></div>
                         <div class="item_info_3 item_row" >
                             <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
 
                             <div><span class="price_now" th:text="${orderinfo.price}" ></span><span class="price_pre" th:text="${orderinfo.discount}"></span>折</div>
+                            <div class="booking_date">订购时间：<span th:text="${#dates.format(orderinfo.paytime, 'yyyy-MM-dd HH:mm:ss')}">1991-11-11</span></div>
                             <div class="booking_date"><span th:text="${#dates.format(orderinfo.date, 'yyyy-MM-dd')}">1991-11-11</span></div>
                         </div>
                     </div>

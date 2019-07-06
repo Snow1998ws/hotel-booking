@@ -37,9 +37,9 @@
             <!--<property name="constructorBased" value="true"/>-->
         <!--</table>-->
 
-        <table schema="hotel_booking" tableName="roomtype" domainObjectName="RoomType">
+        <table schema="hotel_booking" tableName="orders" domainObjectName="Orders">
             <property name="constructorBased" value="true"/>
-            <generatedKey column="rt_id" sqlStatement="select uuid_short()" identity="true"/>
+            <generatedKey column="o_id" sqlStatement="select uuid_short()" identity="true"/>
         </table>
         <!--<table schema="hotel_booking" tableName="room" domainObjectName="Room">-->
             <!--<property name="constructorBased" value="true"/>-->

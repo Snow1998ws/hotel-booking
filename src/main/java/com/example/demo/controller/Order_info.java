@@ -9,6 +9,33 @@ public class Order_info
     private Integer price;
     private Integer order_id;
     private Date date;
+    private Integer Score;
+    private Date paytime;
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setScore(Integer score) {
+        Score = score;
+    }
+
+    public void setPaytime(Date paytime) {
+        this.paytime = paytime;
+    }
+
+    public Integer getScore() {
+        return Score;
+    }
+
+    public Date getPaytime() {
+        return paytime;
+    }
 
     public void setDate(Date date) {
         this.date = date;

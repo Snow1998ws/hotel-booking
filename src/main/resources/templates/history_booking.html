@@ -25,8 +25,18 @@
     <!-- 删除订单测试用 -->
     <!--<script type="text/javascript" src="js/booking_item/cancel.js"></script>-->
     <!-- 本页 -->
-    <script type="text/javascript" src="js/history_booking/score.js"></script>
+    <!--<script type="text/javascript" src="js/history_booking/score.js"></script>-->
     <script type="text/javascript" src="js/history_booking/op2.js"></script>
+
+    <script>
+        function open_score() {
+            $(this).parents('.booking_item_content').find('.score_page').animate({right:'0px'},500);
+        }
+
+        function close_score() {
+            $(this).parents('.score_page').animate({right:'-250px'},300);
+        }
+    </script>
 </head>
 <body>
 
@@ -47,47 +57,43 @@
         <div class="booking_item_content" th:each="bef_info:${order_bef_info}" th:id="${bef_info.order_id}">
             <div class="booking_item_main">
                 <div class="booking_item_left_tab"></div>
-                <div class="booking_item_left"></div>
+                <div class="booking_item_left" th:style="'background-image:url(' + ${bef_info.pic} + ')'"></div>
                 <div class="booking_item_mid">
                     <div class="booking_simple_info">
-                        <div class="item_info_1 item_row" th:text="${bef_info.typename}"></div>
-                        <div class="item_info_2 item_row" th:text="${bef_info.hotel_name}"></div>
-                        <div class="item_info_3 item_row">
-                            <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
-                            <div><span class="price_now" th:text="${bef_info.price}"></span><span class="price_pre"  th:text="${bef_info.discount}"></span>折</div>
-                            <div class="booking_date"><span>1999-11-11</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="booking_item_right">
-                    <div class="booking_item_op_button">查看</div>
-                    <div class="booking_item_op_button open_score">评分</div>
-                </div> 
-                <div class="booking_item_right_tab"></div>
-            </div>
-        </div>
+                        <div class="item_info_1 item_row">
+                            <span th:text="${bef_info.name}"></span>
+                            <span th:text="${bef_info.typename}"></span>
 
-        <!-- 一个模块 -->
-        <div class="booking_item_content" th:each="bef_info:${order_bef_info}" th:id="${bef_info.order_id}">
-            <div class="booking_item_main">
-                <div class="booking_item_left_tab"></div>
-                <div class="booking_item_left"></div>
-                <div class="booking_item_mid">
-                    <div class="booking_simple_info">
-                        <div class="item_info_1 item_row" th:text="${bef_info.typename}"></div>
+                        </div>
                         <div class="item_info_2 item_row" th:text="${bef_info.hotel_name}"></div>
                         <div class="item_info_3 item_row">
                             <!--<div class="xzw_starBox"><span class="show"><span class="score score9"></span></span></div>-->
                             <div><span class="price_now" th:text="${bef_info.price}"></span><span class="price_pre"  th:text="${bef_info.discount}"></span>折</div>
-                            <div class="booking_date"><span>1999-11-11</span></div>
+                            <div class="booking_date">订购时间：<span th:text="${#dates.format(bef_info.paytime, 'yyyy-MM-dd HH:mm:ss')}">1991-11-11</span></div>
+                            <div class="booking_date">入住时间<span th:text="${#dates.format(bef_info.date, 'yyyy-MM-dd')}">1991-11-11</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="booking_item_right">
                     <div class="booking_item_op_button" >查看</div>
-                    <div class="booking_item_op_button grey_btn" >评分</div>
+                    <div onclick="open_score()" th:class="${bef_info.score}==-1 ?'booking_item_op_button open_score':'booking_item_op_button grey_btn'" >评分</div>
                 </div> 
                 <div class="booking_item_right_tab"></div>
+            </div>
+            <div class="score_page">
+                <div class="score_cancel" onclick="close_score()"></div>
+                <div class="score_title" th:text="${bef_info.name}">大和谐酒店</div>
+                <div class="score_content">
+            <span class="xzw_starBox">
+                <ul class="star stars">
+                    <li><a title="一星" class="star1">1</a></li>
+                    <li><a title="两星" class="star2">2</a></li>
+                    <li><a title="三星" class="star3">3</a></li>
+                    <li><a title="四星" class="star4">4</a></li>
+                    <li><a title="五星" class="star5">5</a></li>
+                </ul>
+            </span>
+                </div>
             </div>
         </div>
     </div>
@@ -108,7 +114,7 @@
             <div class="bar">
                 <div class="options">
                     <ul>
-                        <a href="/userinfo"><li class="active">个人信息</li></a>
+                        <a href="/userNowInfo"><li class="active">个人信息</li></a>
                         <a href="/order_pre_info"><li>当前订单</li></a>
                         <a href="/Order_Not_pay"><li>待支付订单</li></a>
                         <a href="/order_bef_info"><li>历史订单</li></a>
@@ -116,8 +122,8 @@
                 </div>
                 <div class="settings">
                     <ul>
-                        <li class="acc-settings"><i class="fas fa-cog"></i><a v-bind:href="msg_a5">修改账号信息</a></li>
-                        <li><i class="fas fa-sign-out-alt"></i> 退出</li>
+                        <li class="acc-settings"><i class="fas fa-cog"></i><a href="/userinfo">修改账号信息</a></li>
+                        <li><i class="fas fa-sign-out-alt"></i> <a href="/logout">退出</a></li>
                     </ul>
                 </div>
             </div>
@@ -126,20 +132,6 @@
         <div class="hidebar"></div>
     </div><!--左侧导航结束-->
 
-    <div class="score_page">
-        <div class="score_cancel"></div>
-        <div class="score_title">大和谐酒店</div>
-        <div class="score_content">
-            <span class="xzw_starBox">
-                <ul class="star stars">
-                    <li><a title="一星" class="star1">1</a></li>
-                    <li><a title="两星" class="star2">2</a></li>
-                    <li><a title="三星" class="star3">3</a></li>
-                    <li><a title="四星" class="star4">4</a></li>
-                    <li><a title="五星" class="star5">5</a></li>
-                </ul>
-            </span>
-        </div>
-    </div>
+
 </body>
 </html>

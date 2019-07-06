@@ -4,7 +4,6 @@ import com.example.demo.domain.Orders;
 import com.example.demo.domain.Room;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLTransactionRollbackException;
 import java.util.List;
 
 @Service
