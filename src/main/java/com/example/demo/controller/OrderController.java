@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 @Controller
 @RequestMapping("/")
@@ -135,6 +137,8 @@ public class OrderController {
         return "history_booking";
     }
 
+
+
     @PostMapping("/deleteRoom")
     @ResponseBody
     public String deleteRoom(HttpServletRequest request, Model model)
@@ -178,11 +182,45 @@ public class OrderController {
         ordersService.deleteOrderByid(order);
         return id;
     }
-    @PostMapping(value = "/addOrder")
-    public String addOrder(Orders orders,Model model)
+
+
+    @RequestMapping(value = "/addOrder")
+    @ResponseBody
+    public String addOrder(HttpServletRequest request,Model model)
     {
+        Orders orders=new Orders();
+        orders.setIspay("n");
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            orders.setArrive(sdf.parse(request.getParameter("checkinTime")));
+            orders.setLeaveTime(sdf.parse(request.getParameter("leaveTime")));
+            orders.setPeople(Integer.valueOf(request.getParameter("people")));
+            orders.setTotalprice(Integer.valueOf(request.getParameter("totalprice")));
+            orders.setCheckinTime(sdf.parse(request.getParameter("checkinTime")));
+            orders.setDiscount(10);
+            Date date=new Date();
+            orders.setOrdertime(date);
+            orders.setoRoomId(Integer.valueOf(request.getParameter("oRoomId")));
+            orders.setoUserId(request.getParameter("oUserId"));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         ordersService.saveOrder(orders);
-        return "admin_search";
+        String user=request.getParameter("oUserId");
+        return "home";
+    }
+    @RequestMapping(value = "/setScore")
+    @ResponseBody
+    public String setScore(HttpServletRequest request,Model model)
+    {
+        String score=request.getParameter("foss");
+        String oid=request.getParameter("orderid");
+        Orders orders=ordersService.findOrdersByOrder_id(Integer.valueOf(oid));
+        orders.setScore(Integer.valueOf(score));
+        ordersService.UpdateOrder(orders);
+        return "home";
     }
 
 }

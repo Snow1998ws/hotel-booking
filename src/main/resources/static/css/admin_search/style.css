@@ -1,10 +1,15 @@
+body{
+    background: rgb(240,240,240);
+}
+
 .admin_search_content{
     width: 60%;
     min-width: 600px;
     margin: 50px auto;
     height: 60px;
     border: 1px solid rgb(0,0,0);
-    background: rgb(255,255,255);
+    background: rgb(245,245,245);
+    z-index: 12;
 }
 
 .admin_search_bar{
@@ -87,10 +92,10 @@
 .admin_search_result{
     width: 60%;
     min-width: 600px;
-    min-height: 60%;
+    min-height: 80vh;
     margin: 50px auto;
-    border-top: 3px solid rgb(0,0,0); 
-    background: rgb(255,255,255);
+    border-top: 3px solid rgb(0,0,0);
+    z-index: 12;
 }
 
 .result_item{

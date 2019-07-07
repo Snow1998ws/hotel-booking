@@ -25,18 +25,8 @@
     <!-- 删除订单测试用 -->
     <!--<script type="text/javascript" src="js/booking_item/cancel.js"></script>-->
     <!-- 本页 -->
-    <!--<script type="text/javascript" src="js/history_booking/score.js"></script>-->
+    <script type="text/javascript" src="js/history_booking/score.js"></script>
     <script type="text/javascript" src="js/history_booking/op2.js"></script>
-
-    <script>
-        function open_score() {
-            $(this).parents('.booking_item_content').find('.score_page').animate({right:'0px'},500);
-        }
-
-        function close_score() {
-            $(this).parents('.score_page').animate({right:'-250px'},300);
-        }
-    </script>
 </head>
 <body>
 
@@ -76,7 +66,7 @@
                 </div>
                 <div class="booking_item_right">
                     <div class="booking_item_op_button" >查看</div>
-                    <div onclick="open_score()" th:class="${bef_info.score}==-1 ?'booking_item_op_button open_score':'booking_item_op_button grey_btn'" >评分</div>
+                    <div th:class="${bef_info.score}==-1 ?'booking_item_op_button open_score':'booking_item_op_button grey_btn'" >评分</div>
                 </div> 
                 <div class="booking_item_right_tab"></div>
             </div>
@@ -86,11 +76,11 @@
                 <div class="score_content">
             <span class="xzw_starBox">
                 <ul class="star stars">
-                    <li><a title="一星" class="star1">1</a></li>
-                    <li><a title="两星" class="star2">2</a></li>
-                    <li><a title="三星" class="star3">3</a></li>
-                    <li><a title="四星" class="star4">4</a></li>
-                    <li><a title="五星" class="star5">5</a></li>
+                    <li><a title="一星" class="star1"></a></li>
+                    <li><a title="两星" class="star2"></a></li>
+                    <li><a title="三星" class="star3"></a></li>
+                    <li><a title="四星" class="star4"></a></li>
+                    <li><a title="五星" class="star5"></a></li>
                 </ul>
             </span>
                 </div>
@@ -109,7 +99,7 @@
         <div class="navbar">
             <div class="user">
                 <div class="user_pic"></div>
-                <div class="user_name">用户</div>
+                <div class="user_name" th:text="${session.user_id}">用户</div>
             </div>
             <div class="bar">
                 <div class="options">

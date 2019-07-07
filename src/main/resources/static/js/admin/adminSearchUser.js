@@ -28,7 +28,7 @@ function admin_search() {
                 $(".admin_search_result").html(add_htmls);
             },
             error:function (msg) {
-                alert("error");
+                alert("搜索不能为空！");
             }
         }
     );

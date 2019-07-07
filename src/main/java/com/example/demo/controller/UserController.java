@@ -78,7 +78,7 @@ public class UserController {
     @PostMapping("/signup")
     public String signUp(User user, HttpServletRequest request) {
         User user1=userService.findUserById(user.getUserId());
-        if(user.getUserId()==""||user1.getUserId()!=null)
+        if(user.getUserId().equals("")||user1!=null)
         {
             return "redirect:/home";
         }
@@ -274,6 +274,10 @@ public class UserController {
     @PostMapping(value = "/addUser")
     public String addUser(HttpServletRequest request,Model model)
     {
+        HttpSession session=request.getSession();
+        String userid=(String)session.getAttribute("user_id");
+        User user1=userService.findUserById(userid);
+
         User user=new User();
         String user_id=request.getParameter("userId");
         String nick=request.getParameter("nick");
@@ -285,6 +289,10 @@ public class UserController {
         String mail=request.getParameter("mail");
         String name=request.getParameter("name");
         String perm=request.getParameter("perm");
+        if(Integer.valueOf(perm)>3||(user1.getPerm()==2&&Integer.valueOf(perm)!=1))//不是root,不能加其他管理员
+        {
+            return "admin_new_user";
+        }
         user.setUserId(user_id);
         user.setPsd(psd);
         user.setGender(gender);

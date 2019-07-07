@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 
 function book_ensure() {
     $.ajax({
-        type: "post",
+        type: "POST",
         url: "/addOrder",
         data: {
             oUserId: $("#userId").val(),
@@ -20,12 +20,16 @@ function book_ensure() {
             Ispay: 'n',
             arrive: $("#arrive_time").val() + ":00",
             people: $("#booking_people").val(),
-            discount: 0
+            discount: 10
         },
         dataType: "json",
         success: function (data) {
-            alert(data.result);
-            window.location.href = "/home";
+            alert("22");
+            window.location.href = "/Order_Not_pay";
+        },
+        error:function (data) {
+            alert("33");
+            window.location.href = "/Order_Not_pay";
         }
     })
 }
