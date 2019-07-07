@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.domain.Orders;
 import com.example.demo.domain.OrdersExample;
 import com.example.demo.domain.Room;
+import com.example.demo.domain.User;
 import com.example.demo.mapper.OrdersMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,11 +85,13 @@ public class OrdersServicelmpl implements OrdersService{
     public List<Orders> findPre_ordersByid(String id)
     {
         OrdersExample ordersExample=new OrdersExample();
-        OrdersExample.Criteria criteria=ordersExample.createCriteria();
-        criteria.andOUserIdEqualTo(id);
+//        OrdersExample.Criteria criteria=ordersExample.createCriteria();
+//        criteria.andOUserIdEqualTo(id);
         Date date=new Date();
-        criteria.andCheckinTimeGreaterThanOrEqualTo(date);
-        criteria.andIspayEqualTo("y");
+//        criteria.andCheckinTimeGreaterThanOrEqualTo(date);
+//        criteria.andIspayEqualTo("y");
+        ordersExample.or().andCheckinTimeGreaterThan(date).andIspayEqualTo("y").andOUserIdEqualTo(id);
+        List<Orders> orders=ordersMapper.selectByExample(ordersExample);
         return ordersMapper.selectByExample(ordersExample);
     }
     @Override

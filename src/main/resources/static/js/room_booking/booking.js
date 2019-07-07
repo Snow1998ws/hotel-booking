@@ -24,11 +24,9 @@ function book_ensure() {
         },
         dataType: "json",
         success: function (data) {
-            alert("22");
             window.location.href = "/Order_Not_pay";
         },
         error:function (data) {
-            alert("33");
             window.location.href = "/Order_Not_pay";
         }
     })

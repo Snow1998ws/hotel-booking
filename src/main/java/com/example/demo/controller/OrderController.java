@@ -39,7 +39,7 @@ public class OrderController {
     {
         HttpSession session=request.getSession();
         String user_id=(String) session.getAttribute("user_id");
-        Order_info order_info = new Order_info();
+
         List<Order_info> order_infos=new ArrayList<>();
         List<Orders> orders=ordersService.findPre_ordersByid(user_id);
         List<Room> rooms=roomService.findRoomsByOrders(orders);
@@ -47,6 +47,7 @@ public class OrderController {
         List<Hotel> hotels=hotelService.findHotelsByRooms(rooms);
         for(int i=0;i<orders.size();i++)
         {
+            Order_info order_info = new Order_info();
             Hotel hotel = hotels.get(i);
             order_info.setPaytime(orders.get(i).getOrdertime());
             order_info.setScore(orders.get(i).getScore());
